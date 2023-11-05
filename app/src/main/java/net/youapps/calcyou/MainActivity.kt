@@ -3,7 +3,7 @@ package net.youapps.calcyou
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import net.youapps.calcyou.ui.CalculatorScreen
+import net.youapps.calcyou.ui.MainScreen
 import net.youapps.calcyou.ui.theme.CalcYouTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,7 +12,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CalcYouTheme {
                 // A surface container using the 'background' color from the theme
-                CalculatorScreen()
+                MainScreen()
             }
         }
     }
