@@ -77,7 +77,7 @@ fun ConverterScreen(converter: UnitConverter) {
 
             OutlinedButton(onClick = { expanded = !expanded }) {
                 Row {
-                    Text(selectedUnit.name)
+                    Text(stringResource(selectedUnit.name))
                     Icon(Icons.Filled.ArrowDropDown, "")
                 }
                 DropdownMenu(
@@ -88,7 +88,7 @@ fun ConverterScreen(converter: UnitConverter) {
                             selectedUnit = unit
                             expanded = false
                         }, text = {
-                            Text(text = unit.name)
+                            Text(text = stringResource(unit.name))
                         })
                     }
                 }
@@ -126,7 +126,7 @@ fun ConverterScreen(converter: UnitConverter) {
                 converted.forEach {
                     Row(Modifier.fillMaxWidth()) {
                         Text(
-                            it.first.name,
+                            stringResource(id = it.first.name),
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(vertical = 4.dp, horizontal = 8.dp),
