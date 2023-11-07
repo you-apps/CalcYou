@@ -8,8 +8,4 @@ class FactorUnit(override val name: String, val conversionFactor: Double) : Conv
     override fun convertTo(value: Double): Double {
         return value / conversionFactor
     }
-
-    override fun convert(outputUnit: ConverterUnit, value: Double): Double {
-        return outputUnit.convertTo(this.convertFrom(value))
-    }
 }
