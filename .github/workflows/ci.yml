@@ -1,0 +1,39 @@
+name: Create Debug Apk
+
+on:
+  push:
+    paths-ignore:
+        - "README*.md"
+        - "app/src/main/res/**"
+        - ".github/**"
+  pull_request:
+    paths-ignore:
+        - "README*.md"
+        - "app/src/main/res/**"
+        - ".github/**"
+
+jobs:
+  debug-builds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: "gradle"
+
+      - name: Build APK
+        run: bash ./gradlew assembleDebug --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: app/build/outputs/apk/debug/*.apk
