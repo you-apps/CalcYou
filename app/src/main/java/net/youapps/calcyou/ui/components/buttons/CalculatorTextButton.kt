@@ -22,7 +22,7 @@ import androidx.compose.ui.platform.LocalView
 @Composable
 fun RowScope.CalculatorTextButton(
     text: String,
-    textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    textColor: Color = MaterialTheme.colorScheme.onSurface,
     aspectRatio: Float = 1f,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { }
