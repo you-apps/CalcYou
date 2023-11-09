@@ -64,8 +64,8 @@ fun CenterKeypad(
         ) {
             CalculatorButton(
                 text = "⌫",
-                backgroundColor = MaterialTheme.colorScheme.tertiary,
-                textColor = MaterialTheme.colorScheme.onTertiary,
+                backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+                textColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Delete)
                 },
@@ -76,8 +76,8 @@ fun CenterKeypad(
 
             CalculatorButton(
                 text = SpecialOperator.Bracket.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.Bracket))
                 }
@@ -85,8 +85,8 @@ fun CenterKeypad(
 
             CalculatorButton(
                 text = SimpleOperator.Percent.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
                 }
@@ -94,8 +94,8 @@ fun CenterKeypad(
 
             CalculatorButton(
                 text = SimpleOperator.Divide.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Divide))
                 }
@@ -126,8 +126,8 @@ fun CenterKeypad(
             )
             CalculatorButton(
                 text = SimpleOperator.Multiply.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Multiply))
                 }
@@ -158,8 +158,8 @@ fun CenterKeypad(
             )
             CalculatorButton(
                 text = SimpleOperator.Minus.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Minus))
                 }
@@ -190,8 +190,8 @@ fun CenterKeypad(
             )
             CalculatorButton(
                 text = SimpleOperator.Plus.text,
-                backgroundColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Plus))
                 }
@@ -222,8 +222,8 @@ fun CenterKeypad(
             )
             CalculatorButton(
                 text = "=",
-                backgroundColor = MaterialTheme.colorScheme.primary,
-                textColor = MaterialTheme.colorScheme.onPrimary,
+                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Evaluate)
                 }
