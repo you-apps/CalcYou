@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CalcYou</string>
     <string name="temperature">Temperature</string>
@@ -21,16 +22,16 @@
     <string name="square_foot">Square foot</string>
     <string name="bit">Bit</string>
     <string name="_byte">Byte</string>
-    <string name="kilobyte">KiloByte</string>
-    <string name="megabyte">MegaByte</string>
-    <string name="gigabyte">GigaByte</string>
-    <string name="terabyte">TeraByte</string>
-    <string name="petabyte">PetaByte</string>
-    <string name="exabyte">ExaByte</string>
+    <string name="kilobyte">Kilobyte</string>
+    <string name="megabyte">Megabyte</string>
+    <string name="gigabyte">Gigabyte</string>
+    <string name="terabyte">Terabyte</string>
+    <string name="petabyte">Petabyte</string>
+    <string name="exabyte">Exabyte</string>
     <string name="hertz">Hertz</string>
-    <string name="kilohertz">KiloHertz</string>
-    <string name="megahertz">MegaHertz</string>
-    <string name="gigahertz">GigaHertz</string>
+    <string name="kilohertz">Kilohertz</string>
+    <string name="megahertz">Megahertz</string>
+    <string name="gigahertz">Gigahertz</string>
     <string name="meter">Meter</string>
     <string name="kilometer">Kilometer</string>
     <string name="centimeter">Centimeter</string>
