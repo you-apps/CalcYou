@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "CalcYou"
 include(":app")
-include(":arity")

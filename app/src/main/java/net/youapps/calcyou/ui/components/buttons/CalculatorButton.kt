@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,8 +29,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun RowScope.CalculatorButton(
     text: String,
-    textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
-    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    textColor: Color = MaterialTheme.colorScheme.onSurface,
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
     aspectRatio: Float = 1f,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { },
@@ -79,7 +80,7 @@ fun RowScope.CalculatorButton(
     aspectRatio: Float = 1f,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { },
-    content: @Composable() (BoxScope.() -> Unit)
+    content: @Composable (BoxScope.() -> Unit)
 ) {
     val view = LocalView.current
     val haptic = LocalHapticFeedback.current
