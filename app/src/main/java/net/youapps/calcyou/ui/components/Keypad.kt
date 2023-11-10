@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.youapps.calcyou.R
 import net.youapps.calcyou.data.CalculatorEvent
 import net.youapps.calcyou.data.SimpleOperator
 import net.youapps.calcyou.data.SpecialOperator
@@ -75,7 +76,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SpecialOperator.Bracket.text,
+                iconRes = R.drawable.brackets,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -84,7 +85,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SimpleOperator.Percent.text,
+                iconRes = R.drawable.percent,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -93,7 +94,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SimpleOperator.Divide.text,
+                iconRes = R.drawable.divide,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -125,7 +126,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Multiply.text,
+                iconRes = R.drawable.multiply,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -157,7 +158,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Minus.text,
+                iconRes = R.drawable.minus,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -189,7 +190,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Plus.text,
+                iconRes = R.drawable.plus,
                 backgroundColor = MaterialTheme.colorScheme.secondary,
                 textColor = MaterialTheme.colorScheme.onSecondary,
                 onClick = {
@@ -221,7 +222,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = "=",
+                iconRes = R.drawable.equal,
                 backgroundColor = MaterialTheme.colorScheme.primary,
                 textColor = MaterialTheme.colorScheme.onPrimary,
                 onClick = {
