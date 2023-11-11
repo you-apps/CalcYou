@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -64,7 +65,7 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "⌫",
+                iconRes = R.drawable.delete,
                 backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
                 textColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 onClick = {
@@ -204,7 +205,9 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "+/-",
+                iconRes = R.drawable.polarity,
+                backgroundColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
+                textColor = MaterialTheme.colorScheme.onSurface,
                 onClick = {
                     onEvent(CalculatorEvent.SwitchPolarity)
                 }
