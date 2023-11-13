@@ -91,7 +91,7 @@ class EventHandler(
 
     private fun Char.isOperator(): Boolean {
         return SimpleOperator.values().map { it.value }
-            .any { this.toString() == it } || this == '(' || this == '|'
+            .any { this.toString() == it } || this == '(' || this == '|' || this == '.'
     }
 
     fun getDisplayText(): String {
