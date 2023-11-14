@@ -1,6 +1,6 @@
 <!-- ---------- Header ---------- -->
 <div align="center">
-  <img width="200" height="200" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp">
+  <img width="200" height="200" src="fastlane/metadata/android/en-US/images/icon.png">
   <h1>Calc You</h1>
 <p>Privacy focused calculator app built with MD3.</p>
 
