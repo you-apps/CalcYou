@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.youapps.calcyou.R
 import net.youapps.calcyou.data.CalculatorEvent
 import net.youapps.calcyou.data.SimpleOperator
 import net.youapps.calcyou.data.SpecialOperator
@@ -63,7 +65,7 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "⌫",
+                iconRes = R.drawable.delete,
                 backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
                 textColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 onClick = {
@@ -75,7 +77,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SpecialOperator.Bracket.text,
+                iconRes = R.drawable.brackets,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -84,7 +86,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SimpleOperator.Percent.text,
+                iconRes = R.drawable.percent,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -93,7 +95,7 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                text = SimpleOperator.Divide.text,
+                iconRes = R.drawable.divide,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -125,7 +127,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Multiply.text,
+                iconRes = R.drawable.multiply,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -157,7 +159,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Minus.text,
+                iconRes = R.drawable.minus,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -189,7 +191,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = SimpleOperator.Plus.text,
+                iconRes = R.drawable.plus,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
@@ -203,7 +205,9 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "+/-",
+                iconRes = R.drawable.polarity,
+                backgroundColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
+                textColor = MaterialTheme.colorScheme.onSurface,
                 onClick = {
                     onEvent(CalculatorEvent.SwitchPolarity)
                 }
@@ -221,7 +225,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = "=",
+                iconRes = R.drawable.equal,
                 backgroundColor = MaterialTheme.colorScheme.primaryContainer,
                 textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 onClick = {
