@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="square_foot">Pede quadrate</string>
+    <string name="temperature">Temperatura</string>
+    <string name="volume">Volumine</string>
+    <string name="milliliter">Millilitro</string>
+    <string name="kelvin">Kelvin</string>
+    <string name="mass">Massa</string>
+    <string name="cubic_meter">Metro cubic</string>
+    <string name="square_meter">Metro quadrate</string>
+    <string name="calculator">Calculator</string>
+    <string name="value">Valor</string>
+    <string name="cubic_centimeter">Centimetro cubic</string>
+    <string name="digital_storage">Immagazinage digital</string>
+    <string name="frequency">Frequentia</string>
+    <string name="square_kilometer">Kilometro quadrate</string>
+    <string name="square_centimeter">Centimetro quadrate</string>
+    <string name="gallon">Gallon</string>
+    <string name="cubic_decimeter">Decimetro cubic</string>
+    <string name="unit">Unitate</string>
+    <string name="square_millimeter">Millimetro quadrate</string>
+    <string name="celsius">Celsius</string>
+    <string name="app_name">CalcYou</string>
+    <string name="liter">Litro</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="length">Longitude</string>
+    <string name="speed">Velocitate</string>
+</resources>
