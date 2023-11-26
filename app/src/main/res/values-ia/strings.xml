@@ -25,4 +25,24 @@
     <string name="fahrenheit">Fahrenheit</string>
     <string name="length">Longitude</string>
     <string name="speed">Velocitate</string>
+    <string name="gram">Gramma</string>
+    <string name="kilometer_per_hour">Kilometros per hora</string>
+    <string name="tonne">Tonna</string>
+    <string name="hectare">Hectar</string>
+    <string name="meter_per_second">Metros per secunda</string>
+    <string name="yard">Yard</string>
+    <string name="square_yard">Yard quadrate</string>
+    <string name="acre">Acre</string>
+    <string name="centimeter">Centimetro</string>
+    <string name="mile">Millia</string>
+    <string name="mile_per_hour">Millias per hora</string>
+    <string name="milligram">Milligramma</string>
+    <string name="ounce">Uncia</string>
+    <string name="inch">Pollice</string>
+    <string name="millimeter">Millimetro</string>
+    <string name="pound">Libra</string>
+    <string name="meter">Metro</string>
+    <string name="kilometer">KIlometro</string>
+    <string name="kilogram">Kilogramma</string>
+    <string name="foot">Pede</string>
 </resources>
