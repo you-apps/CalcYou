@@ -45,4 +45,21 @@
     <string name="kilometer">KIlometro</string>
     <string name="kilogram">Kilogramma</string>
     <string name="foot">Pede</string>
+    <string name="gigabyte">Gigabyte</string>
+    <string name="feet_per_second">Pedes per secunda</string>
+    <string name="terabyte">Terabyte</string>
+    <string name="megabyte">Megabyte</string>
+    <string name="petabyte">Petabyte</string>
+    <string name="megahertz">Megahertz</string>
+    <string name="tablespoon">Coclear de servir</string>
+    <string name="kilobyte">Kilobyte</string>
+    <string name="gigahertz">Gigahertz</string>
+    <string name="hertz">Hertz</string>
+    <string name="exabyte">Exabyte</string>
+    <string name="kilohertz">Kilohertz</string>
+    <string name="teaspoon">Coclear de the</string>
+    <string name="_byte">Byte</string>
+    <string name="knot">Nodo</string>
+    <string name="bit">Bit</string>
+    <string name="kiloliter">Kilolitro</string>
 </resources>
