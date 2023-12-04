@@ -4,10 +4,10 @@
     <string name="gram">Gram</string>
     <string name="pint">Pinta</string>
     <string name="temperature">Teplota</string>
-    <string name="feet_per_second">Feet za sekundu</string>
+    <string name="feet_per_second">Stopa za sekundu</string>
     <string name="terabyte">Terabajt</string>
     <string name="megabyte">Megabajt</string>
-    <string name="kilometer_per_hour">Kilometrů za hodinu</string>
+    <string name="kilometer_per_hour">Kilometry za hodinu</string>
     <string name="volume">Objem</string>
     <string name="petabyte">Petabajt</string>
     <string name="megahertz">Megahertz</string>
@@ -17,7 +17,7 @@
     <string name="mass">Hmotnost</string>
     <string name="quart">Quart</string>
     <string name="hectare">Hektar</string>
-    <string name="meter_per_second">Metrů za sekundu</string>
+    <string name="meter_per_second">Metry za sekundu</string>
     <string name="calculator">Kalkulačka</string>
     <string name="tablespoon">Lžíce</string>
     <string name="value">Hodnota</string>
@@ -57,4 +57,13 @@
     <string name="speed">Rychlost</string>
     <string name="foot">Stopa</string>
     <string name="kiloliter">Kilolitr</string>
+    <string name="square_foot">Stopa čtvereční</string>
+    <string name="cubic_meter">Metr krychlový</string>
+    <string name="square_meter">Metr čtvereční</string>
+    <string name="square_yard">Čtvereční yard</string>
+    <string name="cubic_centimeter">Centimetr krychlový</string>
+    <string name="square_kilometer">Kilometr čtvereční</string>
+    <string name="square_centimeter">Centimetr čtvereční</string>
+    <string name="cubic_decimeter">Decimetr krychlový</string>
+    <string name="square_millimeter">Milimetr čtvereční</string>
 </resources>
