@@ -62,4 +62,6 @@
     <string name="knot">Nodo</string>
     <string name="bit">Bit</string>
     <string name="kiloliter">Kilolitro</string>
+    <string name="pint">Pinta</string>
+    <string name="fluid_ounce">Uncia liquid</string>
 </resources>
