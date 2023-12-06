@@ -94,6 +94,10 @@ class EventHandler(
             .any { this.toString() == it } || this == '(' || this == '|' || this == '.'
     }
 
+    fun setExperssion(text: String) {
+        expression = tokenizer.getNormalizedExpression(text)
+    }
+
     fun getDisplayText(): String {
         return tokenizer.getLocalizedExpression(expression)
     }

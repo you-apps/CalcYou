@@ -2,6 +2,7 @@ package net.youapps.calcyou.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,7 +46,11 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
             items(items = calculatorViewModel.history) { item ->
                 Text(
                     text = item,
-                    modifier = Modifier.animateItemPlacement(),
+                    modifier = Modifier
+                        .animateItemPlacement()
+                        .clickable {
+                            calculatorViewModel.setExpression(item)
+                        },
                     textAlign = TextAlign.End,
                     style = MaterialTheme.typography.displaySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,

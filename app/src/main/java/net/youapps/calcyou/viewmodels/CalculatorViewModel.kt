@@ -25,6 +25,11 @@ class CalculatorViewModel(context: Context) : ViewModel() {
 
     var history: MutableList<String> = mutableStateListOf()
 
+    fun setExpression(text: String) {
+        eventHandler.setExperssion(text)
+        displayText = eventHandler.getDisplayText()
+    }
+
     fun onEvent(event: CalculatorEvent) {
         eventHandler.processEvent(event)
         displayText = eventHandler.getDisplayText()
