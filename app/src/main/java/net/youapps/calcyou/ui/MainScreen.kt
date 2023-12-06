@@ -55,11 +55,7 @@ fun MainScreen() {
             CenterAlignedTopAppBar(title = {
                 Text(
                     text = stringResource(
-                        id =
-                        when (val destination = currentDestination) {
-                            is Destination.Converter -> destination.resId
-                            else -> R.string.app_name
-                        }
+                        id = R.string.app_name
                     )
                 )
             }, navigationIcon = {

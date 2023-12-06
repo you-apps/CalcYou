@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import net.youapps.calcyou.ui.CalculatorScreen
+import net.youapps.calcyou.ui.screens.ConverterGridScreen
+import net.youapps.calcyou.ui.screens.ConverterScreen
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostController) {
@@ -18,9 +20,15 @@ fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostControll
             CalculatorScreen()
         }
 
+        composable(route = Destination.Converters.route) {
+            ConverterGridScreen(onNavigate = {
+                navHostController.navigateTo(it.route)
+            })
+        }
+
         Destination.Converter.values.forEach { converter ->
             composable(route = converter.route) {
-                converter.screen()
+                ConverterScreen(converter = converter.converter, converterName = converter.resId)
             }
         }
     }

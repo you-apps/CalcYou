@@ -66,4 +66,5 @@
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>
+    <string name="converter">Unit Converter</string>
 </resources>

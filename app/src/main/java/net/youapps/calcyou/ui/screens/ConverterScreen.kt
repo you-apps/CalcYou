@@ -1,5 +1,6 @@
 package net.youapps.calcyou.ui.screens
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -39,7 +40,7 @@ import net.youapps.calcyou.data.converters.MassConverter
 import net.youapps.calcyou.data.converters.UnitConverter
 
 @Composable
-fun ConverterScreen(converter: UnitConverter) {
+fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
     Column(
         Modifier
             .fillMaxSize()
@@ -55,6 +56,10 @@ fun ConverterScreen(converter: UnitConverter) {
             converted = textFieldValue.toDoubleOrNull()
                 ?.let { it1 -> converter.convertAll(it1, selectedUnit) } ?: listOf()
         }
+        Text(
+            text = stringResource(id = converterName),
+            style = MaterialTheme.typography.headlineLarge
+        )
         Row(
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -153,5 +158,5 @@ fun ConverterScreen(converter: UnitConverter) {
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    ConverterScreen(converter = MassConverter())
+    ConverterScreen(converter = MassConverter(), R.string.app_name)
 }
