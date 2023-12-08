@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,7 +28,11 @@ fun ConverterCard(icon: ImageVector, @StringRes title: Int, onClick: () -> Unit)
     Card(
         modifier = Modifier
             .fillMaxSize(),
-        onClick = onClick
+        onClick = onClick,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
     ) {
         Column(
             modifier = Modifier
@@ -39,12 +44,12 @@ fun ConverterCard(icon: ImageVector, @StringRes title: Int, onClick: () -> Unit)
             Image(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier.size(36.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(id = title),
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.titleLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
