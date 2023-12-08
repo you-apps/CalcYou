@@ -77,20 +77,20 @@ fun CenterKeypad(
             )
 
             CalculatorButton(
-                iconRes = R.drawable.brackets,
+                iconRes = R.drawable.lbracket,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
-                    onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.Bracket))
+                    onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.LBracket))
                 }
             )
 
             CalculatorButton(
-                iconRes = R.drawable.percent,
+                iconRes = R.drawable.rbracket,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
-                    onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
+                    onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.RBracket))
                 }
             )
 
@@ -205,11 +205,11 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                iconRes = R.drawable.polarity,
+                iconRes = R.drawable.percent,
                 backgroundColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
                 textColor = MaterialTheme.colorScheme.onSurface,
                 onClick = {
-                    onEvent(CalculatorEvent.SwitchPolarity)
+                    onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
                 }
             )
             CalculatorButton(

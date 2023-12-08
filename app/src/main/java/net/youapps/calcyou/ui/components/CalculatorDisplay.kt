@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import net.youapps.calcyou.viewmodels.CalculatorViewModel
@@ -65,15 +67,21 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                 .horizontalScroll(scroll),
             horizontalArrangement = Arrangement.End
         ) {
-            Text(
-                text = calculatorViewModel.displayText,
-                textAlign = TextAlign.End,
+            BasicTextField(
+                value = calculatorViewModel.displayText,
+                onValueChange = {
+                    calculatorViewModel.displayText = it
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp, horizontal = 16.dp),
-                style = MaterialTheme.typography.displayMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1
+                maxLines = 1,
+                textStyle = MaterialTheme.typography.displayMedium.plus(
+                    TextStyle(
+                        textAlign = TextAlign.End,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                )
             )
         }
     }

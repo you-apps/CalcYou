@@ -1,104 +1,51 @@
 package net.youapps.calcyou.data
 
+import android.content.Context
+import androidx.compose.ui.text.input.TextFieldValue
+
 class EventHandler(
-    private val tokenizer: Tokenizer,
-    private val evaluator: Evaluator,
+    context: Context,
     private val onUpdateHistory: (String) -> Unit
 ) {
-    private var expression = ""
+    private val tokenizer = Tokenizer(context)
+    private val evaluator = Evaluator(tokenizer)
 
-    fun processEvent(event: CalculatorEvent) {
-        when (event) {
+    fun processEvent(event: CalculatorEvent, currentText: TextFieldValue): TextFieldValue {
+        return when (event) {
             is CalculatorEvent.Number -> {
-                if (expression == "0") expression = ""
-                if (expression.lastOrNull()?.isOperator() == false && expression.lastOrNull()
-                        ?.isDigit() == false
-                ) {
-                    expression += "*"
-                }
-                expression += event.number
+                currentText.insertText(event.number.toString())
             }
 
             is CalculatorEvent.Operator -> {
-                expression += event.simpleOperator.value
+                currentText.insertText(event.simpleOperator.text)
             }
 
             CalculatorEvent.Delete -> {
-                expression = expression.dropLast(1)
-                if (expression.isEmpty()) expression = "0"
+                currentText.backSpace()
             }
 
             CalculatorEvent.DeleteAll -> {
-                expression = "0"
+                TextFieldValue("")
             }
 
             CalculatorEvent.Decimal -> {
-                expression += if (expression.last().isDigit()) {
-                    "."
-                } else {
-                    "0."
-                }
+                currentText.insertText(".")
             }
 
             CalculatorEvent.Evaluate -> {
-                onUpdateHistory(tokenizer.getLocalizedExpression(expression))
-                expression = evaluator.evaluate(expression) ?: "Error"
-            }
-
-            CalculatorEvent.SwitchPolarity -> {
-                expression = if (expression.firstOrNull() == '-') {
-                    expression.drop(1)
-                } else {
-                    "-($expression"
-                }
+                onUpdateHistory(currentText.text)
+                TextFieldValue(
+                    evaluator.evaluate(
+                        tokenizer.getNormalizedExpression(
+                            currentText.text
+                        )
+                    ) ?: "Error"
+                )
             }
 
             is CalculatorEvent.SpecialOperator -> {
-                if (expression == "0") expression = ""
-                when (val op = event.specialOperator) {
-                    SpecialOperator.Bracket -> {
-                        expression += if (expression.lastOrNull()
-                                ?.isDigit() == false && expression.lastOrNull() != ')'
-                        ) {
-                            "("
-                        } else {
-                            val lBracketCount = expression.filter { it == '(' }.length
-                            val rBracketCount = expression.filter { it == ')' }.length
-                            if (lBracketCount > rBracketCount) {
-                                ")"
-                            } else {
-                                "*("
-                            }
-                        }
-                    }
-
-                    SpecialOperator.Square, SpecialOperator.Absolute, SpecialOperator.Power, SpecialOperator.Cube, SpecialOperator.Factorial -> {
-                        expression += op.value
-                    }
-
-                    else -> {
-                        if (expression.lastOrNull()?.isDigit() == true) {
-                            expression += "*"
-                        }
-                        expression += op.value
-                    }
-
-
-                }
+                currentText.insertText(event.specialOperator.value)
             }
         }
-    }
-
-    private fun Char.isOperator(): Boolean {
-        return SimpleOperator.values().map { it.value }
-            .any { this.toString() == it } || this == '(' || this == '|' || this == '.'
-    }
-
-    fun setExperssion(text: String) {
-        expression = tokenizer.getNormalizedExpression(text)
-    }
-
-    fun getDisplayText(): String {
-        return tokenizer.getLocalizedExpression(expression)
     }
 }

@@ -9,7 +9,8 @@ enum class SimpleOperator(val text: String, val value: String) {
 }
 
 enum class SpecialOperator(val text: String, val value: String = text) {
-    Bracket("()"),
+    LBracket("("),
+    RBracket(")"),
 
     E("e"),
     PI("π"),
