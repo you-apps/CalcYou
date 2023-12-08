@@ -25,6 +25,7 @@ sealed class Destination(open val route: String) {
     object Calculator : Destination("calculator")
 
     object Converters : Destination("converters")
+    object CharacterInput : Destination("character_input")
     sealed class Converter(
         override val route: String,
         @StringRes val resId: Int,

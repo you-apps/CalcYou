@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Calculate
+import androidx.compose.material.icons.rounded.KeyboardAlt
 import androidx.compose.material.icons.rounded.WifiProtectedSetup
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -85,6 +86,22 @@ fun NavDrawerContent(
                     onClick = {
                         view.playSoundEffect(SoundEffectConstants.CLICK)
                         onDestinationSelected(Destination.Converters)
+                    }
+                )
+            }
+            item {
+                NavigationDrawerItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Rounded.KeyboardAlt,
+                            contentDescription = null
+                        )
+                    },
+                    label = { Text(text = stringResource(id = R.string.character_input)) },
+                    selected = Destination.CharacterInput == currentDestination,
+                    onClick = {
+                        view.playSoundEffect(SoundEffectConstants.CLICK)
+                        onDestinationSelected(Destination.CharacterInput)
                     }
                 )
             }

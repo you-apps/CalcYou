@@ -67,4 +67,19 @@
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>
     <string name="converter">Unit Converter</string>
+    <string name="numbers">Numbers :</string>
+    <string name="fractions">Fractions :</string>
+    <string name="simple_math">Simple Math :</string>
+    <string name="common_symbols">Common Symbols :</string>
+    <string name="superscript">SuperScript :</string>
+    <string name="subscript">SubScript :</string>
+    <string name="english_uppercase">English Uppercase :</string>
+    <string name="english_lowercase">English Lowercase :</string>
+    <string name="greek_uppercase">Greek Uppercase :</string>
+    <string name="greek_lowercase">Greek Lowercase :</string>
+    <string name="arrows">Arrows :</string>
+    <string name="backspace">BackSpace</string>
+    <string name="carriage_return">Carriage Return</string>
+    <string name="space">Space</string>
+    <string name="character_input">Character Input</string>
 </resources>
