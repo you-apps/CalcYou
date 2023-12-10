@@ -144,4 +144,8 @@
     <string name="day">Den</string>
     <string name="pascal">Pascal</string>
     <string name="minute">Minuta</string>
+    <string name="grams_of_carbohydrate">Gramy karbohydrátu</string>
+    <string name="grams_of_protein">Gramy bílkovin</string>
+    <string name="grams_of_fat">Gramy tuku</string>
+    <string name="copy_text">Kopírovat text</string>
 </resources>
