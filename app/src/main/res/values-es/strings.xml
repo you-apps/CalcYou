@@ -144,4 +144,8 @@
     <string name="day">Día</string>
     <string name="pascal">Pascal</string>
     <string name="minute">Minuto</string>
+    <string name="grams_of_carbohydrate">Gramos de carbohidratos</string>
+    <string name="grams_of_protein">Gramos de proteína</string>
+    <string name="grams_of_fat">Gramos de grasa</string>
+    <string name="copy_text">Copiar el texto</string>
 </resources>
