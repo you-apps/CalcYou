@@ -1,20 +1,24 @@
 package net.youapps.calcyou.ui.screens
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -27,8 +31,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -100,55 +105,39 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
             }
         }
         if (converted.isNotEmpty()) {
+            val scroll = rememberScrollState()
             Column(
                 Modifier
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .verticalScroll(scroll)
             ) {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.primary)
-                ) {
-                    Text(
-                        stringResource(R.string.unit),
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(8.dp),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
-                    Text(
-                        stringResource(R.string.value),
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(8.dp),
-                        color = MaterialTheme.colorScheme.onPrimary
-
-                    )
-                }
                 converted.forEach {
-                    Row(Modifier.fillMaxWidth()) {
+                    ListItem(modifier = Modifier.fillMaxWidth(), headlineContent = {
                         Text(
-                            stringResource(id = it.first.name),
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(vertical = 4.dp, horizontal = 8.dp),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            text = stringResource(id = it.first.name),
+                            style = MaterialTheme.typography.titleLarge
                         )
+                    }, supportingContent = {
                         Text(
-                            it.second.toString(),
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(vertical = 4.dp, horizontal = 8.dp),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                            text = it.second.toString(),
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Light,
+
+                            )
+                    }, trailingContent = {
+                        val clipboardManager = LocalClipboardManager.current
+                        IconButton(onClick = {
+                            clipboardManager.setText(AnnotatedString(it.second.toString()))
+                        }) {
+                            Icon(
+                                imageVector = Icons.Rounded.ContentCopy,
+                                contentDescription = stringResource(
+                                    R.string.copy_text
+                                )
+                            )
+                        }
+                    })
                 }
             }
         }

@@ -144,4 +144,8 @@
     <string name="time">Time</string>
     <string name="pressure">Pressure</string>
     <string name="light">Light</string>
+    <string name="grams_of_carbohydrate">Grams of Carbohydrate</string>
+    <string name="grams_of_fat">Grams of Fat</string>
+    <string name="grams_of_protein">Grams of Protein</string>
+    <string name="copy_text">Copy Text</string>
 </resources>
