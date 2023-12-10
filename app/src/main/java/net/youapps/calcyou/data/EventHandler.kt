@@ -1,6 +1,7 @@
 package net.youapps.calcyou.data
 
 import android.content.Context
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 
 class EventHandler(
@@ -34,12 +35,14 @@ class EventHandler(
 
             CalculatorEvent.Evaluate -> {
                 onUpdateHistory(currentText.text)
+                val newText = evaluator.evaluate(
+                    tokenizer.getNormalizedExpression(
+                        currentText.text
+                    )
+                ) ?: "Error"
                 TextFieldValue(
-                    evaluator.evaluate(
-                        tokenizer.getNormalizedExpression(
-                            currentText.text
-                        )
-                    ) ?: "Error"
+                    newText,
+                    selection = TextRange(newText.length)
                 )
             }
 
