@@ -15,7 +15,7 @@ import net.youapps.calcyou.ui.components.ConverterCard
 @Composable
 fun ConverterGridScreen(onNavigate: (Destination) -> Unit) {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(160.dp),
+        columns = GridCells.Adaptive(100.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier

@@ -29,7 +29,7 @@
     <string name="kilobyte">Килобайт</string>
     <string name="cubic_centimeter">Кубический сантиметр</string>
     <string name="acre">Акр</string>
-    <string name="digital_storage">Объём информации</string>
+    <string name="storage">Объём информации</string>
     <string name="fluid_ounce">Жидкостная унция</string>
     <string name="frequency">Частота</string>
     <string name="square_kilometer">Квадратный километр</string>

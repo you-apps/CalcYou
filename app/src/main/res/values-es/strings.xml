@@ -29,7 +29,7 @@
     <string name="kilobyte">Kilobyte</string>
     <string name="cubic_centimeter">Centímetro cúbico</string>
     <string name="acre">Acre</string>
-    <string name="digital_storage">Almacenamiento digital</string>
+    <string name="storage">Almacenamiento digital</string>
     <string name="fluid_ounce">Onza fluida</string>
     <string name="frequency">Frecuencia</string>
     <string name="square_kilometer">Kilometro cuadrado</string>

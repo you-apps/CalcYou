@@ -20,7 +20,7 @@
     <string name="value">Valor</string>
     <string name="kilobyte">Kilobyte</string>
     <string name="cubic_centimeter">Centímetro cúbico</string>
-    <string name="digital_storage">Memória Digital</string>
+    <string name="storage">Memória Digital</string>
     <string name="frequency">Frequência</string>
     <string name="square_kilometer">Quilômetro quadrado</string>
     <string name="gigahertz">Gigahertz</string>
