@@ -15,9 +15,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +35,7 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
             .fillMaxWidth()
             .weight(1.0f)
             .clip(RoundedCornerShape(24.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(10.dp))
     ) {
         LazyColumn(
             Modifier
@@ -55,16 +55,16 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                         },
                     textAlign = TextAlign.End,
                     style = MaterialTheme.typography.displaySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             }
         }
-        Divider(Modifier.fillMaxWidth())
         val scroll = rememberScrollState()
         Row(
             Modifier
                 .fillMaxWidth()
-                .horizontalScroll(scroll),
+                .horizontalScroll(scroll)
+                .background(MaterialTheme.colorScheme.surfaceColorAtElevation(50.dp)),
             horizontalArrangement = Arrangement.End
         ) {
             BasicTextField(
@@ -79,7 +79,7 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                 textStyle = MaterialTheme.typography.displayMedium.plus(
                     TextStyle(
                         textAlign = TextAlign.End,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 )
             )

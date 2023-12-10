@@ -13,6 +13,7 @@ import androidx.compose.material.icons.rounded.Calculate
 import androidx.compose.material.icons.rounded.KeyboardAlt
 import androidx.compose.material.icons.rounded.WifiProtectedSetup
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.NavigationDrawerItem
@@ -49,11 +50,12 @@ fun NavDrawerContent(
                     Icon(
                         modifier = Modifier.size(128.dp),
                         painter = painterResource(id = R.drawable.ic_launcher_monochrome),
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = LocalContentColor.current
                     )
                     Text(
                         stringResource(id = R.string.app_name),
-                        color = MaterialTheme.colorScheme.primary,
+                        color = LocalContentColor.current,
                         style = MaterialTheme.typography.titleLarge
                     )
                 }

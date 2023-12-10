@@ -40,7 +40,8 @@ fun KeyboardKey(
             keyboardKey,
             Modifier
                 .padding(4.dp),
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.onPrimaryContainer
 
         )
     }
@@ -68,14 +69,16 @@ fun KeyboardSpecialKey(
             Icon(
                 imageVector = icon,
                 contentDescription = keyboardKey,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
+                tint = MaterialTheme.colorScheme.onPrimaryContainer
             )
         } else {
             Text(
                 keyboardKey,
                 Modifier
                     .padding(vertical = 4.dp, horizontal = 16.dp),
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
             )
         }
     }
