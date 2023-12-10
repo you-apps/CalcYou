@@ -12,17 +12,18 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -44,6 +46,7 @@ import net.youapps.calcyou.data.converters.ConverterUnit
 import net.youapps.calcyou.data.converters.MassConverter
 import net.youapps.calcyou.data.converters.UnitConverter
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
     Column(
@@ -70,36 +73,59 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            OutlinedTextField(
+            TextField(
+                modifier = Modifier.weight(1f),
                 value = textFieldValue,
                 onValueChange = {
                     textFieldValue = it
                 },
                 singleLine = true,
-                modifier = Modifier.weight(1f),
                 label = { Text(stringResource(R.string.value)) },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.None
                 ),
-                shape = RoundedCornerShape(50)
+                shape = RoundedCornerShape(8.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
-
-            OutlinedButton(onClick = { expanded = !expanded }) {
-                Row {
-                    Text(stringResource(selectedUnit.name))
-                    Icon(Icons.Filled.ArrowDropDown, "")
-                }
-                DropdownMenu(
+            ExposedDropdownMenuBox(
+                expanded = expanded,
+                onExpandedChange = { expanded = !expanded },
+            ) {
+                TextField(
+                    modifier = Modifier
+                        .menuAnchor(),
+                    readOnly = true,
+                    value = stringResource(id = selectedUnit.name),
+                    onValueChange = {},
+                    label = {
+                        Text(
+                            stringResource(id = R.string.unit)
+                        )
+                    },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ExposedDropdownMenuDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent
+                    )
+                )
+                ExposedDropdownMenu(
                     expanded = expanded,
-                    onDismissRequest = { expanded = false }) {
+                    onDismissRequest = { expanded = false },
+                ) {
                     converter.units.forEach { unit ->
-                        DropdownMenuItem(onClick = {
-                            selectedUnit = unit
-                            expanded = false
-                        }, text = {
-                            Text(text = stringResource(unit.name))
-                        })
+                        DropdownMenuItem(
+                            text = { Text(stringResource(id = unit.name)) },
+                            onClick = {
+                                selectedUnit = unit
+                                expanded = false
+                            },
+                            contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
+                        )
                     }
                 }
             }
