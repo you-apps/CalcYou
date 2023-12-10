@@ -58,7 +58,7 @@ fun CharacterInputScreen() {
             textStyle = MaterialTheme.typography.displaySmall,
             modifier = Modifier.fillMaxWidth(),
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
                 unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
                 disabledContainerColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
