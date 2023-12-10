@@ -3,8 +3,8 @@ package net.youapps.calcyou.ui.components
 import android.view.SoundEffectConstants
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -36,8 +36,9 @@ fun NavDrawerContent(
     val view = LocalView.current
     ModalDrawerSheet(modifier = Modifier.width(250.dp)) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.padding(horizontal = 12.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
+
         ) {
             item {
                 Column(
