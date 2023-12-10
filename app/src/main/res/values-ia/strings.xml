@@ -64,4 +64,21 @@
     <string name="kiloliter">Kilolitro</string>
     <string name="pint">Pinta</string>
     <string name="fluid_ounce">Uncia liquid</string>
+    <string name="power">Potentia</string>
+    <string name="force">Fortia</string>
+    <string name="hour">Hora</string>
+    <string name="fuel">Combustibile</string>
+    <string name="atmosphere">Atmosphera</string>
+    <string name="fractions">Fractiones :</string>
+    <string name="second">Secunda</string>
+    <string name="viscosity">Viscositate</string>
+    <string name="energy">Energia</string>
+    <string name="calorie">Caloria</string>
+    <string name="week">Septimana</string>
+    <string name="density">Densitate</string>
+    <string name="degree">Grado</string>
+    <string name="copy_text">Copiar le texto</string>
+    <string name="time">Tempore</string>
+    <string name="day">Die</string>
+    <string name="minute">Minuta</string>
 </resources>
