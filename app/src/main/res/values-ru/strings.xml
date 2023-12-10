@@ -66,4 +66,6 @@
     <string name="speed">Скорость</string>
     <string name="foot">Фут</string>
     <string name="kiloliter">Килолитр</string>
+    <string name="converter">Конвертер единиц</string>
+    <string name="numbers">Числа:</string>
 </resources>
