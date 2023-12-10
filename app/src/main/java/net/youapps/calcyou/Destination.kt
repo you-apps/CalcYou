@@ -69,7 +69,7 @@ sealed class Destination(open val route: String) {
 
         object DigitalStorage :
             Converter(
-                "digital_storage", R.string.digital_storage, Icons.Rounded.SdStorage,
+                "digital_storage", R.string.storage, Icons.Rounded.SdStorage,
                 DigitalStorageConverter()
             )
 
