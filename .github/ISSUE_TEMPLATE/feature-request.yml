@@ -1,5 +1,5 @@
 name: ⭐ Feature request
-description: Suggest a feature to improve Vibe You
+description: Suggest a feature to improve Calc You
 labels: [enhancement]
 body:
 
@@ -28,6 +28,8 @@ body:
       description: Your issue will be closed if you haven't done these steps.
       options:
         - label: I have searched the existing issues and this is a new ticket, **NOT** a duplicate or related to another open issue.
+          required: true
+        - label: I'm not requesting to add a new unit converter or to modify an existing one.
           required: true
         - label: I have written a short but informative title.
           required: true

@@ -1,0 +1,1 @@
+Privacy Focused Calculator app built with MD3

@@ -37,11 +37,11 @@ body:
       required: true
 
   - type: input
-    id: Vibe_You-version
+    id: Calc_You-version
     attributes:
-      label: Vibe You version
+      label: Calc You version
       description: |
-        You can find your Vibe You version in **About**.
+        You can find your Calc You version in **About**.
       placeholder: |
         Example: "0.5.0"
     validations:

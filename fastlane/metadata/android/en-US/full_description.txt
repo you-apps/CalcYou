@@ -1,0 +1,5 @@
+CalcYou is a privacy focused calculator app that is not just a calculator.
+Solve everyday problems with the intuitive basic calculator, or delve into advanced functions with the powerful scientific calculator.
+Feeling lost in a sea of units? CalcYou's versatile converter effortlessly handles length, weight, volume, and more.
+Need to express complex equations? Access a vast library of symbols, including Greek letters, arrows, superscript, and subscript, all with a few taps.
+CalcYou's elegant interface, history function, and customizable themes make calculations a breeze, whether you're a student, engineer, scientist, or anyone who loves the power of numbers.
