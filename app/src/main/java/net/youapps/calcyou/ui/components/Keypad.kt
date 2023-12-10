@@ -65,35 +65,29 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                iconRes = R.drawable.delete,
-                backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
-                textColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                onClick = {
-                    onEvent(CalculatorEvent.Delete)
-                },
-                onLongClick = {
-                    onEvent(CalculatorEvent.DeleteAll)
-                }
-            )
-
-            CalculatorButton(
-                iconRes = R.drawable.lbracket,
+                iconRes = R.drawable.bracket_l,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.LBracket))
                 }
             )
-
             CalculatorButton(
-                iconRes = R.drawable.rbracket,
+                iconRes = R.drawable.bracket_r,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.RBracket))
                 }
             )
-
+            CalculatorButton(
+                iconRes = R.drawable.percent,
+                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                onClick = {
+                    onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
+                }
+            )
             CalculatorButton(
                 iconRes = R.drawable.divide,
                 backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -205,14 +199,6 @@ fun CenterKeypad(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                iconRes = R.drawable.percent,
-                backgroundColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-                textColor = MaterialTheme.colorScheme.onSurface,
-                onClick = {
-                    onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
-                }
-            )
-            CalculatorButton(
                 text = "0",
                 onClick = {
                     onEvent(CalculatorEvent.Number(0))
@@ -222,6 +208,17 @@ fun CenterKeypad(
                 text = ".",
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
+                }
+            )
+            CalculatorButton(
+                iconRes = R.drawable.delete,
+                backgroundColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
+                textColor = MaterialTheme.colorScheme.onSurface,
+                onClick = {
+                    onEvent(CalculatorEvent.Delete)
+                },
+                onLongClick = {
+                    onEvent(CalculatorEvent.DeleteAll)
                 }
             )
             CalculatorButton(
