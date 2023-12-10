@@ -58,8 +58,8 @@ fun CharacterInputScreen() {
             textStyle = MaterialTheme.typography.displaySmall,
             modifier = Modifier.fillMaxWidth(),
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                unfocusedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
                 disabledContainerColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
@@ -73,7 +73,7 @@ fun CharacterInputScreen() {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(10.dp)
-                .size(70.dp, 6.dp)
+                .size(70.dp, 4.dp)
                 .clip(RoundedCornerShape(50))
         )
         val rowScrollState = rememberScrollState()
