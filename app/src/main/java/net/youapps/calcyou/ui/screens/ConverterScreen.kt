@@ -92,6 +92,7 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
                 )
             )
             ExposedDropdownMenuBox(
+                modifier = Modifier.weight(1f),
                 expanded = expanded,
                 onExpandedChange = { expanded = !expanded },
             ) {
