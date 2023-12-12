@@ -3,7 +3,6 @@ package net.youapps.calcyou.ui.components
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
@@ -59,11 +57,8 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                 )
             }
         }
-        val scroll = rememberScrollState()
         Row(
             Modifier
-                .fillMaxWidth()
-                .horizontalScroll(scroll)
                 .background(MaterialTheme.colorScheme.surfaceColorAtElevation(50.dp)),
             horizontalArrangement = Arrangement.End
         ) {
@@ -72,6 +67,7 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                 onValueChange = {
                     calculatorViewModel.displayText = it
                 },
+                singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp, horizontal = 16.dp),
