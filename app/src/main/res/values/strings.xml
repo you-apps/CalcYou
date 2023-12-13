@@ -148,4 +148,10 @@
     <string name="grams_of_fat">Grams of Fat</string>
     <string name="grams_of_protein">Grams of Protein</string>
     <string name="copy_text">Copy Text</string>
+    <string name="kibibyte">KibiByte</string>
+    <string name="mebibyte">MebiByte</string>
+    <string name="gigibyte">GigiByte</string>
+    <string name="tebibyte">TebiByte</string>
+    <string name="pebibyte">PebiByte</string>
+    <string name="exbibyte">ExbiByte</string>
 </resources>
