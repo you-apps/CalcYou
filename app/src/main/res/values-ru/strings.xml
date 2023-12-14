@@ -148,4 +148,16 @@
     <string name="day">Дни</string>
     <string name="pascal">Паскали</string>
     <string name="minute">Минуты</string>
+    <string name="kibibyte">КибиБайт</string>
+    <string name="gigibyte">ГибиБайт</string>
+    <string name="exabit">Эксабит</string>
+    <string name="kilobit">Килобит</string>
+    <string name="gigabit">Гигабит</string>
+    <string name="megabit">Мегабит</string>
+    <string name="tebibyte">ТебиБайт</string>
+    <string name="petabit">Петабит</string>
+    <string name="mebibyte">МебиБайт</string>
+    <string name="terabit">Терабит</string>
+    <string name="exbibyte">ЭксбиБайт</string>
+    <string name="pebibyte">ПебиБайт</string>
 </resources>
