@@ -148,4 +148,16 @@
     <string name="day">اليوم</string>
     <string name="pascal">باسكال</string>
     <string name="minute">دقيقة</string>
+    <string name="kibibyte">كيبي بايت</string>
+    <string name="gigibyte">قيبي بايت</string>
+    <string name="exabit">إكسابيت</string>
+    <string name="kilobit">كيبي بت</string>
+    <string name="gigabit">قيقا بت</string>
+    <string name="megabit">ميقا بت</string>
+    <string name="tebibyte">تيبي بايت</string>
+    <string name="petabit">‬بيتابيت</string>
+    <string name="mebibyte">ميبي بايت</string>
+    <string name="terabit">تيرابت</string>
+    <string name="exbibyte">اكسي بايت</string>
+    <string name="pebibyte">بيبي بايت</string>
 </resources>
