@@ -81,4 +81,24 @@
     <string name="time">Tempore</string>
     <string name="day">Die</string>
     <string name="minute">Minuta</string>
+    <string name="kilonewton">Kilonewton</string>
+    <string name="kibibyte">Kibibyte</string>
+    <string name="superscript">SuperScript :</string>
+    <string name="angle">Angulo</string>
+    <string name="carriage_return">Retorno de carro</string>
+    <string name="newton">Newton</string>
+    <string name="gigibyte">Gibibyte</string>
+    <string name="watt">Watt</string>
+    <string name="arrows">Flechas :</string>
+    <string name="horsepower">Cavallo-vapor</string>
+    <string name="kilowatt">Kilowatt</string>
+    <string name="subscript">SubScript :</string>
+    <string name="pressure">Pression</string>
+    <string name="megawatt">Megawatt</string>
+    <string name="tebibyte">Tebibyte</string>
+    <string name="backspace">BackSpace</string>
+    <string name="space">Spatio</string>
+    <string name="exbibyte">Exbibyte</string>
+    <string name="numbers">Numeros :</string>
+    <string name="pebibyte">Pebibyte</string>
 </resources>
