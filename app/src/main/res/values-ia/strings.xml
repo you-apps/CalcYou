@@ -101,4 +101,18 @@
     <string name="exbibyte">Exbibyte</string>
     <string name="numbers">Numeros :</string>
     <string name="pebibyte">Pebibyte</string>
+    <string name="btu_per_hour">BTU per hora</string>
+    <string name="megajoule">Megajoule</string>
+    <string name="exabit">Exabit</string>
+    <string name="kilobit">Kilobit</string>
+    <string name="kilojoule">Kilojoule</string>
+    <string name="gigabit">Gigabit</string>
+    <string name="megabit">Megabit</string>
+    <string name="joule">Joule</string>
+    <string name="psi">PSI</string>
+    <string name="petabit">Petabit</string>
+    <string name="mebibyte">Mebibyte</string>
+    <string name="kilogram_per_cubic_meter">Kilogramma per metro cubic</string>
+    <string name="kilocalorie">Kilocaloria</string>
+    <string name="terabit">Terabit</string>
 </resources>
