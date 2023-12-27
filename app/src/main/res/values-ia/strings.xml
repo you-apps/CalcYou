@@ -115,4 +115,25 @@
     <string name="kilogram_per_cubic_meter">Kilogramma per metro cubic</string>
     <string name="kilocalorie">Kilocaloria</string>
     <string name="terabit">Terabit</string>
+    <string name="grams_of_carbohydrate">Grammas de carbohydratos</string>
+    <string name="pound_per_gallon">Libra per gallon</string>
+    <string name="converter">Conversion de unitates</string>
+    <string name="newton_meter">Newton metro</string>
+    <string name="kilopascal">Kilopascal</string>
+    <string name="pound_force">Libra-fortia</string>
+    <string name="grams_of_protein">Grammas de proteina</string>
+    <string name="radian">Radian</string>
+    <string name="gradian">Gradian</string>
+    <string name="kilonewton_meter">Kilonewton metro</string>
+    <string name="gigapascal">Gigapascal</string>
+    <string name="pound_foot">Pede-libra</string>
+    <string name="gram_per_cubic_centimeter">Gramma per centimetro cubic</string>
+    <string name="megapascal">Megapascal</string>
+    <string name="simple_math">Mathematicas simple :</string>
+    <string name="area">Area</string>
+    <string name="grams_of_fat">Grammas de grassia</string>
+    <string name="pascal_second">Pascal secunda</string>
+    <string name="pound_per_cubic_foot">Libra per pede cubic</string>
+    <string name="ounce_force">Uncia-fortia</string>
+    <string name="pascal">Pascal</string>
 </resources>
