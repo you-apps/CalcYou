@@ -148,4 +148,16 @@
     <string name="foot">英尺</string>
     <string name="minute">分钟</string>
     <string name="kiloliter">千公升</string>
+    <string name="kibibyte">二进制千字节</string>
+    <string name="gigibyte">二进制吉字节</string>
+    <string name="exabit">艾比特</string>
+    <string name="kilobit">千比特</string>
+    <string name="gigabit">吉比特</string>
+    <string name="megabit">兆比特</string>
+    <string name="tebibyte">二进制太字节</string>
+    <string name="petabit">拍比特</string>
+    <string name="mebibyte">二进制兆字节</string>
+    <string name="terabit">太比特</string>
+    <string name="exbibyte">二进制艾字节</string>
+    <string name="pebibyte">二进制拍字节</string>
 </resources>
