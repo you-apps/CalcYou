@@ -148,4 +148,6 @@
     <string name="gallon_us">Gallon (SUA)</string>
     <string name="common_symbols">Symbolos commun :</string>
     <string name="gallon_uk">Gallon (RU)</string>
+    <string name="poiseuille">Poiseuille</string>
+    <string name="centipoise">Centipoise</string>
 </resources>
