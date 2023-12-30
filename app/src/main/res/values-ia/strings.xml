@@ -150,4 +150,5 @@
     <string name="gallon_uk">Gallon (RU)</string>
     <string name="poiseuille">Poiseuille</string>
     <string name="centipoise">Centipoise</string>
+    <string name="dyne">Dyne</string>
 </resources>
