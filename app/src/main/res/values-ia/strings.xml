@@ -151,4 +151,13 @@
     <string name="poiseuille">Poiseuille</string>
     <string name="centipoise">Centipoise</string>
     <string name="dyne">Dyne</string>
+    <string name="lumen">Lumen</string>
+    <string name="ounce_inch">Uncia-pollice</string>
+    <string name="footcandle">Footcandle</string>
+    <string name="millibar">Millibar</string>
+    <string name="candela">Candela</string>
+    <string name="stoke">Stoke</string>
+    <string name="lux">Lux</string>
+    <string name="barrel">Barril</string>
+    <string name="bar">Bar</string>
 </resources>
