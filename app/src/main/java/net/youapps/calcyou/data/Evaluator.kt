@@ -1,6 +1,7 @@
 package net.youapps.calcyou.data
 
 import org.javia.arity.Symbols
+import org.javia.arity.Util
 
 
 class Evaluator(private val tokenizer: Tokenizer) {
@@ -22,11 +23,17 @@ class Evaluator(private val tokenizer: Tokenizer) {
                 null
             } else {
                 tokenizer.getLocalizedExpression(
-                    result.toString()
+                    Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)
                 )
             }
         } catch (e: Exception) {
             null
         }
+    }
+
+    companion object {
+        private const val MAX_DIGITS = 12
+        private const val ROUNDING_DIGITS = 5
+
     }
 }
