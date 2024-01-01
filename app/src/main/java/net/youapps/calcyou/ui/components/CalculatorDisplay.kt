@@ -17,9 +17,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalTextInputService
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,23 +64,25 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                 .background(MaterialTheme.colorScheme.surfaceColorAtElevation(50.dp)),
             horizontalArrangement = Arrangement.End
         ) {
-            BasicTextField(
-                value = calculatorViewModel.displayText,
-                onValueChange = {
-                    calculatorViewModel.displayText = it
-                },
-                singleLine = true,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp, horizontal = 16.dp),
-                maxLines = 1,
-                textStyle = MaterialTheme.typography.displayMedium.plus(
-                    TextStyle(
-                        textAlign = TextAlign.End,
-                        color = MaterialTheme.colorScheme.onSurface
+            CompositionLocalProvider(LocalTextInputService provides null) {
+                BasicTextField(
+                    value = calculatorViewModel.displayText,
+                    onValueChange = {
+                        calculatorViewModel.displayText = it
+                    },
+                    singleLine = true,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp, horizontal = 16.dp),
+                    maxLines = 1,
+                    textStyle = MaterialTheme.typography.displayMedium.plus(
+                        TextStyle(
+                            textAlign = TextAlign.End,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
                     )
                 )
-            )
+            }
         }
     }
 
