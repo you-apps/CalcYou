@@ -49,4 +49,12 @@
     <string name="kilogram">Quilôgrama</string>
     <string name="speed">Velocidade</string>
     <string name="kiloliter">Kilolítro</string>
+    <string name="square_foot">Pé quadrado</string>
+    <string name="hectare">Hectare</string>
+    <string name="yard">Jarda</string>
+    <string name="square_yard">Jarda quadrada</string>
+    <string name="acre">Acre</string>
+    <string name="ounce">Onça</string>
+    <string name="pound">Libra</string>
+    <string name="foot">Pé</string>
 </resources>
