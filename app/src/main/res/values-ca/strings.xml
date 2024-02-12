@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="area">Àrea</string>
+    <string name="frequency">Freqüència</string>
+    <string name="length">Longitud</string>
+    <string name="volume">Volum</string>
+    <string name="value">Valor</string>
+    <string name="unit">Unitat</string>
+    <string name="square_meter">Metre quadrat</string>
+    <string name="square_kilometer">Quilòmetre quadrat</string>
+    <string name="square_centimeter">Centímetre quadrat</string>
+    <string name="square_millimeter">Mil·límetre quadrat</string>
+    <string name="hectare">Hectàrea</string>
+    <string name="acre">Acre</string>
+    <string name="square_foot">Peu quadrat</string>
+    <string name="bit">Bit</string>
+    <string name="_byte">Byte</string>
+    <string name="kilobyte">Kilobyte</string>
+    <string name="megabyte">Megabyte</string>
+    <string name="gigabyte">Gigabyte</string>
+    <string name="app_name">CalcYou</string>
+    <string name="temperature">Temperatura</string>
+    <string name="calculator">Calculadora</string>
+    <string name="storage">Emmagatzematge</string>
+    <string name="mass">Massa</string>
+    <string name="speed">Velocitat</string>
+</resources>
