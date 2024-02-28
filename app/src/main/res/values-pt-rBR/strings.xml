@@ -58,7 +58,7 @@
     <string name="pound">Libra</string>
     <string name="foot">Pé</string>
     <string name="knot">Nó</string>
-    <string name="feet_per_second">Pé por segundo</string>
+    <string name="feet_per_second">Pés por segundo</string>
     <string name="cubic_decimeter">Decímetro cúbico</string>
     <string name="gallon">Galão</string>
     <string name="numbers">Números :</string>
@@ -69,4 +69,10 @@
     <string name="btu_per_hour">BTU por hora</string>
     <string name="converter">Conversor de unidade</string>
     <string name="fractions">Frações :</string>
+    <string name="quart">Quarto</string>
+    <string name="tablespoon">Colher de sopa</string>
+    <string name="teaspoon">Colher de chá</string>
+    <string name="superscript">SuperScript :</string>
+    <string name="subscript">SubScript :</string>
+    <string name="degree">Graus</string>
 </resources>
