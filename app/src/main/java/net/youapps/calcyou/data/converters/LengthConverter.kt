@@ -11,6 +11,7 @@ class LengthConverter : UnitConverter {
         FactorUnit(R.string.mile, 1609.344),
         FactorUnit(R.string.yard, 0.9144),
         FactorUnit(R.string.foot, 0.3048),
-        FactorUnit(R.string.inch, 0.0254)
+        FactorUnit(R.string.inch, 0.0254),
+        FactorUnit(R.string.nautical_mile, 1852)
     )
 }
