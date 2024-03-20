@@ -37,6 +37,7 @@
     <string name="centimeter">Centimeter</string>
     <string name="millimeter">Millimeter</string>
     <string name="mile">Mile</string>
+    <string name="nautical_mile">Nautical Mile</string>
     <string name="yard">Yard</string>
     <string name="foot">Foot</string>
     <string name="inch">Inch</string>
