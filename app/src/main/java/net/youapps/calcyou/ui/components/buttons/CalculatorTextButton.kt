@@ -17,13 +17,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.TextStyle
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RowScope.CalculatorTextButton(
     text: String,
     textColor: Color = MaterialTheme.colorScheme.onSurface,
-    aspectRatio: Float = 1f,
+    square: Boolean = true,
+    textStyle: TextStyle = MaterialTheme.typography.displaySmall,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { }
 ) {
@@ -42,13 +44,15 @@ fun RowScope.CalculatorTextButton(
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 }
             )
-            .aspectRatio(aspectRatio)
-            .weight(aspectRatio)
+            .weight(1f)
+            .let {
+                if (square) it.aspectRatio(1f) else it
+            }
     ) {
         Text(
             text = text,
             color = textColor,
-            style = MaterialTheme.typography.displaySmall
+            style = textStyle
         )
     }
 }

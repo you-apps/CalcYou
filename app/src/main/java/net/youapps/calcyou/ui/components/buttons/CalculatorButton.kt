@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +26,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -31,20 +34,21 @@ fun RowScope.CalculatorButton(
     text: String,
     textColor: Color = MaterialTheme.colorScheme.onSurface,
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-    aspectRatio: Float = 1f,
+    square: Boolean = true,
+    textStyle: TextStyle = MaterialTheme.typography.displaySmall,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { },
 ) {
     CalculatorButton(
         backgroundColor = backgroundColor,
-        aspectRatio = aspectRatio,
+        square = square,
         onClick = onClick,
         onLongClick = onLongClick
     ) {
         Text(
             text = text,
             color = textColor,
-            style = MaterialTheme.typography.displaySmall
+            style = textStyle
         )
     }
 }
@@ -54,13 +58,13 @@ fun RowScope.CalculatorButton(
     @DrawableRes iconRes: Int,
     textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
-    aspectRatio: Float = 1f,
+    square: Boolean = true,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { },
 ) {
     CalculatorButton(
         backgroundColor = backgroundColor,
-        aspectRatio = aspectRatio,
+        square = square,
         onClick = onClick,
         onLongClick = onLongClick
     ) {
@@ -77,7 +81,7 @@ fun RowScope.CalculatorButton(
 @Composable
 fun RowScope.CalculatorButton(
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
-    aspectRatio: Float = 1f,
+    square: Boolean = true,
     onClick: () -> Unit,
     onLongClick: () -> Unit = { },
     content: @Composable (BoxScope.() -> Unit)
@@ -97,9 +101,15 @@ fun RowScope.CalculatorButton(
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 }
             )
+            .defaultMinSize(
+                minWidth = ButtonDefaults.MinWidth,
+                minHeight = ButtonDefaults.MinHeight
+            )
             .background(backgroundColor)
-            .aspectRatio(aspectRatio)
-            .weight(aspectRatio),
+            .weight(1f)
+            .let {
+                if (square) it.aspectRatio(1f) else it
+            },
         content = content
     )
 }

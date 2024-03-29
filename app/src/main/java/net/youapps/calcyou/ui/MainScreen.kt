@@ -1,5 +1,7 @@
 package net.youapps.calcyou.ui
 
+import android.content.res.Configuration.ORIENTATION_LANDSCAPE
+import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu
@@ -19,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
@@ -37,9 +40,10 @@ fun MainScreen() {
     var currentDestination by remember {
         mutableStateOf<Destination>(Destination.Calculator)
     }
+    val orientation = LocalConfiguration.current.orientation
     ModalNavigationDrawer(
         drawerState = drawerState,
-        gesturesEnabled = drawerState.isOpen,
+        gesturesEnabled = drawerState.isOpen || (orientation == ORIENTATION_LANDSCAPE),
         drawerContent = {
             NavDrawerContent(currentDestination = currentDestination, onDestinationSelected = {
                 scope.launch {
@@ -52,17 +56,19 @@ fun MainScreen() {
         }
     ) {
         Scaffold(topBar = {
-            CenterAlignedTopAppBar(title = {
-                Text(
-                    text = stringResource(
-                        id = R.string.app_name
+            if (orientation == ORIENTATION_PORTRAIT) {
+                CenterAlignedTopAppBar(title = {
+                    Text(
+                        text = stringResource(
+                            id = R.string.app_name
+                        )
                     )
-                )
-            }, navigationIcon = {
-                IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                    Icon(imageVector = Icons.Rounded.Menu, contentDescription = null)
-                }
-            })
+                }, navigationIcon = {
+                    IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                        Icon(imageVector = Icons.Rounded.Menu, contentDescription = null)
+                    }
+                })
+            }
         }) { paddingValues ->
             AppNavHost(
                 modifier = Modifier.padding(paddingValues),
