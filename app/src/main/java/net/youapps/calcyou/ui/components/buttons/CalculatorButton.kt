@@ -37,7 +37,7 @@ fun RowScope.CalculatorButton(
     square: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.displaySmall,
     onClick: () -> Unit,
-    onLongClick: () -> Unit = { },
+    onLongClick: (() -> Unit)? = null,
 ) {
     CalculatorButton(
         backgroundColor = backgroundColor,
@@ -60,7 +60,7 @@ fun RowScope.CalculatorButton(
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     square: Boolean = true,
     onClick: () -> Unit,
-    onLongClick: () -> Unit = { },
+    onLongClick: (() -> Unit)? = null,
 ) {
     CalculatorButton(
         backgroundColor = backgroundColor,
@@ -83,7 +83,7 @@ fun RowScope.CalculatorButton(
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     square: Boolean = true,
     onClick: () -> Unit,
-    onLongClick: () -> Unit = { },
+    onLongClick: (() -> Unit)?,
     content: @Composable (BoxScope.() -> Unit)
 ) {
     val view = LocalView.current
@@ -97,8 +97,10 @@ fun RowScope.CalculatorButton(
                     onClick.invoke()
                     view.playSoundEffect(SoundEffectConstants.CLICK)
                 }, onLongClick = {
-                    onLongClick.invoke()
-                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    if (onLongClick != null) {
+                        onLongClick.invoke()
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    }
                 }
             )
             .defaultMinSize(

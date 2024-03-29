@@ -27,7 +27,7 @@ fun RowScope.CalculatorTextButton(
     square: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.displaySmall,
     onClick: () -> Unit,
-    onLongClick: () -> Unit = { }
+    onLongClick: (() -> Unit)? = null
 ) {
     val view = LocalView.current
     val haptic = LocalHapticFeedback.current
@@ -40,8 +40,10 @@ fun RowScope.CalculatorTextButton(
                     onClick.invoke()
                     view.playSoundEffect(SoundEffectConstants.CLICK)
                 }, onLongClick = {
-                    onLongClick.invoke()
-                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    if (onLongClick != null) {
+                        onLongClick.invoke()
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    }
                 }
             )
             .weight(1f)
