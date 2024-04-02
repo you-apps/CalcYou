@@ -155,4 +155,5 @@
     <string name="foot">Fuß</string>
     <string name="minute">Minute</string>
     <string name="kiloliter">Kiloliter</string>
+    <string name="nautical_mile">Seemeile</string>
 </resources>
