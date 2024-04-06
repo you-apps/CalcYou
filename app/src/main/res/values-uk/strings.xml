@@ -160,4 +160,5 @@
     <string name="foot">Фут</string>
     <string name="minute">Хвилини</string>
     <string name="kiloliter">Кілолітр</string>
+    <string name="nautical_mile">Морська миля</string>
 </resources>
