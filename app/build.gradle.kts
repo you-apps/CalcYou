@@ -7,6 +7,10 @@ android {
     namespace = "net.youapps.calcyou"
     compileSdk = 34
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     defaultConfig {
         applicationId = "net.youapps.calcyou"
         minSdk = 24
