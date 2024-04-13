@@ -156,4 +156,7 @@
     <string name="minute">Minute</string>
     <string name="kiloliter">Kiloliter</string>
     <string name="nautical_mile">Seemeile</string>
+    <string name="pound_foot">Pfund-Fuß</string>
+    <string name="ounce_inch">Flüssigunze</string>
+    <string name="copy_text">Text kopieren</string>
 </resources>
