@@ -160,4 +160,5 @@
     <string name="terabit">Terabit</string>
     <string name="exbibyte">Exbibyte</string>
     <string name="pebibyte">Pebibyte</string>
+    <string name="nautical_mile">Millas náuticas</string>
 </resources>

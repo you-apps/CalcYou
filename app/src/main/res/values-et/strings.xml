@@ -160,4 +160,5 @@
     <string name="greek_lowercase">Kreeka tähestiku väiketähed:</string>
     <string name="space">Tühik</string>
     <string name="carriage_return">Reavahetusklahv</string>
+    <string name="nautical_mile">Meremiil</string>
 </resources>

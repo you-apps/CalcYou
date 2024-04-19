@@ -160,4 +160,5 @@
     <string name="terabit">太比特</string>
     <string name="exbibyte">二进制艾字节</string>
     <string name="pebibyte">二进制拍字节</string>
+    <string name="nautical_mile">海里</string>
 </resources>
