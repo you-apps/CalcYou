@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -39,8 +40,16 @@ fun CalculatorScreen(
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                CalculatorDisplay(calculatorViewModel)
-                CenterKeypadHorizontal(calculatorViewModel::onEvent)
+                CalculatorDisplay(
+                    calculatorViewModel,
+                    primaryTextStyle = MaterialTheme.typography.headlineMedium,
+                    secondaryTextStyle = MaterialTheme.typography.headlineSmall
+                )
+                CenterKeypadHorizontal(
+                    calculatorViewModel::onEvent,
+                    textStyle = MaterialTheme.typography.headlineSmall,
+                    iconSize = 32.dp
+                )
             }
         }
     } else {

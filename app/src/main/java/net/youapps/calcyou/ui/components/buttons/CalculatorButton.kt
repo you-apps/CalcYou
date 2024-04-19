@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -59,6 +60,7 @@ fun RowScope.CalculatorButton(
     textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     square: Boolean = true,
+    iconSize: Dp = 48.dp,
     onClick: () -> Unit,
     onLongClick: (() -> Unit)? = null,
 ) {
@@ -71,7 +73,7 @@ fun RowScope.CalculatorButton(
         Icon(
             painter = painterResource(id = iconRes),
             contentDescription = null,
-            modifier = Modifier.size(48.dp),
+            modifier = Modifier.size(iconSize),
             tint = textColor
         )
     }

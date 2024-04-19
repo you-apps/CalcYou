@@ -29,7 +29,11 @@ import net.youapps.calcyou.viewmodels.CalculatorViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
+fun ColumnScope.CalculatorDisplay(
+    calculatorViewModel: CalculatorViewModel,
+    primaryTextStyle: TextStyle = MaterialTheme.typography.displayMedium,
+    secondaryTextStyle: TextStyle = MaterialTheme.typography.displaySmall
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,7 +58,7 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                             calculatorViewModel.setExpression(item)
                         },
                     textAlign = TextAlign.End,
-                    style = MaterialTheme.typography.displaySmall,
+                    style = secondaryTextStyle,
                     color = MaterialTheme.colorScheme.onSurface,
                 )
             }
@@ -75,7 +79,7 @@ fun ColumnScope.CalculatorDisplay(calculatorViewModel: CalculatorViewModel) {
                         .fillMaxWidth()
                         .padding(vertical = 8.dp, horizontal = 16.dp),
                     maxLines = 1,
-                    textStyle = MaterialTheme.typography.displayMedium.plus(
+                    textStyle = primaryTextStyle.plus(
                         TextStyle(
                             textAlign = TextAlign.End,
                             color = MaterialTheme.colorScheme.onSurface

@@ -12,7 +12,9 @@ import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import net.youapps.calcyou.R
 import net.youapps.calcyou.data.CalculatorEvent
@@ -271,7 +273,9 @@ fun CenterKeypad(
 
 @Composable
 fun CenterKeypadHorizontal(
-    onEvent: (CalculatorEvent) -> Unit
+    onEvent: (CalculatorEvent) -> Unit,
+    textStyle: TextStyle = MaterialTheme.typography.displaySmall,
+    iconSize: Dp = 48.dp
 ) {
     val buttonSpacing = 8.dp
     Column(
@@ -290,21 +294,24 @@ fun CenterKeypadHorizontal(
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(7))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "8",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(8))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "9",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(9))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 iconRes = R.drawable.bracket_l,
@@ -313,7 +320,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.LBracket))
-                }
+                },
+                iconSize = iconSize
             )
             CalculatorButton(
                 iconRes = R.drawable.bracket_r,
@@ -322,7 +330,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.SpecialOperator(SpecialOperator.RBracket))
-                }
+                },
+                iconSize = iconSize
             )
 
         }
@@ -337,21 +346,24 @@ fun CenterKeypadHorizontal(
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(4))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "5",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(5))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "6",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(6))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 iconRes = R.drawable.divide,
@@ -360,7 +372,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Divide))
-                }
+                },
+                iconSize = iconSize
             )
             CalculatorButton(
                 iconRes = R.drawable.multiply,
@@ -369,7 +382,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Multiply))
-                }
+                },
+                iconSize = iconSize
             )
         }
 
@@ -383,21 +397,24 @@ fun CenterKeypadHorizontal(
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(1))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "2",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(2))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = "3",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(3))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 iconRes = R.drawable.minus,
@@ -406,7 +423,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Minus))
-                }
+                },
+                iconSize = iconSize
             )
             CalculatorButton(
                 iconRes = R.drawable.plus,
@@ -415,7 +433,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Plus))
-                }
+                },
+                iconSize = iconSize
             )
         }
 
@@ -429,14 +448,16 @@ fun CenterKeypadHorizontal(
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Number(0))
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 text = ".",
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
-                }
+                },
+                textStyle = textStyle
             )
             CalculatorButton(
                 iconRes = R.drawable.delete,
@@ -448,7 +469,8 @@ fun CenterKeypadHorizontal(
                 },
                 onLongClick = {
                     onEvent(CalculatorEvent.DeleteAll)
-                }
+                },
+                iconSize = iconSize
             )
             CalculatorButton(
                 iconRes = R.drawable.percent,
@@ -457,7 +479,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Operator(SimpleOperator.Percent))
-                }
+                },
+                iconSize = iconSize
             )
             CalculatorButton(
                 iconRes = R.drawable.equal,
@@ -466,7 +489,8 @@ fun CenterKeypadHorizontal(
                 textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 onClick = {
                     onEvent(CalculatorEvent.Evaluate)
-                }
+                },
+                iconSize = iconSize
             )
         }
     }
