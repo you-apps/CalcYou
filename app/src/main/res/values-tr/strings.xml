@@ -160,4 +160,5 @@
     <string name="cubic_meter">Metreküp</string>
     <string name="cubic_centimeter">Santimetreküp</string>
     <string name="cubic_decimeter">Desimetreküp</string>
+    <string name="nautical_mile">Deniz Mili</string>
 </resources>

@@ -160,4 +160,5 @@
     <string name="terabit">Терабит</string>
     <string name="exbibyte">ЭксбиБайт</string>
     <string name="pebibyte">ПебиБайт</string>
+    <string name="nautical_mile">Морские мили</string>
 </resources>
