@@ -28,7 +28,6 @@ import kotlinx.coroutines.launch
 import net.youapps.calcyou.AppNavHost
 import net.youapps.calcyou.Destination
 import net.youapps.calcyou.R
-import net.youapps.calcyou.navigateTo
 import net.youapps.calcyou.ui.components.NavDrawerContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +48,8 @@ fun MainScreen() {
                 scope.launch {
                     drawerState.close()
                 }
-                navController.navigateTo(it.route)
+                navController.popBackStack()
+                navController.navigate(it.route)
                 currentDestination = it
 
             })
