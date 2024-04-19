@@ -2,6 +2,10 @@ package net.youapps.calcyou.ui
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.content.res.Configuration.ORIENTATION_PORTRAIT
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu
@@ -11,6 +15,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
@@ -29,8 +34,9 @@ import net.youapps.calcyou.AppNavHost
 import net.youapps.calcyou.Destination
 import net.youapps.calcyou.R
 import net.youapps.calcyou.ui.components.NavDrawerContent
+import net.youapps.calcyou.ui.components.NavRailContent
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
@@ -70,10 +76,27 @@ fun MainScreen() {
                 })
             }
         }) { paddingValues ->
-            AppNavHost(
-                modifier = Modifier.padding(paddingValues),
-                navHostController = navController
-            )
+            Row(
+                Modifier
+                    .fillMaxSize()
+                    .consumeWindowInsets(paddingValues)
+                    .padding(paddingValues)
+            ) {
+                if (orientation == ORIENTATION_LANDSCAPE) {
+                    NavigationRail {
+                        NavRailContent(currentDestination = currentDestination) {
+                            navController.popBackStack()
+                            navController.navigate(it.route)
+                            currentDestination = it
+                        }
+                    }
+                }
+                AppNavHost(
+                    modifier = Modifier.weight(1f),
+                    navHostController = navController
+                )
+            }
+
         }
     }
 }

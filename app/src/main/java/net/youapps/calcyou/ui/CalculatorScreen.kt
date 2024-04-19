@@ -36,7 +36,8 @@ fun CalculatorScreen(
             Column(modifier = Modifier.weight(1f)) {
                 SideKeypadHorizontal(
                     onEvent = calculatorViewModel::onEvent,
-                    square = false
+                    square = false,
+                    textStyle = MaterialTheme.typography.headlineSmall
                 )
             }
             Column(modifier = Modifier.weight(1f)) {

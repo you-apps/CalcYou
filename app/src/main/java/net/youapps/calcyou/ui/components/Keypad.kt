@@ -532,7 +532,8 @@ fun SideKeypad(
 @Composable
 fun SideKeypadHorizontal(
     onEvent: (CalculatorEvent) -> Unit,
-    square: Boolean = true
+    square: Boolean = true,
+    textStyle: TextStyle = MaterialTheme.typography.headlineMedium
 ) {
     val keys = combinedKeypad
     val buttonSpacing = 8.dp
@@ -556,7 +557,7 @@ fun SideKeypadHorizontal(
                         text = operator.text,
                         square = square,
                         textColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textStyle = MaterialTheme.typography.headlineMedium,
+                        textStyle = textStyle,
                         onClick = {
                             onEvent(CalculatorEvent.SpecialOperator(operator))
                         }
