@@ -13,7 +13,7 @@
     <string name="force">Kraft</string>
     <string name="temperature">Temperatur</string>
     <string name="feet_per_second">Fuß pro Sekunde</string>
-    <string name="converter">Einheitenumwandler</string>
+    <string name="converter">Einheitenrechner</string>
     <string name="kibibyte">KibiByte</string>
     <string name="terabyte">Terabyte</string>
     <string name="megabyte">Megabyte</string>
