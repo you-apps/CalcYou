@@ -9,6 +9,7 @@ import net.youapps.calcyou.ui.CalculatorScreen
 import net.youapps.calcyou.ui.screens.CharacterInputScreen
 import net.youapps.calcyou.ui.screens.ConverterGridScreen
 import net.youapps.calcyou.ui.screens.ConverterScreen
+import net.youapps.calcyou.ui.screens.graphing.GraphingScreen
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostController) {
@@ -29,6 +30,10 @@ fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostControll
 
         composable(route = Destination.CharacterInput.route) {
             CharacterInputScreen()
+        }
+
+        composable(route = Destination.Graphing.route) {
+            GraphingScreen()
         }
 
         Destination.Converter.values.forEach { converter ->
