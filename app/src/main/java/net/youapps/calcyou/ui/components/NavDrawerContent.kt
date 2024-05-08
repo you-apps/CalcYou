@@ -12,9 +12,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Calculate
 import androidx.compose.material.icons.outlined.KeyboardAlt
+import androidx.compose.material.icons.outlined.LineAxis
 import androidx.compose.material.icons.outlined.WifiProtectedSetup
 import androidx.compose.material.icons.rounded.Calculate
 import androidx.compose.material.icons.rounded.KeyboardAlt
+import androidx.compose.material.icons.rounded.LineAxis
 import androidx.compose.material.icons.rounded.WifiProtectedSetup
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -114,6 +116,22 @@ fun NavDrawerContent(
                     }
                 )
             }
+            item {
+                NavigationDrawerItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Rounded.LineAxis,
+                            contentDescription = null
+                        )
+                    },
+                    label = { Text(text = stringResource(id = R.string.graphing)) },
+                    selected = Destination.Graphing == currentDestination,
+                    onClick = {
+                        view.playSoundEffect(SoundEffectConstants.CLICK)
+                        onDestinationSelected(Destination.Graphing)
+                    }
+                )
+            }
         }
     }
 }
@@ -180,6 +198,25 @@ fun ColumnScope.NavRailContent(
             onDestinationSelected(Destination.CharacterInput)
         }
     )
-
+    NavigationRailItem(
+        alwaysShowLabel = false,
+        icon = {
+            Icon(
+                imageVector = Icons.Outlined.LineAxis,
+                contentDescription = null
+            )
+        },
+        label = {
+            Text(
+                text = stringResource(id = R.string.graphing),
+                textAlign = TextAlign.Center
+            )
+        },
+        selected = Destination.Graphing == currentDestination,
+        onClick = {
+            view.playSoundEffect(SoundEffectConstants.CLICK)
+            onDestinationSelected(Destination.Graphing)
+        }
+    )
 
 }

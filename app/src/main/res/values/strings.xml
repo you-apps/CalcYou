@@ -161,4 +161,14 @@
     <string name="terabit">Terabit</string>
     <string name="petabit">Petabit</string>
     <string name="exabit">Exabit</string>
+    <string name="graphing">Graphing</string>
+    <string name="add_new_function">Add new function</string>
+    <string name="expression_is_empty">Expression is empty</string>
+    <string name="error_parsing_expression">Error parsing expression</string>
+    <string name="color_picker_dialog">Color Picker</string>
+    <string name="old_color">Old color</string>
+    <string name="new_color">New color</string>
+    <string name="hue_slider">Hue</string>
+    <string name="saturation_slider">Saturation</string>
+    <string name="lightness_slider">Lightness</string>
 </resources>

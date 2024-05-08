@@ -48,6 +48,7 @@ sealed class Destination(open val route: String) {
 
     object Converters : Destination("converters")
     object CharacterInput : Destination("character_input")
+    object Graphing : Destination("graphing")
     sealed class Converter(
         override val route: String,
         @StringRes val resId: Int,
