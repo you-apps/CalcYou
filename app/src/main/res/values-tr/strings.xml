@@ -160,4 +160,14 @@
     <string name="cubic_centimeter">Santimetreküp</string>
     <string name="cubic_decimeter">Desimetreküp</string>
     <string name="nautical_mile">Deniz Mili</string>
+    <string name="add_new_function">Yeni işlev ekle</string>
+    <string name="expression_is_empty">İfade boş</string>
+    <string name="error_parsing_expression">İfade ayrıştırılırken hata oluştu</string>
+    <string name="color_picker_dialog">Renk Seçici</string>
+    <string name="old_color">Eski renk</string>
+    <string name="new_color">Yeni renk</string>
+    <string name="lightness_slider">Açıklık</string>
+    <string name="graphing">Grafik</string>
+    <string name="hue_slider">Ton</string>
+    <string name="saturation_slider">Doygunluk</string>
 </resources>
