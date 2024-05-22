@@ -160,4 +160,14 @@
     <string name="exbibyte">Exbibyte</string>
     <string name="pebibyte">Pebibyte</string>
     <string name="nautical_mile">Millas náuticas</string>
+    <string name="graphing">Calculadora gráfica</string>
+    <string name="add_new_function">Agregar nueva función</string>
+    <string name="error_parsing_expression">Error al analizar la expresión</string>
+    <string name="color_picker_dialog">Selector de color</string>
+    <string name="old_color">Color antiguo</string>
+    <string name="new_color">Color nuevo</string>
+    <string name="hue_slider">Matiz</string>
+    <string name="saturation_slider">Saturación</string>
+    <string name="lightness_slider">Luminosidad</string>
+    <string name="expression_is_empty">La expresión está vacía</string>
 </resources>
