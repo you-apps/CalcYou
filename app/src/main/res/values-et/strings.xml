@@ -160,4 +160,14 @@
     <string name="space">Tühik</string>
     <string name="carriage_return">Reavahetusklahv</string>
     <string name="nautical_mile">Meremiil</string>
+    <string name="color_picker_dialog">Värvivalija</string>
+    <string name="old_color">Vana värv</string>
+    <string name="new_color">Uus värv</string>
+    <string name="hue_slider">Värvitoon</string>
+    <string name="saturation_slider">Värviküllastus</string>
+    <string name="lightness_slider">Heledus</string>
+    <string name="graphing">Graafikute koostamine</string>
+    <string name="expression_is_empty">Avaldis on tühi</string>
+    <string name="error_parsing_expression">Viga avaldise töötlemisel</string>
+    <string name="add_new_function">Lisa uus funktsioon</string>
 </resources>
