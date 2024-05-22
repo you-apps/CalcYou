@@ -49,10 +49,10 @@
     <string name="tablespoon">टेबल चम्मच</string>
     <string name="teaspoon">छोटी चम्मच</string>
     <string name="celsius">सेल्सीयस</string>
-    <string name="fahrenheit">फ़ारेनहाइट</string>
+    <string name="fahrenheit">फारेनहाइट</string>
     <string name="kelvin">केल्विन</string>
-    <string name="converter">इकाई कनवर्टर</string>
-    <string name="numbers">संख्याएँ :</string>
+    <string name="converter">इकाई परिवर्तक</string>
+    <string name="numbers">संख्याएं :</string>
     <string name="simple_math">सरल गणित :</string>
     <string name="common_symbols">सामान्य प्रतीक :</string>
     <string name="superscript">सुपरस्क्रिप्ट :</string>
@@ -61,7 +61,7 @@
     <string name="english_lowercase">अंग्रेजी लोअरकेस :</string>
     <string name="greek_uppercase">ग्रीक अपरकेस :</string>
     <string name="greek_lowercase">ग्रीक लोअरकेस :</string>
-    <string name="fractions">अंशों:</string>
+    <string name="fractions">अंश :</string>
     <string name="character_input">चरित्र इनपुट</string>
     <string name="degree">डिग्री</string>
     <string name="radian">रेडियन</string>
@@ -160,4 +160,14 @@
     <string name="watt">वाट</string>
     <string name="turn">मोड़</string>
     <string name="nautical_mile">समुद्री मील</string>
+    <string name="lightness_slider">हल्कापन</string>
+    <string name="graphing">ग्राफ़ बनाना</string>
+    <string name="add_new_function">नया प्रकार्य जोड़ें</string>
+    <string name="expression_is_empty">अभिव्यक्ति रिक्त है</string>
+    <string name="error_parsing_expression">अभिव्यक्ति विश्लेषण करने में त्रुटि</string>
+    <string name="color_picker_dialog">रंग चयनकर्ता</string>
+    <string name="old_color">पुराना रंग</string>
+    <string name="new_color">नया रंग</string>
+    <string name="hue_slider">रंगत</string>
+    <string name="saturation_slider">संतृप्ति</string>
 </resources>
