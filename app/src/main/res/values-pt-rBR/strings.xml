@@ -63,7 +63,7 @@
     <string name="numbers">Números :</string>
     <string name="simple_math">Matemática Básica :</string>
     <string name="common_symbols">Símbolos comuns :</string>
-    <string name="kilowatt">Kilowatt</string>
+    <string name="kilowatt">Quilowatt</string>
     <string name="horsepower">Cavalos de potência</string>
     <string name="btu_per_hour">BTU por hora</string>
     <string name="converter">Conversor de unidade</string>
@@ -74,4 +74,20 @@
     <string name="superscript">SuperScript :</string>
     <string name="subscript">SubScript :</string>
     <string name="degree">Graus</string>
+    <string name="nautical_mile">Milha Náutica</string>
+    <string name="english_uppercase">Inglês Maiúsculas :</string>
+    <string name="english_lowercase">Inglês Minúsculas :</string>
+    <string name="greek_lowercase">Grego Minúsculo :</string>
+    <string name="character_input">Entrada de Caracteres</string>
+    <string name="fluid_ounce">Onça líquida</string>
+    <string name="pint">Pinta</string>
+    <string name="greek_uppercase">Grego Maiúsculo :</string>
+    <string name="arrows">Setas :</string>
+    <string name="space">Espaço</string>
+    <string name="radian">Radiano</string>
+    <string name="turn">Volta</string>
+    <string name="carriage_return">Retorno de Carro</string>
+    <string name="gradian">Grado</string>
+    <string name="watt">Watt</string>
+    <string name="megawatt"></string>
 </resources>
