@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calc You</string>
     <string name="area">Pindala</string>
     <string name="frequency">Sagedus</string>
     <string name="storage">Andmemaht</string>
