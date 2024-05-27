@@ -11,6 +11,7 @@ class PressureConverter : UnitConverter {
         FactorUnit(R.string.bar, 1E5),
         FactorUnit(R.string.millibar, 1E2),
         FactorUnit(R.string.atmosphere, 101325.0),
-        FactorUnit(R.string.psi, 6894.757293168) // Pounds per Square Inch
+        FactorUnit(R.string.psi, 6894.757293168), // Pounds per Square Inch
+        FactorUnit(R.string.h2o, 249.082), // Inches of water
     )
 }

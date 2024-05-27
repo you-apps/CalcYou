@@ -130,6 +130,7 @@
     <string name="millibar">Millibar</string>
     <string name="atmosphere">Atmosphere</string>
     <string name="psi">PSI</string>
+    <string name="h2o">H2O (Inches of water)</string>
     <string name="lumen">Lumen</string>
     <string name="candela">Candela</string>
     <string name="lux">Lux</string>
