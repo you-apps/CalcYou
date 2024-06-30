@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "net.youapps.calcyou"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 3
         versionName = "1.2"
