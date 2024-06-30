@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import net.youapps.calcyou.data.graphing.Defaults
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.ui.components.AddNewFunctionDialog
 import net.youapps.calcyou.viewmodels.GraphViewModel
@@ -82,6 +83,7 @@ fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
                 graphViewModel.updateSelectedFunction(-1)
                 showAddFunctionDialog = false
             },
+            functionName = remember(graphViewModel.selectedFunctionIndex) { graphViewModel.functionName },
             initialColor =
             remember(graphViewModel.selectedFunctionIndex) { graphViewModel.functionColor },
             initialExpression =
@@ -100,6 +102,7 @@ fun FunctionList(
     Column(modifier = modifier) {
         functions.forEachIndexed { index, function ->
             FunctionRow(
+                functionName = function.name,
                 text = function.expression,
                 color = function.color,
                 onClick = { onClickFunction(index) },
@@ -112,7 +115,7 @@ fun FunctionList(
 }
 
 @Composable
-fun FunctionRow(text: String, color: Color, onClick: () -> Unit, onClickRemove: () -> Unit) {
+fun FunctionRow(functionName: String, text: String, color: Color, onClick: () -> Unit, onClickRemove: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -122,7 +125,7 @@ fun FunctionRow(text: String, color: Color, onClick: () -> Unit, onClickRemove: 
     ) {
 
         Text(
-            text = "f(x) = ", style = TextStyle(
+            text = "${functionName}(x) = ", style = TextStyle(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = MaterialTheme.typography.titleMedium.fontSize,
