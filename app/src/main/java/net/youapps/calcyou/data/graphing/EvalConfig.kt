@@ -82,6 +82,5 @@ class EvalConfiguration(
         this.varNameChars = Defaults.defaultVarNameChars
         this.genericConstants = Defaults.defaultGenericConstants.toMutableMap()
         this.genericFunctions = Defaults.getDefaultGenericFunctions().toMutableMap()
-
     }
 }

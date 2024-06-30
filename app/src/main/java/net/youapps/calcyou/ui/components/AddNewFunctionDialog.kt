@@ -39,6 +39,7 @@ import net.youapps.calcyou.viewmodels.GraphViewModel
 @Composable
 fun AddNewFunctionDialog(
     graphViewModel: GraphViewModel,
+    functionName: String,
     initialExpression: String,
     initialColor: Color,
     onDismissRequest: () -> Unit
@@ -46,13 +47,14 @@ fun AddNewFunctionDialog(
     Dialog(onDismissRequest) {
         DialogContent(
             onConfirm = { expression, color ->
-                graphViewModel.addFunction(expression, color)
+                graphViewModel.addFunction(expression, color, functionName)
                 onDismissRequest()
             },
             onCancel = onDismissRequest,
             checkExpression = graphViewModel::checkExpression,
             isError = graphViewModel.isError,
             errorMessage = graphViewModel.errorText,
+            functionName = functionName,
             initialExpression = initialExpression,
             initialColor = initialColor
         )
@@ -67,6 +69,7 @@ private fun DialogContent(
     checkExpression: (String) -> Unit,
     isError: Boolean,
     errorMessage: String,
+    functionName: String,
     initialExpression: String = "",
     initialColor: Color = rainbowColors.first(),
 ) {
@@ -92,7 +95,7 @@ private fun DialogContent(
                 isError = isError,
                 prefix = {
                     Text(
-                        text = "f(x) = ", style = TextStyle(
+                        text = "${functionName}(x) = ", style = TextStyle(
                             fontFamily = FontFamily.Serif,
                             fontWeight = FontWeight.Medium,
                             fontSize = MaterialTheme.typography.bodyLarge.fontSize,
@@ -149,6 +152,7 @@ private fun DialogContentPreview() {
         onCancel = {},
         checkExpression = {},
         isError = true,
-        errorMessage = "Invalid token at index 0"
+        errorMessage = "Invalid token at index 0",
+        functionName = "f"
     )
 }
