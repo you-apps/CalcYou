@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -43,13 +45,20 @@ fun ColorSelectionDialog(
     onDismiss: () -> Unit,
     onSelectColor: (Color) -> Unit
 ) {
-    val initialHSL by remember { mutableStateOf(floatArrayOf(0f, 0f, 0f)) }
-    colorToHSL(initialColor.toArgb(), initialHSL)
+    val initialHSL = rgbToHsl(initialColor)
+
     var hue by remember { mutableFloatStateOf(initialHSL[0]) } // [0,360)
     var saturation by remember { mutableFloatStateOf(initialHSL[1]) } // [0,1]
     var lightness by remember { mutableFloatStateOf(initialHSL[2]) } // [0,1]
 
     val color = Color(HSLToColor(floatArrayOf(hue, saturation, lightness)))
+    var hexInput by remember {
+        mutableStateOf(Integer.toHexString(color.toArgb()).substring(2,8))
+    }
+
+    LaunchedEffect(color) {
+        hexInput = Integer.toHexString(color.toArgb()).substring(2, 8)
+    }
 
     Dialog(onDismissRequest = onDismiss) {
         ElevatedCard {
@@ -146,6 +155,24 @@ fun ColorSelectionDialog(
                         onValueChangeFinished = {}
                     )
                 }
+                Spacer(modifier = Modifier.height(12.dp))
+
+                OutlinedTextField(
+                    value = hexInput,
+                    onValueChange = {
+                        hexInput = it
+                        runCatching {
+                            val c = android.graphics.Color.parseColor("#${hexInput}")
+                            val hsl = rgbToHsl(Color(c))
+                            hue = hsl[0]
+                            saturation = hsl[1]
+                            lightness = hsl[2]
+                        }
+                    },
+                    label = {
+                        Text(text = stringResource(id = R.string.hex_rgb_code))
+                    }
+                )
                 Spacer(modifier = Modifier.height(24.dp))
 
                 // Buttons
@@ -209,4 +236,10 @@ fun HueBar(modifier: Modifier = Modifier) {
             cornerRadius = CornerRadius(.5f, .5f)
         )
     }
+}
+
+private fun rgbToHsl(color: Color): FloatArray {
+    val hslArray = floatArrayOf(0f, 0f, 0f)
+    colorToHSL(color.toArgb(), hslArray)
+    return hslArray
 }

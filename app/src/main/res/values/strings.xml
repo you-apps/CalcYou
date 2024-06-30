@@ -172,4 +172,5 @@
     <string name="hue_slider">Hue</string>
     <string name="saturation_slider">Saturation</string>
     <string name="lightness_slider">Lightness</string>
+    <string name="hex_rgb_code">Hex RGB color code</string>
 </resources>
