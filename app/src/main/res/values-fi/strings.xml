@@ -151,4 +151,14 @@
     <string name="gigabit">Gigabitti</string>
     <string name="terabit">Terabitti</string>
     <string name="exabit">Exabitti</string>
+    <string name="viscosity">Viskositeetti</string>
+    <string name="expression_is_empty">Lauseke on tyhjä</string>
+    <string name="error_parsing_expression">Virhe jäsentäessä lauseketta</string>
+    <string name="color_picker_dialog">Värivalitsin</string>
+    <string name="old_color">Vanha väri</string>
+    <string name="new_color">Uusi väri</string>
+    <string name="lightness_slider">Kirkkaus</string>
+    <string name="add_new_function">Lisää uusi funktio</string>
+    <string name="hue_slider">Sävy</string>
+    <string name="saturation_slider">Kylläisyys</string>
 </resources>
