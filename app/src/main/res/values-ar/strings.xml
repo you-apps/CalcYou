@@ -171,4 +171,5 @@
     <string name="lightness_slider">النور</string>
     <string name="new_color">لون جديد</string>
     <string name="h2o">H2O (بوصة من الماء)</string>
+    <string name="hex_rgb_code">رمز لون سداسي</string>
 </resources>
