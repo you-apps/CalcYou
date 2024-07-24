@@ -166,4 +166,5 @@
     <string name="add_new_function">Neue Funktion hinzufügen</string>
     <string name="saturation_slider">Sättigung</string>
     <string name="hue_slider">Farbton</string>
+    <string name="hex_rgb_code">Hex RGB Farbcode</string>
 </resources>
