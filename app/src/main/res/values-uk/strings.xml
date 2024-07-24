@@ -171,4 +171,5 @@
     <string name="saturation_slider">Насиченість</string>
     <string name="error_parsing_expression">Помилка аналізу виразу</string>
     <string name="h2o">H2O (дюйми води)</string>
+    <string name="hex_rgb_code">Шістнадцятковий код кольору RGB</string>
 </resources>
