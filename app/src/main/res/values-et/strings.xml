@@ -171,4 +171,5 @@
     <string name="error_parsing_expression">Viga avaldise töötlemisel</string>
     <string name="add_new_function">Lisa uus funktsioon</string>
     <string name="h2o">H2O (veekõrgus tollides)</string>
+    <string name="hex_rgb_code">RGB värvikood kuueteistkümnendarvuna</string>
 </resources>
