@@ -171,4 +171,5 @@
     <string name="hue_slider">रंगत</string>
     <string name="saturation_slider">संतृप्ति</string>
     <string name="h2o">H2O (पानी का इंच)</string>
+    <string name="hex_rgb_code">हेक्स आरजीबी रंग कोड</string>
 </resources>
