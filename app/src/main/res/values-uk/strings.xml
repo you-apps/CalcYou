@@ -160,4 +160,16 @@
     <string name="minute">Хвилини</string>
     <string name="kiloliter">Кілолітр</string>
     <string name="nautical_mile">Морська миля</string>
+    <string name="graphing">Графік</string>
+    <string name="add_new_function">Додати нову функцію</string>
+    <string name="expression_is_empty">Вираз пустий</string>
+    <string name="color_picker_dialog">Вибір кольору</string>
+    <string name="old_color">Старий колір</string>
+    <string name="new_color">Новий колір</string>
+    <string name="hue_slider">Відтінок</string>
+    <string name="lightness_slider">Яскравість</string>
+    <string name="saturation_slider">Насиченість</string>
+    <string name="error_parsing_expression">Помилка аналізу виразу</string>
+    <string name="h2o">H2O (дюйми води)</string>
+    <string name="hex_rgb_code">Шістнадцятковий код кольору RGB</string>
 </resources>
