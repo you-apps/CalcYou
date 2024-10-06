@@ -141,4 +141,11 @@
     <string name="gallon_uk">گالن بریتانیایی</string>
     <string name="barrel">بشکه</string>
     <string name="kilojoule">کیلوژول</string>
+    <string name="expression_is_empty">عبارت خالی است</string>
+    <string name="old_color">رنگ قدیمی</string>
+    <string name="new_color">رنگ جدید</string>
+    <string name="hue_slider">فام</string>
+    <string name="saturation_slider">اشباع</string>
+    <string name="footcandle">شمع-فوت</string>
+    <string name="lightness_slider">روشنایی</string>
 </resources>
