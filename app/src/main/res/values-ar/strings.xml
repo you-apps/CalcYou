@@ -160,4 +160,16 @@
     <string name="exbibyte">اكسي بايت</string>
     <string name="pebibyte">بيبي بايت</string>
     <string name="nautical_mile">الأميال البحرية</string>
+    <string name="graphing">الرسم</string>
+    <string name="add_new_function">إضافة وظيفة جديدة</string>
+    <string name="expression_is_empty">التعبير فارغ</string>
+    <string name="error_parsing_expression">خطأ في تحليل التعبير</string>
+    <string name="color_picker_dialog">منتقي الألوان</string>
+    <string name="old_color">اللون القديم</string>
+    <string name="hue_slider">درجة لون</string>
+    <string name="saturation_slider">التشبع</string>
+    <string name="lightness_slider">النور</string>
+    <string name="new_color">لون جديد</string>
+    <string name="h2o">H2O (بوصة من الماء)</string>
+    <string name="hex_rgb_code">رمز لون سداسي</string>
 </resources>

@@ -160,4 +160,16 @@
     <string name="exbibyte">ЭксбиБайт</string>
     <string name="pebibyte">ПебиБайт</string>
     <string name="nautical_mile">Морские мили</string>
+    <string name="error_parsing_expression">Не удалось прочитать выражение</string>
+    <string name="lightness_slider">Яркость</string>
+    <string name="old_color">Прежний цвет</string>
+    <string name="new_color">Новый цвет</string>
+    <string name="hue_slider">Тон</string>
+    <string name="saturation_slider">Насыщенность</string>
+    <string name="graphing">Графика</string>
+    <string name="add_new_function">Добавить функцию</string>
+    <string name="expression_is_empty">Отсутствует выражение</string>
+    <string name="color_picker_dialog">Выбор цвета</string>
+    <string name="h2o">H2O (Дюймы воды)</string>
+    <string name="hex_rgb_code">HEX-код цвета (RGB)</string>
 </resources>

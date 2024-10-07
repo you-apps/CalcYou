@@ -160,4 +160,16 @@
     <string name="exbibyte">Exbibajt</string>
     <string name="pebibyte">Pebibajt</string>
     <string name="nautical_mile">Námořní míle</string>
+    <string name="error_parsing_expression">Chyba při zpracování výrazu</string>
+    <string name="color_picker_dialog">Výběr barvy</string>
+    <string name="old_color">Stará barva</string>
+    <string name="hue_slider">Odstín</string>
+    <string name="saturation_slider">Sytost</string>
+    <string name="lightness_slider">Světlost</string>
+    <string name="new_color">Nová barva</string>
+    <string name="graphing">Grafy</string>
+    <string name="add_new_function">Přidat novou funkci</string>
+    <string name="expression_is_empty">Výraz je prázdný</string>
+    <string name="h2o">H2O (palce vody)</string>
+    <string name="hex_rgb_code">Barevný kód Hex RGB</string>
 </resources>
