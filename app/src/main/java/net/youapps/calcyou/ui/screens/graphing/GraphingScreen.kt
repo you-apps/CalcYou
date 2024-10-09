@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material3.BottomSheetScaffold
@@ -26,13 +29,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import net.youapps.calcyou.R
+import net.youapps.calcyou.data.graphing.Defaults
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.ui.components.AddNewFunctionDialog
 import net.youapps.calcyou.viewmodels.GraphViewModel
@@ -68,8 +75,11 @@ fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
                     })
                 Button(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    onClick = { showAddFunctionDialog = true }) {
-                    Text(text = "Add Function")
+                    onClick = {
+                        graphViewModel.updateSelectedFunction(-1)
+                        showAddFunctionDialog = true
+                    }) {
+                    Text(text = stringResource(R.string.add_new_function))
                 }
             }
         }) {
@@ -82,6 +92,7 @@ fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
                 graphViewModel.updateSelectedFunction(-1)
                 showAddFunctionDialog = false
             },
+            functionName = remember(graphViewModel.selectedFunctionIndex) { graphViewModel.functionName },
             initialColor =
             remember(graphViewModel.selectedFunctionIndex) { graphViewModel.functionColor },
             initialExpression =
@@ -97,32 +108,43 @@ fun FunctionList(
     onClickFunction: (Int) -> Unit,
     onClickRemove: (Int) -> Unit
 ) {
-    Column(modifier = modifier) {
-        functions.forEachIndexed { index, function ->
+    LazyColumn(modifier = modifier) {
+        itemsIndexed(
+            functions,
+            key = { index, function -> "$index-${function.hashCode()}" }) { index, function ->
             FunctionRow(
+                functionName = function.name,
                 text = function.expression,
                 color = function.color,
                 onClick = { onClickFunction(index) },
                 onClickRemove = {
                     onClickRemove(index)
-                })
+                }
+            )
             Divider(Modifier.fillMaxWidth())
         }
     }
 }
 
 @Composable
-fun FunctionRow(text: String, color: Color, onClick: () -> Unit, onClickRemove: () -> Unit) {
+fun FunctionRow(
+    functionName: String,
+    text: String,
+    color: Color,
+    onClick: () -> Unit,
+    onClickRemove: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-            .clickable { onClick.invoke() },
+            .clip(RoundedCornerShape(8.dp))
+            .clickable { onClick.invoke() }
+            .padding(horizontal = 8.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
         Text(
-            text = "f(x) = ", style = TextStyle(
+            text = "${functionName}(x) = ", style = TextStyle(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = MaterialTheme.typography.titleMedium.fontSize,
