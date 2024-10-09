@@ -2,7 +2,7 @@ package net.youapps.calcyou.data.graphing
 
 import androidx.compose.ui.graphics.Color
 
-class Function(
+data class Function(
     val expression: String,
     val color: Color,
     val name: String,

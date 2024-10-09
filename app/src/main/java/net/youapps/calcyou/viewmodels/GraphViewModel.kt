@@ -42,10 +42,8 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
         selectedFunctionIndex = index
         if (index == -1) {
             expression = ""
-            functionName = Defaults.defaultFuncNameChars[
-                functions.size % Defaults.defaultFuncNameChars.size
-            ].toString()
-            functionColor = rainbowColors[functions.size % rainbowColors.size]
+            functionName = getFuncName(functions.size)
+            functionColor = getFuncColor(functions.size)
             return
         }
         val function = functions[index]
@@ -84,5 +82,20 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
 
     fun removeFunction(index: Int) {
         functions.removeAt(index)
+
+        // update the other functions following the delete one with new function names and colors
+        for (i in index until functions.size) {
+            functions[index] = functions[index].copy(name = getFuncName(i), color = getFuncColor(i))
+        }
+    }
+
+    private fun getFuncName(index: Int): String {
+        return Defaults.defaultFuncNameChars[
+            index % Defaults.defaultFuncNameChars.size
+        ].toString()
+    }
+
+    private fun getFuncColor(index: Int): Color {
+        return rainbowColors[index % rainbowColors.size]
     }
 }
