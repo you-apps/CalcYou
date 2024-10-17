@@ -85,7 +85,7 @@
     <string name="english_lowercase">Minuscule Française :</string>
     <string name="greek_uppercase">Majuscule Grecque :</string>
     <string name="greek_lowercase">Minuscule Grecque :</string>
-    <string name="backspace">Retour</string>
+    <string name="backspace">Retour arrière</string>
     <string name="carriage_return">Retour à la ligne</string>
     <string name="space">Espace</string>
     <string name="character_input">Saisie de caractères</string>
@@ -159,4 +159,16 @@
     <string name="grams_of_fat">Grammes de matières grasses</string>
     <string name="grams_of_protein">Grammes de protéines</string>
     <string name="copy_text">Copier le texte</string>
+    <string name="h2o">H2O (pouce d\'eau)</string>
+    <string name="graphing">Création de graphique</string>
+    <string name="add_new_function">Ajouter une nouvelle fonction</string>
+    <string name="expression_is_empty">L\'expression est vide</string>
+    <string name="color_picker_dialog">Pipette à couleurs</string>
+    <string name="lightness_slider">Clarté</string>
+    <string name="nautical_mile">Mille marin</string>
+    <string name="error_parsing_expression">Erreur lors de l\'analyse de l\'expression</string>
+    <string name="old_color">Ancienne couleur</string>
+    <string name="new_color">Nouvelle couleur</string>
+    <string name="saturation_slider">Saturation</string>
+    <string name="hue_slider">Teinte</string>
 </resources>
