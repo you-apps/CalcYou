@@ -13,7 +13,7 @@
     <string name="force">Kraft</string>
     <string name="temperature">Temperatur</string>
     <string name="feet_per_second">Fuß pro Sekunde</string>
-    <string name="converter">Einheitenumwandler</string>
+    <string name="converter">Einheitenrechner</string>
     <string name="kibibyte">KibiByte</string>
     <string name="terabyte">Terabyte</string>
     <string name="megabyte">Megabyte</string>
@@ -158,4 +158,13 @@
     <string name="pound_foot">Pfund-Fuß</string>
     <string name="ounce_inch">Flüssigunze</string>
     <string name="copy_text">Text kopieren</string>
+    <string name="lightness_slider">Helligkeit</string>
+    <string name="old_color">Alte Farbe</string>
+    <string name="error_parsing_expression">Fehler beim Parsen des Ausdrucks</string>
+    <string name="new_color">Neue Farbe</string>
+    <string name="expression_is_empty">Der Ausdruck ist leer</string>
+    <string name="add_new_function">Neue Funktion hinzufügen</string>
+    <string name="saturation_slider">Sättigung</string>
+    <string name="hue_slider">Farbton</string>
+    <string name="hex_rgb_code">Hex RGB Farbcode</string>
 </resources>

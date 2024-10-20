@@ -23,7 +23,7 @@
     <string name="foot">Jalg</string>
     <string name="tonne">Tonn</string>
     <string name="meter_per_second">Meetrit sekundis</string>
-    <string name="kilometer_per_hour">Kilomeetrit sekundis</string>
+    <string name="kilometer_per_hour">Kilomeetrit tunnis</string>
     <string name="mile_per_hour">Miili tunnis</string>
     <string name="knot">Sõlm</string>
     <string name="feet_per_second">Jalga sekundis</string>
@@ -160,4 +160,16 @@
     <string name="space">Tühik</string>
     <string name="carriage_return">Reavahetusklahv</string>
     <string name="nautical_mile">Meremiil</string>
+    <string name="color_picker_dialog">Värvivalija</string>
+    <string name="old_color">Vana värv</string>
+    <string name="new_color">Uus värv</string>
+    <string name="hue_slider">Värvitoon</string>
+    <string name="saturation_slider">Värviküllastus</string>
+    <string name="lightness_slider">Heledus</string>
+    <string name="graphing">Graafikute koostamine</string>
+    <string name="expression_is_empty">Avaldis on tühi</string>
+    <string name="error_parsing_expression">Viga avaldise töötlemisel</string>
+    <string name="add_new_function">Lisa uus funktsioon</string>
+    <string name="h2o">H2O (veekõrgus tollides)</string>
+    <string name="hex_rgb_code">RGB värvikood kuueteistkümnendarvuna</string>
 </resources>
