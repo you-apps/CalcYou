@@ -161,4 +161,5 @@
     <string name="add_new_function">Lisää uusi funktio</string>
     <string name="hue_slider">Sävy</string>
     <string name="saturation_slider">Kylläisyys</string>
+    <string name="hex_rgb_code">Heksamuotoinen RGB-värikoodi</string>
 </resources>
