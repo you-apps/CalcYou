@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="temperature">טמפרטורה</string>
+    <string name="calculator">מחשבון</string>
+    <string name="storage">אחסון</string>
+    <string name="area">שטח</string>
+    <string name="frequency">תדירות</string>
+    <string name="length">אורך</string>
+    <string name="mass">מסה</string>
+    <string name="speed">מהירות</string>
+    <string name="volume">נפח</string>
+    <string name="value">ערך</string>
+    <string name="unit">יחידה</string>
+    <string name="square_meter">מטר מרובע</string>
+    <string name="square_kilometer">קילומטר מרובע</string>
+    <string name="square_centimeter">סנטימטר מרובע</string>
+    <string name="square_millimeter">מילימטר מרובע</string>
+</resources>
