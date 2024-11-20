@@ -164,6 +164,7 @@
     <string name="exabit">Exabit</string>
     <string name="graphing">Graphing</string>
     <string name="add_new_function">Add new function</string>
+    <string name="add_constant">Add constant</string>
     <string name="expression_is_empty">Expression is empty</string>
     <string name="error_parsing_expression">Error parsing expression</string>
     <string name="color_picker_dialog">Color Picker</string>

@@ -76,8 +76,11 @@ object Evaluator {
     fun execute(expression: CompiledExpression): Double? =
         evaluateToken(token = expression.root, configuration = expression.configuration)
 
-    fun execute(expression: CompiledExpression, constant: Pair<String, Double>): Double? {
-        configuration.setConstant(constant.first, constant.second)
+    fun execute(expression: CompiledExpression, constants: List<Pair<String, Double>>): Double? {
+        configuration.clearConstants()
+        for (constant in constants) {
+            configuration.setConstant(constant.first, constant.second)
+        }
         return evaluateToken(token = expression.root, configuration = configuration)
     }
 

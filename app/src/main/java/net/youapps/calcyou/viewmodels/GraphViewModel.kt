@@ -14,6 +14,7 @@ import net.youapps.calcyou.R
 import net.youapps.calcyou.data.graphing.Defaults
 import net.youapps.calcyou.data.graphing.Evaluator
 import net.youapps.calcyou.data.graphing.Function
+import net.youapps.calcyou.data.graphing.Constant
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.ui.components.rainbowColors
 import java.text.ParseException
@@ -24,6 +25,8 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
         get() = application.applicationContext
     var window by mutableStateOf(Window(), neverEqualPolicy())
     val functions = mutableStateListOf<Function>()
+    val constants = mutableStateListOf<Constant>()
+
     private val random = Random(System.currentTimeMillis())
     var isError by mutableStateOf(true)
         private set
@@ -33,10 +36,11 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
     var selectedFunctionIndex by mutableIntStateOf(-1)
         private set
     var functionName by mutableStateOf(Defaults.defaultFuncNameChars.first().toString())
-
     var functionColor by mutableStateOf(rainbowColors.first())
 
     var expression by mutableStateOf("")
+
+    var selectedConstantIndex by mutableIntStateOf(-1)
 
     fun updateSelectedFunction(index: Int) {
         selectedFunctionIndex = index
@@ -60,7 +64,11 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
         }
         try {
             val compiled = Evaluator.compile(expression)
-            compiled.execute("x" to random.nextDouble())
+            val variables = listOf(
+                "x" to random.nextDouble(),
+                *constants.map { it.identifier.toString() to it.value }.toTypedArray()
+            )
+            compiled.execute(variables)
             isError = false
         } catch (e: ParseException) {
             errorText = e.message ?: context.getString(R.string.error_parsing_expression)

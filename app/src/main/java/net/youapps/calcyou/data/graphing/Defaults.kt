@@ -46,6 +46,7 @@ object Defaults {
     val defaultVarNameChars: Set<Char> =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_$".toCharArray().toSet()
     val defaultFuncNameChars: List<Char> = "fghijklmnopqrstuvw".toList()
+    val defaultConstantNameChars: List<Char> = "abcdeyz".toList()
 
     fun getDefaultGenericFunctions(): Map<String, EvalFunctionBlock> {
         return mapOf(

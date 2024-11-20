@@ -1,12 +1,15 @@
 package net.youapps.calcyou.ui.screens.graphing
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,6 +22,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
@@ -39,8 +43,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.youapps.calcyou.R
+import net.youapps.calcyou.data.graphing.Constant
 import net.youapps.calcyou.data.graphing.Defaults
 import net.youapps.calcyou.data.graphing.Function
+import net.youapps.calcyou.ui.components.AddNewConstantDialog
 import net.youapps.calcyou.ui.components.AddNewFunctionDialog
 import net.youapps.calcyou.viewmodels.GraphViewModel
 
@@ -48,6 +54,7 @@ import net.youapps.calcyou.viewmodels.GraphViewModel
 @Composable
 fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
     var showAddFunctionDialog by remember { mutableStateOf(false) }
+    var showAddConstantDialog by remember { mutableStateOf(false) }
     val bottomSheetState = rememberStandardBottomSheetState(
         skipHiddenState = true
     )
@@ -63,23 +70,41 @@ fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                FunctionList(
+                FunctionConstantsList(
                     modifier = Modifier.padding(top = 16.dp, start = 8.dp, end = 8.dp),
                     functions = graphViewModel.functions,
+                    constants = graphViewModel.constants,
                     onClickFunction = {
                         graphViewModel.updateSelectedFunction(it)
                         showAddFunctionDialog = true
                     },
-                    onClickRemove = {
+                    onClickRemoveFunction = {
                         graphViewModel.removeFunction(it)
-                    })
-                Button(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    onClick = {
-                        graphViewModel.updateSelectedFunction(-1)
-                        showAddFunctionDialog = true
-                    }) {
-                    Text(text = stringResource(R.string.add_new_function))
+                    },
+                    onClickConstant = {
+                        graphViewModel.selectedConstantIndex = it
+                        showAddConstantDialog = true
+                    },
+                    onClickRemoveConstant = {
+                        graphViewModel.constants.removeAt(it)
+                    }
+                )
+                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                    AnimatedVisibility(graphViewModel.constants.size < Defaults.defaultConstantNameChars.size) {
+                        OutlinedButton(onClick = {
+                            showAddConstantDialog = true
+                        }) {
+                            Text(text = stringResource(R.string.add_constant))
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Button(
+                        onClick = {
+                            graphViewModel.updateSelectedFunction(-1)
+                            showAddFunctionDialog = true
+                        }) {
+                        Text(text = stringResource(R.string.add_new_function))
+                    }
                 }
             }
         }) {
@@ -99,38 +124,76 @@ fun GraphingScreen(graphViewModel: GraphViewModel = viewModel()) {
             remember(graphViewModel.selectedFunctionIndex) { graphViewModel.expression },
         )
     }
+    if (showAddConstantDialog) {
+        AddNewConstantDialog(
+            onConfirm = { constant ->
+                if (graphViewModel.selectedConstantIndex != -1) {
+                    graphViewModel.constants[graphViewModel.selectedConstantIndex] = constant
+                } else {
+                    graphViewModel.constants.add(constant)
+                }
+
+                graphViewModel.selectedConstantIndex = -1
+                showAddConstantDialog = false
+            },
+            onCancel = {
+                graphViewModel.selectedConstantIndex = -1
+                showAddConstantDialog = false
+            },
+            initialConstant = graphViewModel.constants.getOrNull(graphViewModel.selectedConstantIndex)
+                ?: Constant(
+                    Defaults.defaultConstantNameChars.first { identifier ->
+                        graphViewModel.constants.none { it.identifier == identifier }
+                    },
+                    0.0
+                )
+        )
+    }
 }
 
 @Composable
-fun FunctionList(
+fun FunctionConstantsList(
     modifier: Modifier = Modifier,
     functions: List<Function>,
+    constants: List<Constant>,
     onClickFunction: (Int) -> Unit,
-    onClickRemove: (Int) -> Unit
+    onClickRemoveFunction: (Int) -> Unit,
+    onClickConstant: (Int) -> Unit,
+    onClickRemoveConstant: (Int) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
         itemsIndexed(
             functions,
             key = { index, function -> "$index-${function.hashCode()}" }) { index, function ->
             FunctionRow(
-                functionName = function.name,
+                lhsName = "${function.name}(x)",
                 text = function.expression,
                 color = function.color,
                 onClick = { onClickFunction(index) },
                 onClickRemove = {
-                    onClickRemove(index)
+                    onClickRemoveFunction(index)
                 }
             )
             Divider(Modifier.fillMaxWidth())
+        }
+
+        itemsIndexed(constants, key = { _, constant -> constant.hashCode() }) { index, constant ->
+            FunctionRow(
+                lhsName = constant.identifier.toString(),
+                text = constant.value.toString(),
+                color = null,
+                onClick = { onClickConstant(index) },
+                onClickRemove = { onClickRemoveConstant(index) }
+            )
         }
     }
 }
 
 @Composable
 fun FunctionRow(
-    functionName: String,
+    lhsName: String,
     text: String,
-    color: Color,
+    color: Color?,
     onClick: () -> Unit,
     onClickRemove: () -> Unit
 ) {
@@ -144,12 +207,12 @@ fun FunctionRow(
     ) {
 
         Text(
-            text = "${functionName}(x) = ", style = TextStyle(
+            text = "$lhsName = ", style = TextStyle(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = MaterialTheme.typography.titleMedium.fontSize,
                 fontStyle = FontStyle.Italic
-            ), color = color
+            ), color = color ?: MaterialTheme.colorScheme.primary
         )
         Text(
             text = text, style = TextStyle(

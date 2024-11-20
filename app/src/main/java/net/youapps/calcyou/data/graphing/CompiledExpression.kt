@@ -12,8 +12,8 @@ class CompiledExpression internal constructor(
     fun execute(): Double? =
         Evaluator.execute(expression = this)
 
-    fun execute(constant: Pair<String, Double>): Double? =
-        Evaluator.execute(this, constant)
+    fun execute(constants: List<Pair<String, Double>>): Double? =
+        Evaluator.execute(this, constants)
 
     fun setConstant(name: String, value: Double) {
         configuration.setConstant(name = name, value = value)
