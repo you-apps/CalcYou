@@ -42,14 +42,14 @@
     <string name="nautical_mile">מייל ימי</string>
     <string name="yard">יארד</string>
     <string name="foot">רגל</string>
-    <string name="inch">אינץ\'</string>
+    <string name="inch">אינץ׳</string>
     <string name="kilogram">קילוגרם</string>
     <string name="gram">גרם</string>
     <string name="milligram">מיליגרם</string>
     <string name="tonne">טון</string>
     <string name="pound">פאונד</string>
     <string name="ounce">אונקייה</string>
-    <string name="meter_per_second">מטר לשניה</string>
+    <string name="meter_per_second">מטר לשנייה</string>
     <string name="kilometer_per_hour">קילומטר לשעה</string>
     <string name="mile_per_hour">מייל לשעה</string>
     <string name="knot">קשר</string>
