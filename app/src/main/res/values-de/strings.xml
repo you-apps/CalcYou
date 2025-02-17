@@ -167,4 +167,9 @@
     <string name="saturation_slider">Sättigung</string>
     <string name="hue_slider">Farbton</string>
     <string name="hex_rgb_code">Hex RGB Farbcode</string>
+    <string name="turn">Drehen</string>
+    <string name="add_constant">Konstante hinzufügen</string>
+    <string name="h2o">H2O (Zoll Wasser)</string>
+    <string name="graphing">Abbildung</string>
+    <string name="color_picker_dialog">Farbwähler</string>
 </resources>

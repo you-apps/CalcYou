@@ -172,4 +172,5 @@
     <string name="color_picker_dialog">Выбор цвета</string>
     <string name="h2o">H2O (Дюймы воды)</string>
     <string name="hex_rgb_code">HEX-код цвета (RGB)</string>
+    <string name="add_constant">Добавить константу</string>
 </resources>
