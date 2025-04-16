@@ -160,4 +160,17 @@
     <string name="exbibyte">Exbibajt</string>
     <string name="pebibyte">Pebibajt</string>
     <string name="nautical_mile">Mile morskie</string>
+    <string name="add_constant">Dodaj stałą</string>
+    <string name="error_parsing_expression">Błąd podczas parsowania wyrażenia</string>
+    <string name="color_picker_dialog">Wybór koloru</string>
+    <string name="old_color">Stary kolor</string>
+    <string name="hex_rgb_code">Kod koloru RGB Hex</string>
+    <string name="h2o">H2O (cale wody)</string>
+    <string name="graphing">Wykresy</string>
+    <string name="add_new_function">Dodaj nową funkcję</string>
+    <string name="expression_is_empty">Wyrażenie jest puste</string>
+    <string name="saturation_slider">Nasycenie</string>
+    <string name="new_color">Nowy kolor</string>
+    <string name="lightness_slider">Lekkość</string>
+    <string name="hue_slider">Odcień</string>
 </resources>
