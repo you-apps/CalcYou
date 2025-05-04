@@ -171,4 +171,6 @@
     <string name="new_color">புதிய நிறம்</string>
     <string name="saturation_slider">தெவிட்டல்</string>
     <string name="lightness_slider">லேசான தன்மை</string>
+    <string name="hex_rgb_code">பதிண்ம சிபநி வண்ணக் குறியீடு</string>
+    <string name="add_constant">மாறிலி சேர்</string>
 </resources>

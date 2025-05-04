@@ -100,7 +100,7 @@
     <string name="poiseuille">Poiseuille</string>
     <string name="newton">Newton</string>
     <string name="kilonewton">Kilonewton</string>
-    <string name="dyne">Dyne</string>
+    <string name="dyne">Dina</string>
     <string name="pound_force">Lliura-força</string>
     <string name="ounce_force">Unça-força</string>
     <string name="second">Segon</string>
@@ -159,4 +159,18 @@
     <string name="exbibyte">ExbiByte</string>
     <string name="kilobit">Kilobit</string>
     <string name="megabit">Megabit</string>
+    <string name="nautical_mile">Milla nàutica</string>
+    <string name="add_constant">Afegir una constant</string>
+    <string name="error_parsing_expression">S\'ha produït un error en analitzar l\'expressió</string>
+    <string name="color_picker_dialog">Selector de color</string>
+    <string name="old_color">Color vell</string>
+    <string name="new_color">Color nou</string>
+    <string name="hue_slider">To</string>
+    <string name="saturation_slider">Saturació</string>
+    <string name="lightness_slider">Lleugeresa</string>
+    <string name="hex_rgb_code">Codi de color Hex RGB</string>
+    <string name="h2o">H2O (polzades d\'aigua)</string>
+    <string name="graphing">Graf</string>
+    <string name="add_new_function">Afegeix una funció nova</string>
+    <string name="expression_is_empty">L\'expressió és buida</string>
 </resources>

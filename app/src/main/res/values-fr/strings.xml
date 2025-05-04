@@ -80,7 +80,7 @@
     <string name="converter">Convertisseur d\'unité</string>
     <string name="simple_math">Maths simples :</string>
     <string name="common_symbols">Symboles communs :</string>
-    <string name="subscript">SousScript :</string>
+    <string name="subscript">SousScript :</string>
     <string name="english_uppercase">Majuscule Française :</string>
     <string name="english_lowercase">Minuscule Française :</string>
     <string name="greek_uppercase">Majuscule Grecque :</string>
@@ -137,8 +137,8 @@
     <string name="pressure">Pression</string>
     <string name="light">Lumière</string>
     <string name="fractions">Fractions :</string>
-    <string name="numbers">Nombres :</string>
-    <string name="superscript">SuperScript :</string>
+    <string name="numbers">Nombres :</string>
+    <string name="superscript">SuperScript :</string>
     <string name="arrows">Flèches :</string>
     <string name="stoke">Stokes</string>
     <string name="kilonewton_meter">Kilonewton-mètre</string>
@@ -171,4 +171,6 @@
     <string name="new_color">Nouvelle couleur</string>
     <string name="saturation_slider">Saturation</string>
     <string name="hue_slider">Teinte</string>
+    <string name="add_constant">Ajouter une constante</string>
+    <string name="hex_rgb_code">Code de couleur Hex RGB</string>
 </resources>
