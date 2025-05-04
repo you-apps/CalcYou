@@ -4,7 +4,10 @@ import android.view.SoundEffectConstants
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -43,11 +46,10 @@ fun NavDrawerContent(
     onDestinationSelected: (Destination) -> Unit
 ) {
     val view = LocalView.current
-    ModalDrawerSheet(modifier = Modifier.width(250.dp)) {
+    ModalDrawerSheet(modifier = Modifier.width(300.dp)) {
         LazyColumn(
             modifier = Modifier.padding(horizontal = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-
+            verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             item {
                 Column(
@@ -55,6 +57,7 @@ fun NavDrawerContent(
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Spacer(modifier = Modifier.height(30.dp))
                     Icon(
                         modifier = Modifier.size(128.dp),
                         painter = painterResource(id = R.drawable.ic_launcher_monochrome),
@@ -63,9 +66,11 @@ fun NavDrawerContent(
                     )
                     Text(
                         stringResource(id = R.string.app_name),
+                        modifier = Modifier.offset(y = (-10).dp),
                         color = LocalContentColor.current,
                         style = MaterialTheme.typography.titleLarge
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
             }
             item {
