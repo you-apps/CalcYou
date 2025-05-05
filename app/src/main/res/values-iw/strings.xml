@@ -69,6 +69,6 @@
     <string name="saturation_slider">רוויה</string>
     <string name="lightness_slider">בהירות</string>
     <string name="gallon">גלון</string>
-    <string name="quart">רביעית</string>
+    <string name="quart">רבע גלון</string>
     <string name="cubic_decimeter">דצימטר מעוקב</string>
 </resources>
