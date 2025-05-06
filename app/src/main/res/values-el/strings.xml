@@ -145,7 +145,7 @@
     <string name="light">Φως</string>
     <string name="grams_of_carbohydrate">Γραμμάρια υδατανθράκων</string>
     <string name="footcandle">Φουτκάντλ</string>
-    <string name="carriage_return">Επιστροφή Χαρακτήρα</string>
+    <string name="carriage_return">Μεταφορά Επιστροφή</string>
     <string name="gradian">Γκράντ</string>
     <string name="pound_force">Λίβρα-δύναμη</string>
     <string name="ounce_force">Ουγγιά-δύναμη</string>
@@ -162,13 +162,15 @@
     <string name="lumen">Λούμεν</string>
     <string name="candela">Καντέλα</string>
     <string name="lux">Λουξ</string>
-    <string name="poiseuille">Πουαζέι</string>
+    <string name="poiseuille">Πουαζέιγ</string>
     <string name="megapascal">Μεγαπασκάλ</string>
     <string name="dyne">Ντάιν</string>
     <string name="kilojoule">Κιλοτζάουλ</string>
-    <string name="centipoise">Σεντιπουάζ</string>
+    <string name="centipoise">Σαρανταποδαρούσα</string>
     <string name="stoke">Στόουκ</string>
     <string name="ounce_inch">Ουγγιά-ίντσα</string>
     <string name="gigapascal">Γιγαπασκάλ</string>
     <string name="exbibyte">Εξμπιμπάιτ</string>
+    <string name="superscript">Εκθέτη:</string>
+    <string name="subscript">Δείκτης:</string>
 </resources>
