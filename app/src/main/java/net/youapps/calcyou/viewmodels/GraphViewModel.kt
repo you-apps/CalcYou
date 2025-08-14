@@ -11,10 +11,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import net.youapps.calcyou.R
-import net.youapps.calcyou.data.graphing.Defaults
-import net.youapps.calcyou.data.graphing.Evaluator
+import net.youapps.calcyou.data.evaluator.Defaults
+import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
 import net.youapps.calcyou.data.graphing.Function
-import net.youapps.calcyou.data.graphing.Constant
+import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.ui.components.rainbowColors
 import java.text.ParseException
@@ -63,7 +63,7 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
             return
         }
         try {
-            val compiled = Evaluator.compile(expression)
+            val compiled = ExpressionEvaluator.compile(expression)
             val variables = listOf(
                 "x" to random.nextDouble(),
                 *constants.map { it.identifier.toString() to it.value }.toTypedArray()

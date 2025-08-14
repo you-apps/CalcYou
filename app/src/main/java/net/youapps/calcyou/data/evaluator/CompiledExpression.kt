@@ -1,19 +1,14 @@
-/*
- This code is a modified version of https://github.com/danielgindi/KotlinEval
- The original source code is licensed under MIT LICENSE
- */
-
-package net.youapps.calcyou.data.graphing
+package net.youapps.calcyou.data.evaluator
 
 class CompiledExpression internal constructor(
     internal var root: Token,
     var configuration: EvalConfiguration
 ) {
     fun execute(): Double? =
-        Evaluator.execute(expression = this)
+        ExpressionEvaluator.execute(expression = this)
 
     fun execute(constants: List<Pair<String, Double>>): Double? =
-        Evaluator.execute(this, constants)
+        ExpressionEvaluator.execute(this, constants)
 
     fun setConstant(name: String, value: Double) {
         configuration.setConstant(name = name, value = value)

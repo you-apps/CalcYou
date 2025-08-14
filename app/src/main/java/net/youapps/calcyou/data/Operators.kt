@@ -18,11 +18,11 @@ enum class SpecialOperator(val text: String, val value: String = text) {
     Cos("cos", "cos("),
     Tan("tan", "tan("),
     Ln("ln", "ln("),
-    Log("log", "log("),
+    Log("log", "log10("),
     PowerE("eˣ", "e^("),
     Square("x²", "^2"),
     SquareRoot("√", "√("),
-    Absolute("|x|", "|"),
+    Absolute("|x|", "abs("),
     Power("xʸ", "^("),
 
     ASin("sin⁻¹", "asin("),
@@ -36,6 +36,6 @@ enum class SpecialOperator(val text: String, val value: String = text) {
     ATanH("tanh⁻¹", "atanh("),
     Power2("2ˣ", "2^("),
     Cube("x³", "^3"),
-    Factorial("x!", "!")
+    Factorial("x!", "fac(")
 
 }

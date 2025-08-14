@@ -9,7 +9,7 @@ class EventHandler(
     private val onUpdateHistory: (String) -> Unit
 ) {
     private val tokenizer = Tokenizer(context)
-    private val evaluator = Evaluator(tokenizer)
+    private val evaluator = FormattingEvaluator(tokenizer)
 
     fun processEvent(event: CalculatorEvent, currentText: TextFieldValue): TextFieldValue {
         return when (event) {

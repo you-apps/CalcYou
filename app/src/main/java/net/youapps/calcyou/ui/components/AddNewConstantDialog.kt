@@ -30,7 +30,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import net.youapps.calcyou.R
-import net.youapps.calcyou.data.graphing.Constant
+import net.youapps.calcyou.data.evaluator.Constant
 
 @Composable
 fun AddNewConstantDialog(

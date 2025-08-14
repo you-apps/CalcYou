@@ -1,7 +1,7 @@
 package net.youapps.calcyou
 
-import net.youapps.calcyou.data.graphing.CompiledExpression
-import net.youapps.calcyou.data.graphing.Evaluator
+import net.youapps.calcyou.data.evaluator.CompiledExpression
+import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -52,7 +52,7 @@ internal class EvaluatorTest {
     fun `execute() should return correct answer for compiled expressions`() {
         testCases.forEach { expression, func ->
             val argument = random.nextDouble()
-            val compiled: CompiledExpression = Evaluator.compile(expression)
+            val compiled: CompiledExpression = ExpressionEvaluator.compile(expression)
 
             val answer = compiled.execute("x" to argument)
 

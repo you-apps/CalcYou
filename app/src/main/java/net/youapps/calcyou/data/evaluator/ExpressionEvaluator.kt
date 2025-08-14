@@ -1,14 +1,9 @@
-/*
- This code is a modified version of https://github.com/danielgindi/KotlinEval
- The original source code is licensed under MIT LICENSE
- */
-
-package net.youapps.calcyou.data.graphing
+package net.youapps.calcyou.data.evaluator
 
 import java.text.ParseException
 import kotlin.math.pow
 
-object Evaluator {
+object ExpressionEvaluator {
     private val configuration = EvalConfiguration()
 
     fun compile(expression: String): CompiledExpression {
@@ -21,7 +16,7 @@ object Evaluator {
         while (i < end) {
             val token = tokens[i]
             val prevToken = tokens[i - 1]
-            // When there are two consecetive + or - tokens, simplify them to one
+            // When there are two consecutive + or - tokens, simplify them to one
             // For example 5--1 becomes 5+1
             if (token is Token.Op && (token.value == Operator.SUB || token.value == Operator.ADD) && prevToken is Token.Op && (prevToken.value == Operator.SUB || prevToken.value == Operator.ADD)) {
                 if (prevToken.value != Operator.ADD) {
@@ -157,7 +152,7 @@ object Evaluator {
      * @param data The string to parse.
      * @param startAt The starting index in the string.
      * @return A [MatchWithIndex] object containing the parsed number and the index after the parsed number.
-     * @throws ParseException If a number cannotbe parsed.
+     * @throws java.text.ParseException If a number cannotbe parsed.
      */
     private fun parseNumber(data: String, startAt: Int): MatchWithIndex {
         var i = startAt
@@ -215,9 +210,7 @@ object Evaluator {
         while (i < endIndex) {
             var c = expression[i]
 
-            val isDigit = c in '0'..'9'
-
-            if (isDigit || c == '.') {
+            if (c.isDigit() || c == '.') {
                 // Starting a number
                 val parsedNumber = parseNumber(data = expression, startAt = i)
                 tokens.add(Token.Number(position = i, value = parsedNumber.match.toDouble()))
@@ -259,7 +252,7 @@ object Evaluator {
                 continue
             }
 
-            if (c == ',') { // Commas are used to seperate function arguments
+            if (c == ',') { // Commas are used to separate function arguments
                 tokens.add(Token.Comma(position = i))
                 i++
                 continue
@@ -366,10 +359,10 @@ object Evaluator {
             var left: MutableList<Token>? = tokens.subList(0, pos).toMutableList()
             val right: MutableList<Token> = tokens.subList(pos + 1, tokens.size)
 
-            if (left?.size == 0 && (op == "-" || op == "+")) {
+            if (left.isNullOrEmpty() && (op == "-" || op == "+")) {
                 left = null
             }
-            if ((left != null && left.size == 0) || right.size == 0) {
+            if ((left != null && left.isEmpty()) || right.isEmpty()) {
                 throw ParseException("Invalid expression, missing operand at $pos", -1)
             }
             if (left == null && op == "-") {
@@ -390,7 +383,7 @@ object Evaluator {
             )
         }
 
-        if (tokens.size == 0) {
+        if (tokens.isEmpty()) {
             throw ParseException("Invalid expression, missing operand or operator.", -1)
         }
 
@@ -408,7 +401,7 @@ object Evaluator {
             is Token.Call -> {
                 singleToken.arguments = mutableListOf()
                 for (a in 0 until (singleToken.argumentsGroups?.size ?: 0)) {
-                    if (singleToken.argumentsGroups!![a].size == 0) {
+                    if (singleToken.argumentsGroups!![a].isEmpty()) {
                         singleToken.arguments?.add(null)
                     } else {
                         singleToken.arguments?.add(
@@ -458,7 +451,7 @@ object Evaluator {
                 if (configuration.genericConstants.containsKey(tokenValue.uppercase()))
                     return configuration.genericConstants[tokenValue.uppercase()]!!
 
-                throw ParseException("Error Evaluating token: Variable ${tokenValue} invalid", -1)
+                throw ParseException("Error Evaluating token: Variable $tokenValue invalid", -1)
             }
 
             is Token.Call -> return evaluateFunction(token = token, configuration = configuration)

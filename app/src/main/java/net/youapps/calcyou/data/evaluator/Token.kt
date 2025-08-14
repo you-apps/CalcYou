@@ -1,4 +1,4 @@
-package net.youapps.calcyou.data.graphing
+package net.youapps.calcyou.data.evaluator
 
 sealed class Token(val position: Int?) {
     class Group(

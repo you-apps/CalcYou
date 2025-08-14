@@ -9,7 +9,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import net.youapps.calcyou.data.graphing.Constant
+import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.data.graphing.unitToPxCoordinates

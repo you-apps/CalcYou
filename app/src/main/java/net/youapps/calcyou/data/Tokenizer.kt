@@ -24,7 +24,15 @@ class Tokenizer(context: Context) {
         SimpleOperator.values().forEach {
             replacementMap[it.value] = it.text
         }
-        replacementMap["Infinity"] = "∞"
+
+        // users are allowed to use the unicode symbols at the right, however to not have duplicated
+        // logic inside the code, we're normalizing these representations
+        replacementMap.putAll(mapOf(
+            "Infinity" to "∞",
+            "sqrt" to "√",
+            "**" to "^",
+            "pi" to "π",
+        ))
     }
 
     fun getNormalizedExpression(expr: String): String {

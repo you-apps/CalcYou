@@ -43,8 +43,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.youapps.calcyou.R
-import net.youapps.calcyou.data.graphing.Constant
-import net.youapps.calcyou.data.graphing.Defaults
+import net.youapps.calcyou.data.evaluator.Constant
+import net.youapps.calcyou.data.evaluator.Defaults
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.ui.components.AddNewConstantDialog
 import net.youapps.calcyou.ui.components.AddNewFunctionDialog

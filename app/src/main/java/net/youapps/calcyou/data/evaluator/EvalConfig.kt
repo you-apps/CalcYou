@@ -3,7 +3,7 @@
  The original source code is licensed under MIT LICENSE
  */
 
-package net.youapps.calcyou.data.graphing
+package net.youapps.calcyou.data.evaluator
 
 typealias EvalFunctionBlock = (args: List<Double>) -> Double
 
