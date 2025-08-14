@@ -1,5 +1,6 @@
 package net.youapps.calcyou.data.evaluator
 
+import net.youapps.calcyou.data.evaluator.Defaults.defaultGenericConstants
 import java.security.InvalidParameterException
 import kotlin.math.abs
 import kotlin.math.acos
@@ -46,21 +47,33 @@ object Defaults {
     val defaultFuncNameChars: List<Char> = "fghijklmnopqrstuvw".toList()
     val defaultConstantNameChars: List<Char> = "abcdeyz".toList()
 
+    /**
+     * Converts the given double [value] into radian mode.
+     *
+     * @param value double that's in the trigonometric mode specified by the  [mode] parameter
+     * @param mode whether the input is radian or degree
+     */
+    private fun trigonometricModeToRadian(value: Double, mode: TrigonometricMode): Double {
+        if (mode == TrigonometricMode.RADIAN) return value;
+
+        return defaultGenericConstants["DEG"]!! * value;
+    }
+
     fun getDefaultGenericFunctions(): Map<String, EvalFunctionBlock> {
         return mapOf(
-            "ABS" to { args ->
+            "ABS" to { args, _ ->
                 abs(args.first())
             },
-            "CEILING" to { args ->
+            "CEILING" to { args, _ ->
                 ceil(args.first())
             },
-            "EXP" to { args ->
+            "EXP" to { args, _ ->
                 exp(args.first())
             },
-            "FLOOR" to { args ->
+            "FLOOR" to { args, _ ->
                 floor(args.first())
             },
-            "LN" to fn@{ args ->
+            "LN" to fn@{ args, _ ->
                 if (args.size == 2) {
                     val arg1 = args[0]
                     val arg2 = args[1]
@@ -71,7 +84,7 @@ object Defaults {
                 }
                 throw InvalidParameterException()
             },
-            "LOG" to fn@{ args ->
+            "LOG" to fn@{ args, _ ->
                 if (args.size == 2) {
                     val arg1 = args[0]
                     val arg2 = args[1]
@@ -82,13 +95,13 @@ object Defaults {
                 }
                 throw InvalidParameterException()
             },
-            "LOG2" to { args ->
+            "LOG2" to { args, _ ->
                 log2(args.first())
             },
-            "LOG10" to { args ->
+            "LOG10" to { args, _ ->
                 log10(args.first())
             },
-            "MAX" to fn@{ args ->
+            "MAX" to fn@{ args, _ ->
                 var v = args[0]
                 for (arg in args) {
                     val narg = arg
@@ -97,7 +110,7 @@ object Defaults {
                 }
                 v
             },
-            "MIN" to fn@{ args ->
+            "MIN" to fn@{ args, _ ->
                 var v = args[0]
                 for (arg in args) {
                     val narg = arg
@@ -106,7 +119,7 @@ object Defaults {
                 }
                 v
             },
-            "POW" to fn@{ args ->
+            "POW" to fn@{ args, _ ->
                 if (args.size == 2) {
                     val arg1 = args[0]
                     val arg2 = args[1]
@@ -114,19 +127,19 @@ object Defaults {
                 }
                 throw InvalidParameterException()
             },
-            "ROUND" to { args ->
+            "ROUND" to { args, _ ->
                 round(args.first())
             },
-            "SIGN" to { args ->
+            "SIGN" to { args, _ ->
                 if (args.first() < 0) -1.0 else if (args.first() > 0) 1.0 else 0.0
             },
-            "SQRT" to { args ->
+            "SQRT" to { args, _ ->
                 sqrt(args.first())
             },
-            "TRUNCATE" to { args ->
+            "TRUNCATE" to { args, _ ->
                 truncate(args.first())
             },
-            "FAC" to fn@{ args ->
+            "FAC" to fn@{ args, _ ->
                 val num = floor(args.first()).toInt()
                 if (num < 0) throw InvalidParameterException()
 
@@ -134,50 +147,50 @@ object Defaults {
             },
 
             // Trigonometric functions start here
-            "SIN" to { args ->
-                sin(args.first())
+            "SIN" to { args, mode ->
+                sin(trigonometricModeToRadian(args.first(), mode))
             },
-            "ASIN" to { args ->
-                asin(args.first())
+            "ASIN" to { args, mode ->
+                asin(trigonometricModeToRadian(args.first(), mode))
             },
-            "SINH" to { args ->
-                sinh(args.first())
+            "SINH" to { args, mode ->
+                sinh(trigonometricModeToRadian(args.first(), mode))
             },
-            "ASINH" to { args ->
-                asinh(args.first())
+            "ASINH" to { args, mode ->
+                asinh(trigonometricModeToRadian(args.first(), mode))
             },
-            "COS" to { args ->
-                cos(args.first())
+            "COS" to { args, mode ->
+                cos(trigonometricModeToRadian(args.first(), mode))
             },
-            "ACOS" to { args ->
+            "ACOS" to { args, mode ->
 
-                acos(args.first())
+                acos(trigonometricModeToRadian(args.first(), mode))
             },
-            "COSH" to { args ->
-                cosh(args.first())
+            "COSH" to { args, mode ->
+                cosh(trigonometricModeToRadian(args.first(), mode))
             },
-            "ACOSH" to { args ->
-                acosh(args.first())
+            "ACOSH" to { args, mode ->
+                acosh(trigonometricModeToRadian(args.first(), mode))
             },
-            "TAN" to { args ->
-                tan(args.first())
+            "TAN" to { args, mode ->
+                tan(trigonometricModeToRadian(args.first(), mode))
             },
-            "ATAN" to { args ->
-                atan(args.first())
+            "ATAN" to { args, mode ->
+                atan(trigonometricModeToRadian(args.first(), mode))
             },
-            "ATAN2" to { args ->
-                val arg1 = args[0]
-                val arg2 = args[1]
+            "ATAN2" to { args, mode ->
+                val arg1 = trigonometricModeToRadian(args[0], mode)
+                val arg2 = trigonometricModeToRadian(args[1], mode)
                 if (args.size != 2) {
                     throw InvalidParameterException()
                 }
                 atan2(arg1, arg2)
             },
-            "TANH" to { args ->
-                tanh(args.first())
+            "TANH" to { args, mode ->
+                tanh(trigonometricModeToRadian(args.first(), mode))
             },
-            "ATANH" to { args ->
-                atanh(args.first())
+            "ATANH" to { args, mode ->
+                atanh(trigonometricModeToRadian(args.first(), mode))
             },
         )
     }

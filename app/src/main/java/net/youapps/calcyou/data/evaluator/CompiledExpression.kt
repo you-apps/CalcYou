@@ -4,11 +4,8 @@ class CompiledExpression internal constructor(
     internal var root: Token,
     var configuration: EvalConfiguration
 ) {
-    fun execute(): Double? =
-        ExpressionEvaluator.execute(expression = this)
-
-    fun execute(constants: List<Pair<String, Double>>): Double? =
-        ExpressionEvaluator.execute(this, constants)
+    fun execute(mode: TrigonometricMode, constants: List<Pair<String, Double>> = emptyList()): Double? =
+        ExpressionEvaluator.execute(this, mode, constants)
 
     fun setConstant(name: String, value: Double) {
         configuration.setConstant(name = name, value = value)

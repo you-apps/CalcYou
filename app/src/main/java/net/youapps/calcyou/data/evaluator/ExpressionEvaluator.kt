@@ -65,17 +65,17 @@ object ExpressionEvaluator {
         return CompiledExpression(root = tree, configuration = configuration)
     }
 
-    fun execute(expression: String): Any? =
-        execute(expression = compile(expression = expression))
+    fun execute(expression: String, mode: TrigonometricMode): Double? =
+        execute(expression = compile(expression = expression), mode = mode)
 
-    fun execute(expression: CompiledExpression): Double? =
-        evaluateToken(token = expression.root, configuration = expression.configuration)
+    fun execute(expression: CompiledExpression, mode: TrigonometricMode, constants: List<Pair<String, Double>> = emptyList()): Double? {
+        configuration.mode = mode
 
-    fun execute(expression: CompiledExpression, constants: List<Pair<String, Double>>): Double? {
         configuration.clearConstants()
         for (constant in constants) {
             configuration.setConstant(constant.first, constant.second)
         }
+
         return evaluateToken(token = expression.root, configuration = configuration)
     }
 
@@ -326,7 +326,7 @@ object ExpressionEvaluator {
                 continue
             }
 
-            if (isFunc && groups!!.size == 0) {
+            if (isFunc && groups!!.isEmpty()) {
                 groups.add(sub)
             }
 
@@ -512,7 +512,7 @@ object ExpressionEvaluator {
             }
         }
 
-        return token.function.invoke(args)
+        return token.function.invoke(args, configuration.mode)
     }
 
     private fun getFunFromName(fname: String): EvalFunctionBlock {
@@ -537,4 +537,9 @@ object ExpressionEvaluator {
         }
         throw ParseException("Function named \"${fname}\" was not found", -1)
     }
+}
+
+enum class TrigonometricMode {
+    RADIAN,
+    DEGREE
 }

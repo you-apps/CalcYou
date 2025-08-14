@@ -5,11 +5,12 @@
 
 package net.youapps.calcyou.data.evaluator
 
-typealias EvalFunctionBlock = (args: List<Double>) -> Double
+typealias EvalFunctionBlock = (args: List<Double>, mode: TrigonometricMode) -> Double
 
 class EvalConfiguration(
     var constants: MutableMap<String, Double>? = null,
-    var functions: MutableMap<String, EvalFunctionBlock>? = null
+    var functions: MutableMap<String, EvalFunctionBlock>? = null,
+    var mode: TrigonometricMode = TrigonometricMode.RADIAN
 ) {
 
     internal var allOperators = listOf<Operator>()

@@ -1,6 +1,7 @@
 package net.youapps.calcyou.data
 
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 
 /**
  * Evaluates expressions and returns the result as a formatted, localized string.
@@ -23,7 +24,7 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
         }
 
         return try {
-            val result = ExpressionEvaluator.compile(expr).execute() ?: return null
+            val result = ExpressionEvaluator.compile(expr).execute(TrigonometricMode.DEGREE) ?: return null
             if (result.isNaN()) {
                 null
             } else {

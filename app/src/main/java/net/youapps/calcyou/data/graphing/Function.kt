@@ -5,6 +5,7 @@ import net.youapps.calcyou.data.Tokenizer
 import net.youapps.calcyou.data.evaluator.CompiledExpression
 import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 
 data class Function(
     val expression: String,
@@ -12,12 +13,12 @@ data class Function(
     val name: String,
     val compiled: CompiledExpression
 ) {
-    fun execute(variableX: Float, constants: List<Constant>): Float? {
+    fun execute(variableX: Float, mode: TrigonometricMode, constants: List<Constant>): Float? {
         val variables = listOf(
             "x" to variableX.toDouble(),
             *constants.map { it.identifier.toString() to it.value }.toTypedArray()
         )
-        return compiled.execute(variables)?.toFloat()
+        return compiled.execute(mode, variables)?.toFloat()
     }
 
     companion object {

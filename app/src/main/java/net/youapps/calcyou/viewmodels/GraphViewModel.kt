@@ -16,6 +16,7 @@ import net.youapps.calcyou.data.evaluator.Defaults
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.data.evaluator.Constant
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.ui.components.rainbowColors
 import java.text.ParseException
@@ -25,8 +26,10 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
     private val context: Context
         get() = application.applicationContext
     var window by mutableStateOf(Window(), neverEqualPolicy())
+
     val functions = mutableStateListOf<Function>()
     val constants = mutableStateListOf<Constant>()
+    val mode by mutableStateOf(TrigonometricMode.RADIAN)
 
     private val tokenizer by lazy {
         Tokenizer(context)
@@ -74,7 +77,7 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
                 "x" to random.nextDouble(),
                 *constants.map { it.identifier.toString() to it.value }.toTypedArray()
             )
-            compiled.execute(variables)
+            compiled.execute(mode = mode, constants = variables)
             isError = false
         } catch (e: ParseException) {
             errorText = e.message ?: context.getString(R.string.error_parsing_expression)

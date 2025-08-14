@@ -10,6 +10,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import net.youapps.calcyou.data.evaluator.Constant
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.data.graphing.unitToPxCoordinates
@@ -164,14 +165,15 @@ fun DrawScope.graphAroundAsymptote(
     pDerivative: Float,
     depth: Int,
     lineWidth: Float,
+    mode: TrigonometricMode
 ) {
     var previousDerivative = pDerivative
     val precision = 2
     for (j in 0 until precision) {
         val currentX = aX1 + (aX2 - aX1) * j / precision
         val nextX = aX1 + (aX2 - aX1) * (j + 1) / precision
-        val currentY = function.execute(currentX, constants) ?: 0f
-        val nextY = function.execute(nextX, constants) ?: 0f
+        val currentY = function.execute(currentX, mode, constants) ?: 0f
+        val nextY = function.execute(nextX, mode, constants) ?: 0f
 
         val currentDerivative = (nextY - currentY) / (nextX - currentX)
         if ((currentDerivative >= 0 && previousDerivative >= 0) || (currentDerivative <= 0 && previousDerivative <= 0)) {
@@ -191,7 +193,8 @@ fun DrawScope.graphAroundAsymptote(
                     nextX,
                     previousDerivative,
                     depth - 1,
-                    lineWidth
+                    lineWidth,
+                    mode
                 )
             }
             return
@@ -200,7 +203,7 @@ fun DrawScope.graphAroundAsymptote(
     }
 }
 
-fun DrawScope.drawGraph(window: Window, function: Function, constants: List<Constant>, lineWidth: Float) {
+fun DrawScope.drawGraph(window: Window, function: Function, constants: List<Constant>, lineWidth: Float, mode: TrigonometricMode) {
     val resolution = 500
     var previousX = 0f
     var previousDerivative = 0f
@@ -208,8 +211,8 @@ fun DrawScope.drawGraph(window: Window, function: Function, constants: List<Cons
         val currentX = window.xMin + i / resolution.toFloat() * (window.xMax - window.xMin)
         val nextX = window.xMin + (i + 1) / resolution.toFloat() * (window.xMax - window.xMin)
 
-        val currentY = function.execute(currentX, constants) ?: 0f
-        val nextY = function.execute(nextX, constants) ?: 0f
+        val currentY = function.execute(currentX, mode, constants) ?: 0f
+        val nextY = function.execute(nextX, mode, constants) ?: 0f
 
         val currentDerivative = (nextY - currentY) / (nextX - currentX)
         if ((currentDerivative >= 0 && previousDerivative >= 0) || (currentDerivative <= 0 && previousDerivative <= 0)) {
@@ -229,7 +232,8 @@ fun DrawScope.drawGraph(window: Window, function: Function, constants: List<Cons
                     nextX,
                     previousDerivative,
                     20,
-                    lineWidth
+                    lineWidth,
+                    mode
                 )
                 // If curve approaches asymptote from right side
             } else {
@@ -241,7 +245,8 @@ fun DrawScope.drawGraph(window: Window, function: Function, constants: List<Cons
                     previousX,
                     currentDerivative,
                     20,
-                    lineWidth
+                    lineWidth,
+                    mode
                 )
             }
             drawLine(
@@ -272,7 +277,7 @@ fun DrawScope.renderCanvas(
     vm.functions.forEach {
         // this might fail if we attempt to use a constant that no longer exists
         runCatching {
-            drawGraph(window, it, vm.constants, lineWidth)
+            drawGraph(window, it, vm.constants, lineWidth, vm.mode)
         }
     }
 }
