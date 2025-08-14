@@ -1,12 +1,31 @@
-package net.youapps.calcyou.data
+/*
+ * Copyright (C) 2006-2009 Mihai Preda.
+ * Copyright (C) 2025 You Apps
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+package net.youapps.calcyou.data.evaluator
 
 import kotlin.math.abs
+import kotlin.math.floor
 import kotlin.math.min
 
 /**
  * Contains static helper methods for formatting double values.
  */
-object Util {
+object MathUtil {
     const val LEN_UNLIMITED: Int = 100
     const val FLOAT_PRECISION: Int = -1
 
@@ -155,5 +174,31 @@ object Util {
      */
     fun doubleToString(x: Double, maxLen: Int, rounding: Int): String? {
         return sizeTruncate(doubleToString(x, rounding), maxLen)
+    }
+
+    private fun isPiMultiple(x: Double): Boolean {
+        val d = x / Math.PI
+        return d == floor(d)
+    }
+
+    /**
+     * Sine wrapper that fixes IEEE754 inaccuracy around result value 0.
+     */
+    fun sin(x: Double): Double {
+        return if (isPiMultiple(x)) 0.0 else kotlin.math.sin(x)
+    }
+
+    /**
+     * Cosine wrapper that fixes IEEE754 inaccuracy around result value 0.
+     */
+    fun cos(x: Double): Double {
+        return if (isPiMultiple(x - Math.PI / 2)) 0.0 else kotlin.math.cos(x)
+    }
+
+    /**
+     * Tangent wrapper that fixes IEEE754 inaccuracy around result value 0.
+     */
+    fun tan(x: Double): Double {
+        return if (isPiMultiple(x)) 0.0 else kotlin.math.tan(x)
     }
 }

@@ -2,6 +2,7 @@ package net.youapps.calcyou.data
 
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
+import net.youapps.calcyou.data.evaluator.MathUtil
 
 /**
  * Evaluates expressions and returns the result as a formatted, localized string.
@@ -28,7 +29,7 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
             if (result.isNaN()) {
                 null
             } else {
-                val shortened = Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)
+                val shortened = MathUtil.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)
                 shortened?.let { tokenizer.getLocalizedExpression(it) }
             }
         } catch (_: Exception) {

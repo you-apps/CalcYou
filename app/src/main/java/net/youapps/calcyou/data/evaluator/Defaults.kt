@@ -1,6 +1,5 @@
 package net.youapps.calcyou.data.evaluator
 
-import net.youapps.calcyou.data.evaluator.Defaults.defaultGenericConstants
 import java.security.InvalidParameterException
 import kotlin.math.abs
 import kotlin.math.acos
@@ -11,7 +10,6 @@ import kotlin.math.atan
 import kotlin.math.atan2
 import kotlin.math.atanh
 import kotlin.math.ceil
-import kotlin.math.cos
 import kotlin.math.cosh
 import kotlin.math.exp
 import kotlin.math.floor
@@ -21,10 +19,8 @@ import kotlin.math.log10
 import kotlin.math.log2
 import kotlin.math.pow
 import kotlin.math.round
-import kotlin.math.sin
 import kotlin.math.sinh
 import kotlin.math.sqrt
-import kotlin.math.tan
 import kotlin.math.tanh
 import kotlin.math.truncate
 
@@ -148,7 +144,7 @@ object Defaults {
 
             // Trigonometric functions start here
             "SIN" to { args, mode ->
-                sin(trigonometricModeToRadian(args.first(), mode))
+                MathUtil.sin(trigonometricModeToRadian(args.first(), mode))
             },
             "ASIN" to { args, mode ->
                 asin(trigonometricModeToRadian(args.first(), mode))
@@ -160,10 +156,9 @@ object Defaults {
                 asinh(trigonometricModeToRadian(args.first(), mode))
             },
             "COS" to { args, mode ->
-                cos(trigonometricModeToRadian(args.first(), mode))
+                MathUtil.cos(trigonometricModeToRadian(args.first(), mode))
             },
             "ACOS" to { args, mode ->
-
                 acos(trigonometricModeToRadian(args.first(), mode))
             },
             "COSH" to { args, mode ->
@@ -173,7 +168,7 @@ object Defaults {
                 acosh(trigonometricModeToRadian(args.first(), mode))
             },
             "TAN" to { args, mode ->
-                tan(trigonometricModeToRadian(args.first(), mode))
+                MathUtil.tan(trigonometricModeToRadian(args.first(), mode))
             },
             "ATAN" to { args, mode ->
                 atan(trigonometricModeToRadian(args.first(), mode))
