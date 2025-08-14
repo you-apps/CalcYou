@@ -1,6 +1,7 @@
 package net.youapps.calcyou.data.graphing
 
 import androidx.compose.ui.graphics.Color
+import net.youapps.calcyou.data.Tokenizer
 import net.youapps.calcyou.data.evaluator.CompiledExpression
 import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
@@ -20,8 +21,10 @@ data class Function(
     }
 
     companion object {
-        fun create(expression: String, color: Color, functionName: String): Function {
-            val compiled: CompiledExpression = ExpressionEvaluator.compile(expression)
+        fun create(tokenizer: Tokenizer, expression: String, color: Color, functionName: String): Function {
+            val normalizedExpression = tokenizer.getNormalizedExpression(expression)
+
+            val compiled: CompiledExpression = ExpressionEvaluator.compile(normalizedExpression)
             return Function(
                 expression, color, functionName, compiled
             )

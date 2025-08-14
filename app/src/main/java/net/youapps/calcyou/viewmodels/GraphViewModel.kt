@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import net.youapps.calcyou.R
+import net.youapps.calcyou.data.Tokenizer
 import net.youapps.calcyou.data.evaluator.Defaults
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
 import net.youapps.calcyou.data.graphing.Function
@@ -26,6 +27,10 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
     var window by mutableStateOf(Window(), neverEqualPolicy())
     val functions = mutableStateListOf<Function>()
     val constants = mutableStateListOf<Constant>()
+
+    private val tokenizer by lazy {
+        Tokenizer(context)
+    }
 
     private val random = Random(System.currentTimeMillis())
     var isError by mutableStateOf(true)
@@ -63,7 +68,8 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
             return
         }
         try {
-            val compiled = ExpressionEvaluator.compile(expression)
+            val tokenizedExpr = tokenizer.getNormalizedExpression(expression)
+            val compiled = ExpressionEvaluator.compile(tokenizedExpr)
             val variables = listOf(
                 "x" to random.nextDouble(),
                 *constants.map { it.identifier.toString() to it.value }.toTypedArray()
@@ -81,11 +87,11 @@ class GraphViewModel(private val application: Application) : AndroidViewModel(ap
 
     fun addFunction(expression: String, color: Color, functionName: String) {
         if (selectedFunctionIndex != -1) {
-            functions[selectedFunctionIndex] = Function.create(expression, color, functionName)
+            functions[selectedFunctionIndex] = Function.create(tokenizer, expression, color, functionName)
             updateSelectedFunction(-1)
             return
         }
-        functions.add(Function.create(expression, color, functionName))
+        functions.add(Function.create(tokenizer, expression, color, functionName))
     }
 
     fun removeFunction(index: Int) {
