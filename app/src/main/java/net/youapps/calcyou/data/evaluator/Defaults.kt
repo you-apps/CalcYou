@@ -136,10 +136,10 @@ object Defaults {
                 truncate(args.first())
             },
             "FAC" to fn@{ args, _ ->
-                val num = floor(args.first()).toInt()
+                val num = args.first()
                 if (num < 0) throw InvalidParameterException()
 
-                (2..num).fold(1.0) { a, b -> a * b}
+                MathUtil.factorial(num)
             },
 
             // Trigonometric functions start here

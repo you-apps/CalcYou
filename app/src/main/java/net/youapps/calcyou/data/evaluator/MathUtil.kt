@@ -19,8 +19,12 @@
 package net.youapps.calcyou.data.evaluator
 
 import kotlin.math.abs
+import kotlin.math.exp
 import kotlin.math.floor
+import kotlin.math.ln
 import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 /**
  * Contains static helper methods for formatting double values.
@@ -200,5 +204,17 @@ object MathUtil {
      */
     fun tan(x: Double): Double {
         return if (isPiMultiple(x)) 0.0 else kotlin.math.tan(x)
+    }
+
+    /**
+     * @param x must be >= 0, otherwise this results in undefined behavior
+     */
+    fun factorial(x: Double): Double {
+        // naive (bad performing) implementation of factorials
+        // nevertheless it should be fast enough to not cause any visible delays
+        if (x < 170) return (2..x.toInt()).fold(1.0) { a, b -> a * b }
+
+        // Gosper's Approximation, see https://mathworld.wolfram.com/StirlingsApproximation.html
+        return (sqrt((2 * x + 1/3) * Math.PI) * x.pow(x) * exp((-x)))
     }
 }
