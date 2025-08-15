@@ -7,7 +7,7 @@ object ExpressionEvaluator {
     private val configuration = EvalConfiguration()
 
     fun compile(expression: String): CompiledExpression {
-        val tokens =
+        var tokens =
             tokenizeExpression(expression = expression)
         var end = tokens.size
 
@@ -52,14 +52,19 @@ object ExpressionEvaluator {
         while (i < end) {
             val token = tokens[i]
             if (token is Token.LeftParen) {
-                groupTokens(tokens = tokens, startAt = i)
+                val groupStartIndex = if (i > 0 && tokens[i-1] is Token.Var) i-1 else i
+
+                val (newToken, replacementSize) = groupTokens(tokens = tokens, startAt = groupStartIndex)
+                tokens = (tokens.subList(0, groupStartIndex) + listOf(newToken) +
+                        tokens.subList(groupStartIndex + replacementSize, tokens.size))
+                    .toMutableList()
                 end = tokens.size
                 continue
             }
             i += 1
         }
 
-        // Build the tree
+        // Build the tree, i.e. join operators with their left and right children
         val tree = buildTree(tokens = tokens, configuration = configuration)
 
         return CompiledExpression(root = tree, configuration = configuration)
@@ -275,59 +280,53 @@ object ExpressionEvaluator {
         return tokens
     }
 
-    private fun groupTokens(tokens: MutableList<Token>, startAt: Int = 0): Token {
-        val isFunc = startAt > 0 && tokens[startAt - 1] is Token.Var
-        var rootToken = tokens[if (isFunc) startAt - 1 else startAt]
+    /**
+     * @return (grouped token, length of the token)
+     */
+    private fun groupTokens(tokens: List<Token>, startAt: Int = 0): Pair<Token, Int> {
+        val isFunc = tokens[startAt] is Token.Var
+        val rootToken = tokens[startAt]
 
-        var groups: MutableList<MutableList<Token>>? = null
         var sub: MutableList<Token> = mutableListOf()
-        if (isFunc) {
-            groups = mutableListOf()
-            val newToken = Token.Call(
+        // groups is only used if we're in a function call
+        val groups: MutableList<MutableList<Token>> = mutableListOf(sub)
+        val newToken = if (isFunc) {
+            Token.Call(
                 rootToken.position,
                 argumentsGroups = groups,
                 function = getFunFromName((rootToken as Token.Var).value)
             )
-            tokens[startAt - 1] = newToken
-            rootToken = newToken
         } else {
-            val newToken = Token.Group(rootToken.position, tokens = sub)
-            tokens[startAt] = newToken
-            rootToken = newToken
+            Token.Group(rootToken.position, tokens = sub)
         }
 
-        var i = startAt + 1
-        var end = tokens.size
-
-        while (i < end) {
+        var i = startAt + if (isFunc) 2 else 1
+        while (i < tokens.size) {
             val token = tokens[i]
 
             if (isFunc && token is Token.Comma) {
                 sub = mutableListOf()
-                groups!!.add(sub)
+                groups.add(sub)
                 i += 1
                 continue
             }
 
             if (token is Token.RightParen) {
-                if (isFunc) {
-                    for (r in i downTo startAt)
-                        tokens.removeAt(r)
-                } else {
-                    for (r in i downTo (startAt + 1))
-                        tokens.removeAt(r)
-                }
-                return rootToken
+                return newToken to (i - startAt + 1)
             }
 
-            if (token is Token.LeftParen) {
-                groupTokens(tokens = tokens, startAt = i)
-                end = tokens.size
+            if (token is Token.Var && tokens[i+1] is Token.LeftParen) {
+                val (newToken, replacementSize) = groupTokens(tokens = tokens, startAt = i)
+                i += replacementSize
+                sub.add(newToken)
                 continue
             }
 
-            if (isFunc && groups!!.isEmpty()) {
-                groups.add(sub)
+            if (token is Token.LeftParen) {
+                val (newToken, replacementSize) = groupTokens(tokens = tokens, startAt = i)
+                i += replacementSize
+                sub.add(newToken)
+                continue
             }
 
             sub.add(token)

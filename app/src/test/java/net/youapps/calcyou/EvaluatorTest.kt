@@ -7,6 +7,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
 import kotlin.math.abs
+import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.exp
 import kotlin.math.ln
@@ -22,6 +23,7 @@ import kotlin.random.Random
 internal class EvaluatorTest {
 
     val testCases = mapOf(
+        "3 - 5 * x" to { x: Double -> 3 - 5 * x },
         "sin(x)" to { x: Double -> sin(x) },
         "cos(x)" to { x: Double -> cos(x) },
         "tan(x)" to { x: Double -> tan(x) },
@@ -44,8 +46,10 @@ internal class EvaluatorTest {
         "round(x)" to { x: Double -> round(x) },
         "sin(2*PI)" to { _: Double -> sin(2 * Math.PI) },
         "x*(5+3*x)" to { x: Double -> x * (5 + 3 * x) },
-        //Todo: support function inside another function
-        //"sin(cos(x))" to { x: Double -> sin(cos(x)) },
+        "sin(cos(x))" to { x: Double -> sin(cos(x)) },
+        "sin(cos(5 + x) * 2)" to { x: Double -> sin(cos(5 + x) * 2) },
+        "sin(asin(cos(x)))" to { x: Double -> sin(asin(cos(x))) },
+        "abs(-x ** 4)" to { x: Double -> abs(-x.pow(4)) }
     )
     val random = Random(System.currentTimeMillis())
 

@@ -42,6 +42,19 @@ sealed class Token(val position: Int?) {
     class Comma(
         position: Int? = null
     ) : Token(position)
+
+    override fun toString(): String {
+        return when (this) {
+            is Call -> "Call(${argumentsGroups})"
+            is Comma -> ", "
+            is Group -> tokens.joinToString(", ")
+            is LeftParen -> "LeftParen"
+            is Number -> "$value"
+            is Op -> "Op($left $value $right)"
+            is RightParen -> "RightParen"
+            is Var -> "Var($value)"
+        }
+    }
 }
 
 enum class Operator(val text: String) {
