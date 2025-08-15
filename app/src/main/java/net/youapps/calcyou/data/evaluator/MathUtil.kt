@@ -21,7 +21,6 @@ package net.youapps.calcyou.data.evaluator
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.floor
-import kotlin.math.ln
 import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -45,7 +44,7 @@ object MathUtil {
      * @param maxLen the maximum number of characters in the returned string
      * @return a truncation no longer then maxLen (e.g. "-2.8E20" for maxLen=7).
      */
-    fun sizeTruncate(str: String, maxLen: Int): String? {
+    fun sizeTruncate(str: String, maxLen: Int): String {
         if (maxLen == LEN_UNLIMITED) {
             return str
         }
@@ -176,7 +175,7 @@ object MathUtil {
      * @param maxLen   the maximum total length of the resulting string
      * @param rounding the number of final digits to round
      */
-    fun doubleToString(x: Double, maxLen: Int, rounding: Int): String? {
+    fun doubleToString(x: Double, maxLen: Int = MAX_DIGITS, rounding: Int = ROUNDING_DIGITS): String {
         return sizeTruncate(doubleToString(x, rounding), maxLen)
     }
 
@@ -215,6 +214,9 @@ object MathUtil {
         if (x < 170) return (2..x.toInt()).fold(1.0) { a, b -> a * b }
 
         // Gosper's Approximation, see https://mathworld.wolfram.com/StirlingsApproximation.html
-        return (sqrt((2 * x + 1/3) * Math.PI) * x.pow(x) * exp((-x)))
+        return (sqrt((2 * x + 1 / 3) * Math.PI) * x.pow(x) * exp((-x)))
     }
+
+    private const val MAX_DIGITS = 12
+    private const val ROUNDING_DIGITS = 5
 }

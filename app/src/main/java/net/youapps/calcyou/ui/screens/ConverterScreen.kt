@@ -45,6 +45,7 @@ import net.youapps.calcyou.R
 import net.youapps.calcyou.data.converters.ConverterUnit
 import net.youapps.calcyou.data.converters.MassConverter
 import net.youapps.calcyou.data.converters.UnitConverter
+import net.youapps.calcyou.data.evaluator.MathUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -139,15 +140,17 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
                     .weight(1f)
                     .verticalScroll(scroll)
             ) {
-                converted.forEach {
+                converted.forEach { (unit, value) ->
+                    val formattedValue = MathUtil.doubleToString(value)
+
                     ListItem(modifier = Modifier.fillMaxWidth(), headlineContent = {
                         Text(
-                            text = stringResource(id = it.first.name),
+                            text = stringResource(id = unit.name),
                             style = MaterialTheme.typography.titleLarge
                         )
                     }, supportingContent = {
                         Text(
-                            text = it.second.toString(),
+                            text = formattedValue,
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Light,
 
@@ -155,7 +158,7 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
                     }, trailingContent = {
                         val clipboardManager = LocalClipboardManager.current
                         IconButton(onClick = {
-                            clipboardManager.setText(AnnotatedString(it.second.toString()))
+                            clipboardManager.setText(AnnotatedString(formattedValue))
                         }) {
                             Icon(
                                 imageVector = Icons.Rounded.ContentCopy,

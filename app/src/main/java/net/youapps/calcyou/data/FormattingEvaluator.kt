@@ -29,16 +29,11 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
             if (result.isNaN()) {
                 null
             } else {
-                val shortened = MathUtil.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)
-                shortened?.let { tokenizer.getLocalizedExpression(it) }
+                val shortened = MathUtil.doubleToString(result)
+                tokenizer.getLocalizedExpression(shortened)
             }
         } catch (_: Exception) {
             null
         }
-    }
-
-    companion object {
-        private const val MAX_DIGITS = 12
-        private const val ROUNDING_DIGITS = 5
     }
 }
