@@ -174,7 +174,7 @@ object ExpressionEvaluator {
                     break
                 }
                 isDecimalNumber = true
-            } else if ((c == 'e')) {
+            } else if (c  == 'e' || c == 'E') {
                 if (exp > 0) {
                     break  // Came across a second 'e'. number has probably reached the end
                 }
