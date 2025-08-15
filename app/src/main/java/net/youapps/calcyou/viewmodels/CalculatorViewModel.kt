@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import net.youapps.calcyou.CalculatorApplication
 import net.youapps.calcyou.data.CalculatorEvent
 import net.youapps.calcyou.data.EventHandler
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 
 class CalculatorViewModel(context: Context) : ViewModel() {
 
@@ -22,12 +23,14 @@ class CalculatorViewModel(context: Context) : ViewModel() {
 
     var history: MutableList<String> = mutableStateListOf()
 
+    val trigonometricMode = mutableStateOf(TrigonometricMode.RADIAN)
+
     fun setExpression(text: String) {
         displayText = TextFieldValue(text)
     }
 
     fun onEvent(event: CalculatorEvent) {
-        displayText = eventHandler.processEvent(event, displayText)
+        displayText = eventHandler.processEvent(event, displayText, trigonometricMode)
     }
 
     private fun onUpdateHistory(item: String) {

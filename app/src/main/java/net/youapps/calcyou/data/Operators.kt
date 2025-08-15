@@ -35,7 +35,7 @@ enum class SpecialOperator(val text: String, val value: String = text) {
     ACosH("cosh⁻¹", "acosh("),
     ATanH("tanh⁻¹", "atanh("),
     Power2("2ˣ", "2^("),
-    Cube("x³", "^3"),
-    Factorial("x!", "fac(")
-
+    Factorial("x!", "fac("),
+    // placeholder operator for the toggle to switch the trigonometric mode
+    TrigonometricModeToggle("", "")
 }

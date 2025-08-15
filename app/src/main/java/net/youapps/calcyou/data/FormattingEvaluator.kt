@@ -8,7 +8,7 @@ import net.youapps.calcyou.data.evaluator.MathUtil
  * Evaluates expressions and returns the result as a formatted, localized string.
  */
 class FormattingEvaluator(private val tokenizer: Tokenizer) {
-    fun evaluate(expr: String): String? {
+    fun evaluate(expr: String, mode: TrigonometricMode): String? {
         var expr = tokenizer.getNormalizedExpression(expr)
         if (expr.isEmpty()) {
             return null
@@ -25,7 +25,7 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
         }
 
         return try {
-            val result = ExpressionEvaluator.compile(expr).execute(TrigonometricMode.DEGREE) ?: return null
+            val result = ExpressionEvaluator.compile(expr).execute(mode) ?: return null
             if (result.isNaN()) {
                 null
             } else {

@@ -20,6 +20,7 @@ import net.youapps.calcyou.R
 import net.youapps.calcyou.data.CalculatorEvent
 import net.youapps.calcyou.data.SimpleOperator
 import net.youapps.calcyou.data.SpecialOperator
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.ui.components.buttons.CalculatorButton
 import net.youapps.calcyou.ui.components.buttons.CalculatorTextButton
 
@@ -36,7 +37,7 @@ val rightKeypad = arrayOf(
     arrayOf(SpecialOperator.ASin, SpecialOperator.ACos, SpecialOperator.ATan),
     arrayOf(SpecialOperator.SinH, SpecialOperator.CosH, SpecialOperator.TanH),
     arrayOf(SpecialOperator.ASinH, SpecialOperator.ACosH, SpecialOperator.ATanH),
-    arrayOf(SpecialOperator.Power2, SpecialOperator.Cube, SpecialOperator.Factorial),
+    arrayOf(SpecialOperator.Power2, SpecialOperator.Factorial, SpecialOperator.TrigonometricModeToggle),
 )
 val combinedKeypad = arrayOf(
     arrayOf(SpecialOperator.Sin, SpecialOperator.Cos, SpecialOperator.Tan, SpecialOperator.ASin),
@@ -61,14 +62,15 @@ val combinedKeypad = arrayOf(
     ),
     arrayOf(
         SpecialOperator.Power2,
-        SpecialOperator.Cube,
         SpecialOperator.Factorial,
-        SpecialOperator.TanH
+        SpecialOperator.TanH,
+        SpecialOperator.TrigonometricModeToggle
     ),
 )
 
 @Composable
 fun Keypad(
+    trigonometricMode: TrigonometricMode,
     onEvent: (CalculatorEvent) -> Unit
 ) {
     Column(
@@ -76,9 +78,9 @@ fun Keypad(
             .fillMaxWidth()
     ) {
         SwipePanels(
-            start = { SideKeypad(onEvent = onEvent, keys = leftKeypad) },
+            start = { SideKeypad(onEvent = onEvent, keys = leftKeypad, trigonometricMode = trigonometricMode) },
             center = { CenterKeypad(onEvent) },
-            end = { SideKeypad(onEvent = onEvent, keys = rightKeypad) })
+            end = { SideKeypad(onEvent = onEvent, keys = rightKeypad, trigonometricMode = trigonometricMode) })
     }
 }
 
@@ -500,8 +502,10 @@ fun CenterKeypadHorizontal(
 @Composable
 fun SideKeypad(
     onEvent: (CalculatorEvent) -> Unit,
+    trigonometricMode: TrigonometricMode,
     keys: Array<Array<SpecialOperator>>,
-    square: Boolean = true
+    square: Boolean = true,
+    textStyle: TextStyle = MaterialTheme.typography.displaySmall,
 ) {
     val buttonSpacing = 8.dp
     Column(
@@ -516,22 +520,40 @@ fun SideKeypad(
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 for (operator in row) {
-                    CalculatorTextButton(
-                        text = operator.text,
-                        square = square,
-                        onClick = {
-                            onEvent(CalculatorEvent.SpecialOperator(operator))
-                        }
-                    )
+                    if (operator != SpecialOperator.TrigonometricModeToggle) {
+                        CalculatorTextButton(
+                            text = operator.text,
+                            square = square,
+                            textStyle = textStyle,
+                            onClick = {
+                                onEvent(CalculatorEvent.SpecialOperator(operator))
+                            }
+                        )
+                    } else {
+                        CalculatorTextButton(
+                            text = if (trigonometricMode == TrigonometricMode.RADIAN) "RAD" else "DEG",
+                            square = square,
+                            backgroundColor = MaterialTheme.colorScheme.primary,
+                            textColor = MaterialTheme.colorScheme.onPrimary,
+                            textStyle = textStyle.copy(fontSize = textStyle.fontSize * 0.7),
+                            onClick = {
+                                onEvent(CalculatorEvent.ToggleTrigonometricMode)
+                            }
+                        )
+                    }
                 }
             }
         }
     }
 }
 
+/**
+ * Shows a trigonometric mode toggle if [trigonometricMode] is set.
+ */
 @Composable
 fun SideKeypadHorizontal(
     onEvent: (CalculatorEvent) -> Unit,
+    trigonometricMode: TrigonometricMode,
     square: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.headlineMedium
 ) {
@@ -553,15 +575,28 @@ fun SideKeypadHorizontal(
                 horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 for (operator in row) {
-                    CalculatorTextButton(
-                        text = operator.text,
-                        square = square,
-                        textColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textStyle = textStyle,
-                        onClick = {
-                            onEvent(CalculatorEvent.SpecialOperator(operator))
-                        }
-                    )
+                    if (operator != SpecialOperator.TrigonometricModeToggle) {
+                        CalculatorTextButton(
+                            text = operator.text,
+                            square = square,
+                            textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textStyle = textStyle,
+                            onClick = {
+                                onEvent(CalculatorEvent.SpecialOperator(operator))
+                            }
+                        )
+                    } else {
+                        CalculatorTextButton(
+                            text = if (trigonometricMode == TrigonometricMode.RADIAN) "RAD" else "DEG",
+                            square = square,
+                            backgroundColor = MaterialTheme.colorScheme.primary,
+                            textColor = MaterialTheme.colorScheme.onPrimary,
+                            textStyle = textStyle.copy(fontSize = textStyle.fontSize * 0.7),
+                            onClick = {
+                                onEvent(CalculatorEvent.ToggleTrigonometricMode)
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -571,5 +606,5 @@ fun SideKeypadHorizontal(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    Keypad(onEvent = {})
+    Keypad(onEvent = {}, trigonometricMode = TrigonometricMode.DEGREE)
 }

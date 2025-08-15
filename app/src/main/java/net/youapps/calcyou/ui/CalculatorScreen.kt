@@ -37,7 +37,8 @@ fun CalculatorScreen(
                 SideKeypadHorizontal(
                     onEvent = calculatorViewModel::onEvent,
                     square = false,
-                    textStyle = MaterialTheme.typography.headlineSmall
+                    textStyle = MaterialTheme.typography.headlineSmall,
+                    trigonometricMode = calculatorViewModel.trigonometricMode.value,
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
@@ -62,7 +63,10 @@ fun CalculatorScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             CalculatorDisplay(calculatorViewModel)
-            Keypad(onEvent = calculatorViewModel::onEvent)
+            Keypad(
+                onEvent = calculatorViewModel::onEvent,
+                trigonometricMode = calculatorViewModel.trigonometricMode.value
+            )
         }
     }
 }
