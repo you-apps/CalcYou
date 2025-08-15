@@ -47,6 +47,25 @@ object ExpressionEvaluator {
             i += 1
         }
 
+        // Take care of multiplying with variables, e.g. "20x+7"
+        // internally, this adds a multiplication sign in between, e.g. "20x" -> "20*x"
+        i = 1
+        while (i < end) {
+            if ((tokens[i-1] is Token.Number || tokens[i-1] is Token.Var) && tokens[i] is Token.Var) {
+                // in this case, var is the identifier of a method call, and not a variable
+                if (i+1 < end && tokens[i+1] is Token.LeftParen) {
+                    i += 1
+                    continue
+                }
+
+                tokens.add(i, Token.Op(value = Operator.MUL))
+                end = tokens.size
+                i += 1
+            }
+
+            i += 1
+        }
+
         // Take care of groups (including function calls)
         i = 0
         while (i < end) {
