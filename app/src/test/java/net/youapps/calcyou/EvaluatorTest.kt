@@ -2,6 +2,7 @@ package net.youapps.calcyou
 
 import net.youapps.calcyou.data.evaluator.CompiledExpression
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -54,7 +55,7 @@ internal class EvaluatorTest {
             val argument = random.nextDouble()
             val compiled: CompiledExpression = ExpressionEvaluator.compile(expression)
 
-            val answer = compiled.execute("x" to argument)
+            val answer = compiled.execute(TrigonometricMode.RADIAN, listOf("x" to argument))
 
             assertNotNull(answer)
 
