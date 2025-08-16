@@ -1,4 +1,3 @@
-import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 import java.net.URL
 
@@ -63,10 +62,19 @@ tasks.register("updateCurrencies") {
     val currenciesPath = File("app/src/main/res/raw/currencies.csv")
     if (currenciesPath.exists()) return@register
 
+    if (!currenciesPath.getParentFile().exists()) {
+        currenciesPath.getParentFile().mkdirs()
+    }
+
     val baseCurrency = "eur" // get exchange rates from euro to everything else
+    @Suppress("UNCHECKED_CAST")
     val currencyNames = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json")) as Map<String, String> // Map<CurrencyCode, CurrencyName>
+    @Suppress("UNCHECKED_CAST")
     val ratesResp = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/$baseCurrency.json")) as Map<String, Any>
+    @Suppress("UNCHECKED_CAST")
     val rates = ratesResp["eur"] as Map<String, Number> // Map<CurrencyCode, ExchangeRate>
+
+    println("Succesfully fetched currencies.")
 
     var currencyCsv = "Euro,1.0\n"
     for ((currencyCode, currencyName) in currencyNames) {
