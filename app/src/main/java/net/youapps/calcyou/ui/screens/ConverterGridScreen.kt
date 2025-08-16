@@ -22,7 +22,7 @@ fun ConverterGridScreen(onNavigate: (Destination) -> Unit) {
             .fillMaxSize()
             .padding(horizontal = 8.dp)
     ) {
-        items(Destination.Converter.values) { converter ->
+        items(Destination.Converter.doubleConverters.toList() + Destination.Converter.stringConverters) { converter ->
             ConverterCard(icon = converter.icon, title = converter.resId, onClick = {
                 onNavigate(converter)
             })

@@ -12,6 +12,7 @@ import androidx.compose.material.icons.rounded.HourglassTop
 import androidx.compose.material.icons.rounded.InvertColors
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.material.icons.rounded.LocalGasStation
+import androidx.compose.material.icons.rounded.Numbers
 import androidx.compose.material.icons.rounded.Rotate90DegreesCw
 import androidx.compose.material.icons.rounded.Scale
 import androidx.compose.material.icons.rounded.SdStorage
@@ -33,6 +34,7 @@ import net.youapps.calcyou.data.converters.FuelConverter
 import net.youapps.calcyou.data.converters.LengthConverter
 import net.youapps.calcyou.data.converters.LightConverter
 import net.youapps.calcyou.data.converters.MassConverter
+import net.youapps.calcyou.data.converters.NumberBaseConverter
 import net.youapps.calcyou.data.converters.PowerConverter
 import net.youapps.calcyou.data.converters.PressureConverter
 import net.youapps.calcyou.data.converters.SpeedConverter
@@ -49,129 +51,135 @@ sealed class Destination(open val route: String) {
     object Converters : Destination("converters")
     object CharacterInput : Destination("character_input")
     object Graphing : Destination("graphing")
-    sealed class Converter(
+    sealed class Converter<T>(
         override val route: String,
         @StringRes val resId: Int,
         val icon: ImageVector,
-        val converter: UnitConverter
+        val converter: UnitConverter<T>
     ) :
         Destination(route) {
         object Temperature :
-            Converter(
+            Converter<Double>(
                 "temperature", R.string.temperature, Icons.Rounded.Thermostat,
                 TemperatureConverter()
             )
 
         object Area :
-            Converter(
+            Converter<Double>(
                 "area", R.string.area, Icons.Rounded.Square,
                 AreaConverter()
             )
 
         object DigitalStorage :
-            Converter(
+            Converter<Double>(
                 "digital_storage", R.string.storage, Icons.Rounded.SdStorage,
                 DigitalStorageConverter()
             )
 
         object Frequency :
-            Converter(
+            Converter<Double>(
                 "frequency", R.string.frequency, Icons.Rounded.GraphicEq,
                 FrequencyConverter()
             )
 
         object Length :
-            Converter(
+            Converter<Double>(
                 "length", R.string.length, Icons.Rounded.Carpenter,
                 LengthConverter()
             )
 
         object Mass :
-            Converter(
+            Converter<Double>(
                 "mass", R.string.mass, Icons.Rounded.Scale,
                 MassConverter()
             )
 
         object Speed :
-            Converter(
+            Converter<Double>(
                 "speed", R.string.speed, Icons.Rounded.Speed,
                 SpeedConverter()
             )
 
         object Volume :
-            Converter(
+            Converter<Double>(
                 "volume", R.string.volume, Icons.Rounded.Coffee,
                 VolumeConverter()
             )
 
         object Angle :
-            Converter(
+            Converter<Double>(
                 "angle", R.string.angle, Icons.Rounded.TextRotationAngleup,
                 AngleConverter()
             )
 
         object Power :
-            Converter(
+            Converter<Double>(
                 "power", R.string.power, Icons.Rounded.Lightbulb,
                 PowerConverter()
             )
 
         object Viscosity :
-            Converter(
+            Converter<Double>(
                 "viscosity", R.string.viscosity, Icons.Rounded.InvertColors,
                 ViscosityConverter()
             )
 
         object Force :
-            Converter(
+            Converter<Double>(
                 "force", R.string.force, Icons.Rounded.DoubleArrow,
                 ForceConverter()
             )
 
         object Energy :
-            Converter(
+            Converter<Double>(
                 "energy", R.string.energy, Icons.Rounded.ElectricBolt,
                 EnergyConverter()
             )
 
         object Torque :
-            Converter(
+            Converter<Double>(
                 "torque", R.string.torque, Icons.Rounded.Rotate90DegreesCw,
                 TorqueConverter()
             )
 
         object Density :
-            Converter(
+            Converter<Double>(
                 "density", R.string.density, Icons.Rounded.WaterDrop,
                 DensityConverter()
             )
 
         object Fuel :
-            Converter(
+            Converter<Double>(
                 "fuel", R.string.fuel, Icons.Rounded.LocalGasStation,
                 FuelConverter()
             )
 
         object Time :
-            Converter(
+            Converter<Double>(
                 "time", R.string.time, Icons.Rounded.HourglassTop,
                 TimeConverter()
             )
 
         object Pressure :
-            Converter(
+            Converter<Double>(
                 "pressure", R.string.pressure, Icons.Rounded.Compress,
                 PressureConverter()
             )
 
         object Light :
-            Converter(
+            Converter<Double>(
                 "light", R.string.light, Icons.Rounded.WbSunny,
                 LightConverter()
             )
 
+        object NumberBase :
+            Converter<String?>(
+                "number", R.string.number_base, Icons.Rounded.Numbers,
+                NumberBaseConverter()
+            )
+
         companion object {
-            val values: Array<Converter> =
+            val doubleConverters =
                 arrayOf(
                     Temperature,
                     Area,
@@ -193,6 +201,10 @@ sealed class Destination(open val route: String) {
                     Pressure,
                     Light
                 )
+
+            val stringConverters = listOf(
+                NumberBase
+            )
         }
     }
 }

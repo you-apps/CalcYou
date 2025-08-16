@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class TimeConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class TimeConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.second, 1.0),
         FactorUnit(R.string.minute, 60.0),
         FactorUnit(R.string.hour, 3.6E3),

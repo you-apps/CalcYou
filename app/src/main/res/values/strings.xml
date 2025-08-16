@@ -174,4 +174,10 @@
     <string name="saturation_slider">Saturation</string>
     <string name="lightness_slider">Lightness</string>
     <string name="hex_rgb_code">Hex RGB color code</string>
+    <string name="binary">Binary</string>
+    <string name="octal">Octal</string>
+    <string name="decimal">Decimal</string>
+    <string name="hexadecimal">Hexadecimal</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Base</string>
 </resources>

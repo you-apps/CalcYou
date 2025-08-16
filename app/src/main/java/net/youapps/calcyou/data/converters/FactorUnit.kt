@@ -2,7 +2,7 @@ package net.youapps.calcyou.data.converters
 
 import androidx.annotation.StringRes
 
-class FactorUnit(@StringRes override val name: Int, val conversionFactor: Double) : ConverterUnit {
+class FactorUnit(@StringRes override val name: Int, val conversionFactor: Double) : ConverterUnit<Double> {
     override fun convertFrom(value: Double): Double {
         return value * conversionFactor
     }

@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class EnergyConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class EnergyConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.joule, 1.0),
         FactorUnit(R.string.kilojoule, 1E3),
         FactorUnit(R.string.megajoule, 1E6),

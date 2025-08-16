@@ -49,7 +49,13 @@ import net.youapps.calcyou.data.evaluator.MathUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
+inline fun <reified T> ConverterScreen(
+    converter: UnitConverter<T>,
+    @StringRes converterName: Int,
+    keyboardType: KeyboardType,
+    crossinline stringToConverterArg: (String) -> T?,
+    converterArgToString: (T) -> String
+) {
     Column(
         Modifier
             .fillMaxSize()
@@ -58,12 +64,12 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
     ) {
         var expanded by remember { mutableStateOf(false) }
         var selectedUnit by remember { mutableStateOf(converter.units.first()) }
-        var converted: List<Pair<ConverterUnit, Double>> by remember { mutableStateOf(listOf()) }
+        var converted: List<Pair<ConverterUnit<T>, T>> by remember { mutableStateOf(listOf()) }
         var textFieldValue by remember { mutableStateOf("") }
 
         LaunchedEffect(textFieldValue, selectedUnit) {
-            converted = textFieldValue.toDoubleOrNull()
-                ?.let { it1 -> converter.convertAll(it1, selectedUnit) } ?: listOf()
+            converted = stringToConverterArg(textFieldValue)
+                ?.let { value -> converter.convertAll(value as T, selectedUnit) }.orEmpty()
         }
         Text(
             text = stringResource(id = converterName),
@@ -83,7 +89,7 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
                 singleLine = true,
                 label = { Text(stringResource(R.string.value)) },
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Decimal,
+                    keyboardType = keyboardType,
                     imeAction = ImeAction.None
                 ),
                 shape = RoundedCornerShape(8.dp),
@@ -140,8 +146,8 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
                     .weight(1f)
                     .verticalScroll(scroll)
             ) {
-                converted.forEach { (unit, value) ->
-                    val formattedValue = MathUtil.doubleToString(value)
+                for ((unit, value) in converted) {
+                    val formattedValue = converterArgToString(value)
 
                     ListItem(modifier = Modifier.fillMaxWidth(), headlineContent = {
                         Text(
@@ -177,5 +183,10 @@ fun ConverterScreen(converter: UnitConverter, @StringRes converterName: Int) {
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    ConverterScreen(converter = MassConverter(), R.string.app_name)
+    ConverterScreen(
+        converter = MassConverter(),
+        R.string.app_name,
+        KeyboardType.Number,
+        converterArgToString = { double -> MathUtil.doubleToString(double) },
+        stringToConverterArg = { str -> str.toDoubleOrNull() })
 }

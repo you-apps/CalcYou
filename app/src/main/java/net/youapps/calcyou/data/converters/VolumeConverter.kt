@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class VolumeConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class VolumeConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.liter, 1.0),
         FactorUnit(R.string.milliliter, 1E-3),
         FactorUnit(R.string.kiloliter, 1E3),

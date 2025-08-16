@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class AreaConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class AreaConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.square_meter, 1.0),
         FactorUnit(R.string.square_kilometer, 1E6),
         FactorUnit(R.string.square_centimeter, 1E-4),

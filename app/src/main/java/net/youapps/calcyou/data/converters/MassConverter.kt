@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class MassConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class MassConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.kilogram, 1.0),
         FactorUnit(R.string.gram, 1E-3),
         FactorUnit(R.string.milligram, 1E-6),

@@ -2,8 +2,8 @@ package net.youapps.calcyou.data.converters
 
 import net.youapps.calcyou.R
 
-class LengthConverter : UnitConverter {
-    override val units: List<ConverterUnit> = listOf(
+class LengthConverter : UnitConverter<Double> {
+    override val units: List<ConverterUnit<Double>> = listOf(
         FactorUnit(R.string.meter, 1.0),
         FactorUnit(R.string.kilometer, 1E3),
         FactorUnit(R.string.centimeter, 1E-2),
