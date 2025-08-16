@@ -1,8 +1,8 @@
 package net.youapps.calcyou.data
 
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
-import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.data.evaluator.MathUtil
+import net.youapps.calcyou.data.evaluator.TrigonometricMode
 
 /**
  * Evaluates expressions and returns the result as a formatted, localized string.

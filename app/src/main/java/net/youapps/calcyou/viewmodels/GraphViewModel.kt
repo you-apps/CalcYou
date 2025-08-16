@@ -12,11 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import net.youapps.calcyou.R
 import net.youapps.calcyou.data.Tokenizer
+import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.evaluator.Defaults
 import net.youapps.calcyou.data.evaluator.ExpressionEvaluator
-import net.youapps.calcyou.data.graphing.Function
-import net.youapps.calcyou.data.evaluator.Constant
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
+import net.youapps.calcyou.data.graphing.Function
 import net.youapps.calcyou.data.graphing.Window
 import net.youapps.calcyou.ui.components.rainbowColors
 import java.text.ParseException
