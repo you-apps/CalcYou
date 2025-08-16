@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "net.youapps.calcyou"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "net.youapps.calcyou"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 4
         versionName = "2.0"
 
