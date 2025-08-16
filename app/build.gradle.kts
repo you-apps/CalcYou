@@ -1,3 +1,7 @@
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+import java.net.URL
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -52,6 +56,34 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+// update the list of currencies if it doesn't exist yet
+tasks.register("updateCurrencies") {
+    val currenciesPath = File("app/src/main/res/raw/currencies.csv")
+    if (currenciesPath.exists()) return@register
+
+    val baseCurrency = "eur" // get exchange rates from euro to everything else
+    val currencyNames = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json")) as Map<String, String> // Map<CurrencyCode, CurrencyName>
+    val ratesResp = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/$baseCurrency.json")) as Map<String, Any>
+    val rates = ratesResp["eur"] as Map<String, Number> // Map<CurrencyCode, ExchangeRate>
+
+    var currencyCsv = "Euro,1.0\n"
+    for ((currencyCode, currencyName) in currencyNames) {
+        if (currencyCode == baseCurrency || currencyName.isBlank()) continue
+
+        rates[currencyCode]?.let { exchangeRate ->
+            currencyCsv += "$currencyName,${exchangeRate.toDouble()}\n"
+        }
+    }
+
+    currenciesPath.outputStream().bufferedWriter().use { writer ->
+        writer.write(currencyCsv)
+    }
+}
+
+tasks.preBuild {
+    dependsOn(tasks.getByName("updateCurrencies"))
 }
 
 dependencies {

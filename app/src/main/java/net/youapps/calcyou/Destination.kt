@@ -12,6 +12,7 @@ import androidx.compose.material.icons.rounded.HourglassTop
 import androidx.compose.material.icons.rounded.InvertColors
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.material.icons.rounded.LocalGasStation
+import androidx.compose.material.icons.rounded.MonetizationOn
 import androidx.compose.material.icons.rounded.Numbers
 import androidx.compose.material.icons.rounded.Rotate90DegreesCw
 import androidx.compose.material.icons.rounded.Scale
@@ -25,6 +26,7 @@ import androidx.compose.material.icons.rounded.WbSunny
 import androidx.compose.ui.graphics.vector.ImageVector
 import net.youapps.calcyou.data.converters.AngleConverter
 import net.youapps.calcyou.data.converters.AreaConverter
+import net.youapps.calcyou.data.converters.CurrencyConverter
 import net.youapps.calcyou.data.converters.DensityConverter
 import net.youapps.calcyou.data.converters.DigitalStorageConverter
 import net.youapps.calcyou.data.converters.EnergyConverter
@@ -172,6 +174,12 @@ sealed class Destination(open val route: String) {
                 LightConverter()
             )
 
+        object Currencies :
+            Converter<Double>(
+                "currencies", R.string.currencies, Icons.Rounded.MonetizationOn,
+                CurrencyConverter()
+            )
+
         object NumberBase :
             Converter<String?>(
                 "number", R.string.number_base, Icons.Rounded.Numbers,
@@ -199,7 +207,8 @@ sealed class Destination(open val route: String) {
                     Fuel,
                     Time,
                     Pressure,
-                    Light
+                    Light,
+                    Currencies
                 )
 
             val stringConverters = listOf(

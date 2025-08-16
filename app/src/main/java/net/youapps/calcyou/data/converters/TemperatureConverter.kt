@@ -2,12 +2,13 @@ package net.youapps.calcyou.data.converters
 
 import androidx.annotation.StringRes
 import net.youapps.calcyou.R
+import net.youapps.calcyou.data.Either
 
 class TemperatureConverter : UnitConverter<Double> {
     override val units: List<ConverterUnit<Double>> = listOf(
         object : ConverterUnit<Double> {
             @StringRes
-            override val name: Int = R.string.celsius
+            override val name = Either.Left(R.string.celsius)
 
             override fun convertFrom(value: Double): Double {
                 return value
@@ -19,7 +20,7 @@ class TemperatureConverter : UnitConverter<Double> {
         },
         object : ConverterUnit<Double> {
             @StringRes
-            override val name: Int = R.string.fahrenheit
+            override val name = Either.Left(R.string.fahrenheit)
 
             override fun convertFrom(value: Double): Double {
                 return (value - 32) / 1.8
@@ -31,7 +32,7 @@ class TemperatureConverter : UnitConverter<Double> {
         },
         object : ConverterUnit<Double> {
             @StringRes
-            override val name: Int = R.string.kelvin
+            override val name = Either.Left(R.string.kelvin)
 
             override fun convertFrom(value: Double): Double {
                 return value - 273.15

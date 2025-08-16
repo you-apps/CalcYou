@@ -180,4 +180,5 @@
     <string name="hexadecimal">Hexadecimal</string>
     <string name="ascii">ASCII</string>
     <string name="number_base">Base</string>
+    <string name="currencies">Currencies</string>
 </resources>

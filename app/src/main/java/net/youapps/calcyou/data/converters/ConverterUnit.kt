@@ -1,8 +1,10 @@
 package net.youapps.calcyou.data.converters
 
+import net.youapps.calcyou.data.Either
+
 
 interface ConverterUnit<T> {
-    val name: Int
+    val name: Either<Int, String>
 
     fun convertFrom(value: T): T
     fun convertTo(value: T): T

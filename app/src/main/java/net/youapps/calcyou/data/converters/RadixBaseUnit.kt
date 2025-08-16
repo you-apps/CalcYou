@@ -1,6 +1,10 @@
 package net.youapps.calcyou.data.converters
 
-class RadixBaseUnit(override val name: Int, val base: Int):  ConverterUnit<String?> {
+import net.youapps.calcyou.data.Either
+
+class RadixBaseUnit(stringRes: Int, val base: Int):  ConverterUnit<String?> {
+    override val name: Either<Int, String> = Either.Left(stringRes)
+
     override fun convertFrom(value: String?): String? {
         if (value == null) return null
 

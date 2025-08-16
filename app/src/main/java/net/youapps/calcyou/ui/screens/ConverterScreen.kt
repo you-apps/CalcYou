@@ -1,5 +1,6 @@
 package net.youapps.calcyou.ui.screens
 
+import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +44,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.youapps.calcyou.R
+import net.youapps.calcyou.data.Either
 import net.youapps.calcyou.data.converters.ConverterUnit
 import net.youapps.calcyou.data.converters.MassConverter
 import net.youapps.calcyou.data.converters.UnitConverter
@@ -56,6 +59,8 @@ inline fun <reified T> ConverterScreen(
     crossinline stringToConverterArg: (String) -> T?,
     converterArgToString: (T) -> String
 ) {
+    val context = LocalContext.current
+
     Column(
         Modifier
             .fillMaxSize()
@@ -107,7 +112,7 @@ inline fun <reified T> ConverterScreen(
                     modifier = Modifier
                         .menuAnchor(),
                     readOnly = true,
-                    value = stringResource(id = selectedUnit.name),
+                    value = unitName(context, selectedUnit.name),
                     onValueChange = {},
                     label = {
                         Text(
@@ -127,7 +132,7 @@ inline fun <reified T> ConverterScreen(
                 ) {
                     converter.units.forEach { unit ->
                         DropdownMenuItem(
-                            text = { Text(stringResource(id = unit.name)) },
+                            text = { Text(unitName(context, unit.name)) },
                             onClick = {
                                 selectedUnit = unit
                                 expanded = false
@@ -151,7 +156,7 @@ inline fun <reified T> ConverterScreen(
 
                     ListItem(modifier = Modifier.fillMaxWidth(), headlineContent = {
                         Text(
-                            text = stringResource(id = unit.name),
+                            text = unitName(context, unit.name),
                             style = MaterialTheme.typography.titleLarge
                         )
                     }, supportingContent = {
@@ -177,6 +182,13 @@ inline fun <reified T> ConverterScreen(
                 }
             }
         }
+    }
+}
+
+fun unitName(context: Context, name: Either<Int, String>): String {
+    return when (name) {
+        is Either.Left -> context.getString(name.value)
+        is Either.Right -> name.value
     }
 }
 
