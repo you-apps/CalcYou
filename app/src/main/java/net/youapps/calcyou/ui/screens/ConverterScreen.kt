@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -30,6 +32,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,6 +46,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import net.youapps.calcyou.R
 import net.youapps.calcyou.data.Either
 import net.youapps.calcyou.data.converters.ConverterUnit
@@ -57,9 +61,10 @@ inline fun <reified T> ConverterScreen(
     @StringRes converterName: Int,
     keyboardType: KeyboardType,
     crossinline stringToConverterArg: (String) -> T?,
-    converterArgToString: (T) -> String
+    crossinline converterArgToString: (T) -> String
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     Column(
         Modifier
@@ -73,8 +78,10 @@ inline fun <reified T> ConverterScreen(
         var textFieldValue by remember { mutableStateOf("") }
 
         LaunchedEffect(textFieldValue, selectedUnit) {
-            converted = stringToConverterArg(textFieldValue)
-                ?.let { value -> converter.convertAll(value as T, selectedUnit) }.orEmpty()
+            scope.launch {
+                converted = stringToConverterArg(textFieldValue)
+                    ?.let { value -> converter.convertAll(value as T, selectedUnit) }.orEmpty()
+            }
         }
         Text(
             text = stringResource(id = converterName),
@@ -144,14 +151,12 @@ inline fun <reified T> ConverterScreen(
             }
         }
         if (converted.isNotEmpty()) {
-            val scroll = rememberScrollState()
-            Column(
+            LazyColumn(
                 Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .verticalScroll(scroll)
             ) {
-                for ((unit, value) in converted) {
+                items(converted) { (unit, value) ->
                     val formattedValue = converterArgToString(value)
 
                     ListItem(modifier = Modifier.fillMaxWidth(), headlineContent = {
