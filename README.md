@@ -36,15 +36,22 @@
 
 ### 1. Powerful Calculator:
 
-- **Basic Calculator**: Perform all your essential calculations with a simple and intuitive
-  interface.
-- **Scientific Calculator**: Unleash the power of advanced functions like trigonometry, logarithms,
-  and more.
+- **Basic Calculator**: Essential calculations with a simple and intuitive interface.
+- **Scientific Calculator**: Advanced functions like trigonometry, logarithms, and more.
 
 ### 2. Versatile Unit Converter:
 
 - Convert between a wide range of units across various categories like length, weight, volume,
   currency, and more.
+
+> [!NOTE]
+> The currency data is only updated whenever a new release is published, so it can't reflect the 
+> current exchange rates in a fast-moving financial world! Its only intention is to give a rough
+> estimate of the exchange rate between different currencies.
+> 
+> We're not responsible for the currency data displayed and any potential loss caused by relying on
+> that data. Use at your own risk!
+>
 
 ### 3. Character Input Tool:
 
@@ -52,11 +59,9 @@
   subscript, and much more.
 - Effortlessly write complex expressions and equations with just a few taps.
 
-### CalcYou also boasts several features that enhance your experience:
+### 4. Graphing calculator:
 
-- Elegant and user-friendly interface: Switch between basic and scientific mode with a swipe.
-- History function: Easily access your past calculations for quick reference.
-- Material you theme: Uses a theme that suits your style and mood.
+- Draw and visualize 2-dimensional function graphs, similar to tools like GeoGebra.
 
 <!-- ---------- Download ---------- -->
 
