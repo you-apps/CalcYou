@@ -16,6 +16,7 @@ android {
         targetSdk = 35
         versionCode = 5
         versionName = "3.0"
+        // TODO: update 'currentApiVersion' below before each release
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -57,20 +58,22 @@ android {
     }
 }
 
+val currencyApiVersion = "2025-08-16"
 // update the list of currencies if it doesn't exist yet
 tasks.register("updateCurrencies") {
     val currenciesPath = File("app/src/main/res/raw/currencies.csv")
     if (currenciesPath.exists()) return@register
 
-    if (!currenciesPath.getParentFile().exists()) {
-        currenciesPath.getParentFile().mkdirs()
+    if (!currenciesPath.parentFile.exists()) {
+        currenciesPath.parentFile.mkdirs()
     }
 
     val baseCurrency = "eur" // get exchange rates from euro to everything else
+    val baseUrl = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${currencyApiVersion}/v1"
     @Suppress("UNCHECKED_CAST")
-    val currencyNames = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json")) as Map<String, String> // Map<CurrencyCode, CurrencyName>
+    val currencyNames = JsonSlurper().parse(URL("$baseUrl/currencies.json")) as Map<String, String> // Map<CurrencyCode, CurrencyName>
     @Suppress("UNCHECKED_CAST")
-    val ratesResp = JsonSlurper().parse(URL("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/$baseCurrency.json")) as Map<String, Any>
+    val ratesResp = JsonSlurper().parse(URL("$baseUrl/currencies/$baseCurrency.json")) as Map<String, Any>
     @Suppress("UNCHECKED_CAST")
     val rates = ratesResp["eur"] as Map<String, Number> // Map<CurrencyCode, ExchangeRate>
 
