@@ -81,7 +81,7 @@ fun ColumnScope.CalculatorDisplay(
                     maxLines = 1,
                     textStyle = primaryTextStyle.plus(
                         TextStyle(
-                            textAlign = TextAlign.End,
+                            textAlign = TextAlign.Left,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                     )
