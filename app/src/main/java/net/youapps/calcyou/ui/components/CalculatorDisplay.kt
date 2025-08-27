@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,11 +43,18 @@ fun ColumnScope.CalculatorDisplay(
             .clip(RoundedCornerShape(24.dp))
             .background(MaterialTheme.colorScheme.surfaceColorAtElevation(10.dp))
     ) {
+        val listState = rememberLazyListState()
+
+        LaunchedEffect(calculatorViewModel.history.toList()) {
+            if (calculatorViewModel.history.isNotEmpty())
+                listState.animateScrollToItem(calculatorViewModel.history.size - 1);
+        }
         LazyColumn(
             Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .weight(1f),
+            state = listState,
             horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Bottom)
         ) {
