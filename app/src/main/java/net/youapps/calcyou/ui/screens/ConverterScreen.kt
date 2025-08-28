@@ -135,7 +135,7 @@ inline fun <reified T> ConverterScreen(
                         unfocusedIndicatorColor = Color.Transparent
                     )
                 )
-                var width by remember {
+                var dropdownWidth by remember {
                     mutableStateOf(0.dp)
                 }
 
@@ -143,22 +143,20 @@ inline fun <reified T> ConverterScreen(
                     expanded = expanded,
                     onDismissRequest = { expanded = false },
                     modifier = Modifier.onGloballyPositioned {
-                        width = it.size.width.dp
+                        dropdownWidth = it.size.width.dp
                     }
                 ) {
-                    val itemHeight by remember {
-                        mutableStateOf(45.dp)
-                    }
+                    val itemHeight = 45.dp
                     val configuration = LocalConfiguration.current
-                    val dropDownHeight = remember(converter.units.size) {
+                    val dropdownHeight = remember(converter.units.size) {
                         val height = itemHeight * converter.units.size
                         val maxHeight = configuration.screenHeightDp.dp * 0.7f
                         minOf(height, maxHeight)
                     }
                     LazyColumn(
                         modifier = Modifier
-                            .width(width)
-                            .height(dropDownHeight)
+                            .width(dropdownWidth)
+                            .height(dropdownHeight)
                     ) {
                         items(converter.units) { unit ->
                             DropdownMenuItem(
