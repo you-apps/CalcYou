@@ -150,13 +150,10 @@ inline fun <reified T> ConverterScreen(
                         mutableStateOf(45.dp)
                     }
                     val configuration = LocalConfiguration.current
-                    val maxHeight by remember {
-                        val screenHeight = configuration.screenHeightDp.dp
-                        mutableStateOf(screenHeight * 0.7f)
-                    }
-                    val dropDownHeight by remember(converter.units.size) {
+                    val dropDownHeight = remember(converter.units.size) {
                         val height = itemHeight * converter.units.size
-                        mutableStateOf(minOf(height, maxHeight))
+                        val maxHeight = configuration.screenHeightDp.dp * 0.7f
+                        minOf(height, maxHeight)
                     }
                     LazyColumn(
                         modifier = Modifier
