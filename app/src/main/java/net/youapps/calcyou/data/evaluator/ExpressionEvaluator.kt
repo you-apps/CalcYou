@@ -171,18 +171,23 @@ object ExpressionEvaluator {
         return MatchWithIndex(index = pos, match = bestMatch)
     }
 
-    /*** Parses a number from the givenstring, starting at the specified index.
+    /*** Parses a number from the given string, starting at the specified index.
      *
      * @param data The string to parse.
      * @param startAt The starting index in the string.
      * @return A [MatchWithIndex] object containing the parsed number and the index after the parsed number.
-     * @throws java.text.ParseException If a number cannotbe parsed.
+     * @throws java.text.ParseException If a number cannot be parsed.
      */
     private fun parseNumber(data: String, startAt: Int): MatchWithIndex {
         var i = startAt
         val endIndex = data.length
-        var exp =
-            0 // 0 - no expoent found | 1 - exponent found | 2 - exponent with a sign found | 3 - exponent found with a preceding number
+        // 0 - no exponent found
+        // 1 - exponent found
+        // 2 - exponent with a sign found
+        // 3 - exponent found with a preceding number
+        // 4 - percentage sign found
+        var exp = 0
+
         var isDecimalNumber = false
         if (i >= endIndex) {
             throw ParseException("Can't parse token at $i", -1)
@@ -205,6 +210,8 @@ object ExpressionEvaluator {
                 exp = 1 // Exponent
             } else if ((exp == 1 && (c == '-' || c == '+'))) {
                 exp = 2 // Exponent with a sign
+            } else if (exp == 0 && c == '%') {
+                exp = 4
             } else {
                 break
             }
@@ -218,6 +225,14 @@ object ExpressionEvaluator {
             index = i,
             match = data.substring(startIndex = startAt, endIndex = i)
         )
+    }
+
+    private fun stringToDouble(numberLiteral: String): Double {
+        if (numberLiteral.endsWith("%")) {
+            return numberLiteral.trimEnd('%').toDouble() / 100
+        }
+
+        return numberLiteral.toDouble()
     }
 
     private fun tokenizeExpression(
@@ -237,7 +252,7 @@ object ExpressionEvaluator {
             if (c.isDigit() || c == '.') {
                 // Starting a number
                 val parsedNumber = parseNumber(data = expression, startAt = i)
-                tokens.add(Token.Number(position = i, value = parsedNumber.match.toDouble()))
+                tokens.add(Token.Number(position = i, value = stringToDouble(parsedNumber.match)))
                 i = parsedNumber.index
                 continue
             }

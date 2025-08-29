@@ -51,7 +51,8 @@ internal class EvaluatorTest {
         "sin(asin(cos(x)))" to { x: Double -> sin(asin(cos(x))) },
         "abs(-x ** 4)" to { x: Double -> abs(-x.pow(4)) },
         "20x+7" to { x: Double -> 20 * x + 7 },
-        "20 x x / 20 x" to { x: Double -> 20 * x * x / 20 * x }
+        "20 x x / 20 x" to { x: Double -> 20 * x * x / 20 * x },
+        "50.2%*30%x" to { x: Double -> 0.502 * 0.3 * x }
     )
     val random = Random(System.currentTimeMillis())
 
