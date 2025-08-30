@@ -7,7 +7,7 @@ class AreaConverter : UnitConverter<Double> {
         FactorUnit(R.string.square_meter, 1.0),
         FactorUnit(R.string.square_kilometer, 1E6),
         FactorUnit(R.string.square_centimeter, 1E-4),
-        FactorUnit(R.string.square_millimeter, 1E-7),
+        FactorUnit(R.string.square_millimeter, 1E-6),
         FactorUnit(R.string.hectare, 1E4),
         FactorUnit(R.string.acre, 4046.8564224),
         FactorUnit(R.string.square_yard, 0.83612736),
