@@ -60,6 +60,9 @@ object Defaults {
             "ABS" to { args, _ ->
                 abs(args.first())
             },
+            "CEIL" to { args, _ ->
+                ceil(args.first())
+            },
             "CEILING" to { args, _ ->
                 ceil(args.first())
             },
@@ -70,26 +73,19 @@ object Defaults {
                 floor(args.first())
             },
             "LN" to fn@{ args, _ ->
-                if (args.size == 2) {
-                    val arg1 = args[0]
-                    val arg2 = args[1]
-
-                    return@fn log(arg1, arg2)
-                } else if (args.size == 1) {
+                if (args.size == 1) {
                     return@fn ln(args.first())
                 }
-                throw InvalidParameterException()
+                throw InvalidParameterException("ln expects only one argument")
             },
             "LOG" to fn@{ args, _ ->
                 if (args.size == 2) {
                     val arg1 = args[0]
                     val arg2 = args[1]
-
                     return@fn log(arg1, arg2)
-                } else if (args.size == 1) {
-                    return@fn ln(args.first())
                 }
-                throw InvalidParameterException()
+
+                throw InvalidParameterException("log requires two arguments: x, base")
             },
             "LOG2" to { args, _ ->
                 log2(args.first())

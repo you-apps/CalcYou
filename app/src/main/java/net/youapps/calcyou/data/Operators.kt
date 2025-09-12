@@ -18,7 +18,7 @@ enum class SpecialOperator(val text: String, val value: String = text) {
     Cos("cos", "cos("),
     Tan("tan", "tan("),
     Ln("ln", "ln("),
-    Log("log", "log10("),
+    Log("log", "log(,"),
     PowerE("eˣ", "e^("),
     Square("x²", "^2"),
     SquareRoot("√", "√("),
