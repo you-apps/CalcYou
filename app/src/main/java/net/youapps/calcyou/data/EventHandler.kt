@@ -1,13 +1,15 @@
 package net.youapps.calcyou.data
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
+import java.lang.Exception
 
 class EventHandler(
-    context: Context,
+    private val context: Context,
     private val onUpdateHistory: (String) -> Unit
 ) {
     private val tokenizer = Tokenizer(context)
@@ -41,7 +43,13 @@ class EventHandler(
 
             CalculatorEvent.Evaluate -> {
                 onUpdateHistory(currentText.text)
-                val newText = evaluator.evaluate(currentText.text, mode.value) ?: "Error"
+                val newText = try {
+                    evaluator.evaluate(currentText.text, mode.value) ?: "Error"
+                } catch (e: Exception) {
+                    Toast.makeText(context, e.message ?: e.javaClass.simpleName, Toast.LENGTH_LONG)
+                        .show()
+                    "Error"
+                }
                 TextFieldValue(
                     newText,
                     selection = TextRange(newText.length)

@@ -117,7 +117,7 @@ object Defaults {
                     val arg2 = args[1]
                     return@fn arg1.pow(arg2)
                 }
-                throw InvalidParameterException()
+                throw InvalidParameterException("pow requires two arguments: base, exponent")
             },
             "ROUND" to { args, _ ->
                 round(args.first())
@@ -169,13 +169,14 @@ object Defaults {
             "ATAN" to { args, mode ->
                 atan(trigonometricModeToRadian(args.first(), mode))
             },
-            "ATAN2" to { args, mode ->
-                val arg1 = trigonometricModeToRadian(args[0], mode)
-                val arg2 = trigonometricModeToRadian(args[1], mode)
-                if (args.size != 2) {
-                    throw InvalidParameterException()
+            "ATAN2" to fn@{ args, mode ->
+                if (args.size == 2) {
+                    val arg1 = trigonometricModeToRadian(args[0], mode)
+                    val arg2 = trigonometricModeToRadian(args[1], mode)
+                    return@fn atan2(arg1, arg2)
                 }
-                atan2(arg1, arg2)
+
+                throw InvalidParameterException("atan2 requires two arguments")
             },
             "TANH" to { args, mode ->
                 tanh(trigonometricModeToRadian(args.first(), mode))

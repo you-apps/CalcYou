@@ -24,16 +24,12 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
             expr += ")".repeat(parenthesesBalance)
         }
 
-        return try {
-            val result = ExpressionEvaluator.compile(expr).execute(mode) ?: return null
-            if (result.isNaN()) {
-                null
-            } else {
-                val shortened = MathUtil.doubleToString(result)
-                tokenizer.getLocalizedExpression(shortened)
-            }
-        } catch (_: Exception) {
+        val result = ExpressionEvaluator.compile(expr).execute(mode) ?: return null
+        return if (result.isNaN()) {
             null
+        } else {
+            val shortened = MathUtil.doubleToString(result)
+            tokenizer.getLocalizedExpression(shortened)
         }
     }
 }
