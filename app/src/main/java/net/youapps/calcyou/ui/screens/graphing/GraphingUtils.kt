@@ -1,7 +1,6 @@
 package net.youapps.calcyou.ui.screens.graphing
 
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.text.TextMeasurer
@@ -46,7 +45,7 @@ fun DrawScope.drawGridLines(window: Window, lineWidth: Float, gridLinesColor: Co
 
 internal fun Float.toDisplayString(): String {
     return when {
-        (this % 1f == 0f) && (this in 0.0001f..10000f) -> {
+        (this % 1f == 0f) && (abs(this) in 0.0001f..10000f) -> {
             this.toInt().toString()
         }
 
@@ -108,18 +107,25 @@ fun DrawScope.drawAxes(
 //            Offset(xDraw, yDraw - halfTickLength),
 //            lineWidth
 //        )
-        val textWidth = 200 / canvasScale
-        val textHeight = 40 / canvasScale
+
+        val textSize = 36 / canvasScale
         val textPadding = 20 / canvasScale
-        drawText(
-            textMeasurer,
-            xDisplayValue,
-            topLeft = Offset(xDraw - textWidth / 2, yDraw + textPadding),
-            size = Size(textWidth, textHeight),
+
+        val textLayoutResult = textMeasurer.measure(
+            text = xDisplayValue,
             style = TextStyle(
                 color = axesColor,
+                fontSize = textSize.toSp(),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Medium
+            )
+        )
+
+        drawText(
+            textLayoutResult,
+            topLeft = Offset(
+                xDraw - textLayoutResult.size.width / 2,
+                yDraw + textPadding
             )
         )
     }
@@ -143,15 +149,25 @@ fun DrawScope.drawAxes(
 //            Offset(xDraw + halfTickLength, yDraw),
 //            lineWidth
 //        )
-        val textWidth = 200 / canvasScale
-        val textHeight = 40 / canvasScale
+
+        val textSize = 36 / canvasScale
         val textPadding = 20 / canvasScale
-        drawText(
-            textMeasurer,
+
+        val textLayoutResult = textMeasurer.measure(
             yDisplayValue,
-            topLeft = Offset(xDraw + textPadding, yDraw - textHeight / 2),
-            size = Size(textWidth, textHeight),
-            style = TextStyle(color = axesColor, fontWeight = FontWeight.Medium)
+            style = TextStyle(
+                color = axesColor,
+                fontSize = textSize.toSp(),
+                fontWeight = FontWeight.Medium
+            )
+        )
+
+        drawText(
+            textLayoutResult,
+            topLeft = Offset(
+                xDraw + textPadding,
+                yDraw - textLayoutResult.size.height / 2
+            )
         )
     }
 }
