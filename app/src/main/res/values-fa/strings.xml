@@ -148,4 +148,7 @@
     <string name="saturation_slider">اشباع</string>
     <string name="footcandle">شمع-فوت</string>
     <string name="lightness_slider">روشنایی</string>
+    <string name="character_input">کاراکتر ورودی</string>
+    <string name="add_new_function">اضافه کردن تابع جدید</string>
+    <string name="add_constant">اضافه کردن مقدار ثابت</string>
 </resources>
