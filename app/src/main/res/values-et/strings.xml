@@ -173,4 +173,11 @@
     <string name="h2o">H2O (veekõrgus tollides)</string>
     <string name="hex_rgb_code">RGB värvikood kuueteistkümnendarvuna</string>
     <string name="add_constant">Lisa konstant</string>
+    <string name="binary">Kahendsüsteemi arv</string>
+    <string name="octal">Kaheksandarv</string>
+    <string name="decimal">Kümnendarv</string>
+    <string name="hexadecimal">Kuueteistkümnendarv</string>
+    <string name="ascii">ASCII</string>
+    <string name="currencies">Valuutad</string>
+    <string name="number_base">Numbrite alus</string>
 </resources>
