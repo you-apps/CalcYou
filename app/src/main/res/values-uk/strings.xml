@@ -173,4 +173,11 @@
     <string name="h2o">H2O (дюйми води)</string>
     <string name="hex_rgb_code">Шістнадцятковий код кольору RGB</string>
     <string name="add_constant">Додати константу</string>
+    <string name="binary">Двійковий</string>
+    <string name="octal">Вісімковий</string>
+    <string name="decimal">Десятковий</string>
+    <string name="hexadecimal">Шістнадцятковий</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Базове</string>
+    <string name="currencies">Валюти</string>
 </resources>
