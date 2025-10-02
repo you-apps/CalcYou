@@ -173,4 +173,11 @@
     <string name="h2o">H2O (بوصة من الماء)</string>
     <string name="hex_rgb_code">رمز لون سداسي</string>
     <string name="add_constant">أضف ثابت</string>
+    <string name="binary">ثنائي</string>
+    <string name="octal">ثماني</string>
+    <string name="decimal">عشري</string>
+    <string name="hexadecimal">ست عشري</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">أساس</string>
+    <string name="currencies">عملات</string>
 </resources>
