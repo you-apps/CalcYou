@@ -173,4 +173,11 @@
     <string name="saturation_slider">Saturasi</string>
     <string name="lightness_slider">Kecerahan</string>
     <string name="hex_rgb_code">Kode warna Hex RGB</string>
+    <string name="binary">Biner</string>
+    <string name="octal">Oktal</string>
+    <string name="decimal">Desimal</string>
+    <string name="hexadecimal">Heksadesimal</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Basis</string>
+    <string name="currencies">Mata Uang</string>
 </resources>
