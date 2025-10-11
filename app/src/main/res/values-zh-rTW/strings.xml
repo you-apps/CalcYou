@@ -30,7 +30,7 @@
     <string name="feet_per_second">英呎/秒</string>
     <string name="app_name">CalcYou</string>
     <string name="temperature">溫度</string>
-    <string name="area">區域</string>
+    <string name="area">面積</string>
     <string name="calculator">計算機</string>
     <string name="storage">存儲</string>
     <string name="frequency">頻率</string>
@@ -159,4 +159,16 @@
     <string name="subscript">下標：</string>
     <string name="megapascal">兆帕斯卡</string>
     <string name="gigapascal">千兆帕斯卡</string>
+    <string name="number_base">進位制</string>
+    <string name="h2o">H2O（水柱英吋）</string>
+    <string name="add_constant">新增常數</string>
+    <string name="hex_rgb_code">Hex RGB 色碼</string>
+    <string name="binary">二進位制</string>
+    <string name="octal">八進位制</string>
+    <string name="decimal">十進位制</string>
+    <string name="hexadecimal">十六進位制</string>
+    <string name="currencies">貨幣</string>
+    <string name="mebibyte"></string>
+    <string name="kibibyte"></string>
+    <string name="gigibyte"></string>
 </resources>
