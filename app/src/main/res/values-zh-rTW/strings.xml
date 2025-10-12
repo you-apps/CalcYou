@@ -168,7 +168,4 @@
     <string name="decimal">十進位制</string>
     <string name="hexadecimal">十六進位制</string>
     <string name="currencies">貨幣</string>
-    <string name="mebibyte"></string>
-    <string name="kibibyte"></string>
-    <string name="gigibyte"></string>
 </resources>
