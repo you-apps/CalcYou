@@ -2,7 +2,7 @@
 <resources>
     <string name="storage">存储</string>
     <string name="power">功率</string>
-    <string name="gigabyte">吉字节</string>
+    <string name="gigabyte">GB</string>
     <string name="lumen">流明</string>
     <string name="grams_of_carbohydrate">碳水化合物克数</string>
     <string name="gram">克</string>
@@ -15,8 +15,8 @@
     <string name="temperature">温度</string>
     <string name="feet_per_second">英尺每秒</string>
     <string name="converter">单位转换器</string>
-    <string name="terabyte">太字节</string>
-    <string name="megabyte">兆字节</string>
+    <string name="terabyte">TB</string>
+    <string name="megabyte">MB</string>
     <string name="poiseuille">泊肃叶</string>
     <string name="ounce_inch">盎司英寸</string>
     <string name="btu_per_hour">英热每小时</string>
@@ -27,7 +27,7 @@
     <string name="megajoule">兆焦</string>
     <string name="newton_meter">牛顿米</string>
     <string name="volume">容量</string>
-    <string name="petabyte">拍字节</string>
+    <string name="petabyte">PB</string>
     <string name="newton">牛顿</string>
     <string name="megahertz">兆赫兹</string>
     <string name="hour">小时</string>
@@ -62,7 +62,7 @@
     <string name="square_yard">平方码</string>
     <string name="second">秒</string>
     <string name="radian">弧度</string>
-    <string name="kilobyte">千字节</string>
+    <string name="kilobyte">KB</string>
     <string name="cubic_centimeter">立方厘米</string>
     <string name="gradian">百分度</string>
     <string name="acre">英亩</string>
@@ -84,7 +84,7 @@
     <string name="hertz">赫兹</string>
     <string name="square_centimeter">平方厘米</string>
     <string name="subscript">下标 ：</string>
-    <string name="exabyte">艾字节</string>
+    <string name="exabyte">EB</string>
     <string name="character_input">字符输入</string>
     <string name="gigapascal">吉帕</string>
     <string name="pound_foot">磅英尺</string>
@@ -110,7 +110,7 @@
     <string name="space">空格</string>
     <string name="cubic_decimeter">立方分米</string>
     <string name="simple_math">简易数学：</string>
-    <string name="_byte">字节</string>
+    <string name="_byte">Byte</string>
     <string name="meter">米</string>
     <string name="knot">节</string>
     <string name="calorie">卡路里</string>
@@ -130,7 +130,7 @@
     <string name="celsius">摄氏度</string>
     <string name="copy_text">复制文本</string>
     <string name="gallon_us">美制加仑</string>
-    <string name="bit">比特</string>
+    <string name="bit">Bit</string>
     <string name="liter">升</string>
     <string name="numbers">数字：</string>
     <string name="pound_per_cubic_foot">磅每立方英尺</string>
@@ -147,18 +147,18 @@
     <string name="foot">英尺</string>
     <string name="minute">分钟</string>
     <string name="kiloliter">千公升</string>
-    <string name="kibibyte">二进制千字节</string>
-    <string name="gigibyte">二进制吉字节</string>
+    <string name="kibibyte">KiB</string>
+    <string name="gigibyte">GiB</string>
     <string name="exabit">艾比特</string>
     <string name="kilobit">千比特</string>
     <string name="gigabit">吉比特</string>
     <string name="megabit">兆比特</string>
-    <string name="tebibyte">二进制太字节</string>
+    <string name="tebibyte">TiB</string>
     <string name="petabit">拍比特</string>
-    <string name="mebibyte">二进制兆字节</string>
+    <string name="mebibyte">MiB</string>
     <string name="terabit">太比特</string>
-    <string name="exbibyte">二进制艾字节</string>
-    <string name="pebibyte">二进制拍字节</string>
+    <string name="exbibyte">EiB</string>
+    <string name="pebibyte">PiB</string>
     <string name="nautical_mile">海里</string>
     <string name="graphing">绘图</string>
     <string name="add_new_function">添加新函数</string>
