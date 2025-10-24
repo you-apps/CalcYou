@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -20,6 +21,7 @@ class CalculatorViewModel(context: Context) : ViewModel() {
     private val eventHandler =
         EventHandler(context, onUpdateHistory = this::onUpdateHistory)
     var displayText by mutableStateOf(TextFieldValue(""))
+    var resultPreviewText by mutableStateOf<String?>(null)
 
     var history: MutableList<String> = mutableStateListOf()
 
@@ -31,6 +33,17 @@ class CalculatorViewModel(context: Context) : ViewModel() {
 
     fun onEvent(event: CalculatorEvent) {
         displayText = eventHandler.processEvent(event, displayText, trigonometricMode)
+        if (displayText.text.isBlank() || event == CalculatorEvent.Evaluate) {
+            resultPreviewText = null
+        }
+        // calculate a preview of the expression result on the fly
+        else {
+            runCatching {
+                eventHandler.evaluateResult(displayText.text, trigonometricMode)?.let {
+                    resultPreviewText = it
+                }
+            }
+        }
     }
 
     private fun onUpdateHistory(item: String) {

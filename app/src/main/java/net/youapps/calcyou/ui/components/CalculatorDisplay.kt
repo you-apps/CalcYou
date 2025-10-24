@@ -34,7 +34,8 @@ import net.youapps.calcyou.viewmodels.CalculatorViewModel
 fun ColumnScope.CalculatorDisplay(
     calculatorViewModel: CalculatorViewModel,
     primaryTextStyle: TextStyle = MaterialTheme.typography.displayMedium,
-    secondaryTextStyle: TextStyle = MaterialTheme.typography.displaySmall
+    secondaryTextStyle: TextStyle = MaterialTheme.typography.displaySmall,
+    tertiaryTextStyle: TextStyle = MaterialTheme.typography.titleLarge
 ) {
     Column(
         modifier = Modifier
@@ -72,28 +73,37 @@ fun ColumnScope.CalculatorDisplay(
                 )
             }
         }
-        Row(
-            Modifier
-                .background(MaterialTheme.colorScheme.surfaceColorAtElevation(50.dp)),
-            horizontalArrangement = Arrangement.End
-        ) {
-            CompositionLocalProvider(LocalTextInputService provides null) {
-                BasicTextField(
-                    value = calculatorViewModel.displayText,
-                    onValueChange = {
-                        calculatorViewModel.displayText = it
-                    },
-                    singleLine = true,
+        CompositionLocalProvider(LocalTextInputService provides null) {
+            BasicTextField(
+                value = calculatorViewModel.displayText,
+                onValueChange = {
+                    calculatorViewModel.displayText = it
+                },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surfaceColorAtElevation(50.dp))
+                    .padding(vertical = 8.dp, horizontal = 16.dp),
+                maxLines = 1,
+                textStyle = primaryTextStyle.plus(
+                    TextStyle(
+                        textAlign = TextAlign.Right,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                )
+            )
+        }
+
+        calculatorViewModel.resultPreviewText?.let { previewText ->
+            if (previewText != calculatorViewModel.displayText.text) {
+                Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp, horizontal = 16.dp),
-                    maxLines = 1,
-                    textStyle = primaryTextStyle.plus(
-                        TextStyle(
-                            textAlign = TextAlign.Right,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                    )
+                        .background(MaterialTheme.colorScheme.surfaceColorAtElevation(20.dp))
+                        .padding(vertical = 4.dp, horizontal = 16.dp),
+                    text = previewText,
+                    textAlign = TextAlign.End,
+                    style = tertiaryTextStyle,
                 )
             }
         }

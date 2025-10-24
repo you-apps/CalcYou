@@ -44,7 +44,7 @@ class EventHandler(
             CalculatorEvent.Evaluate -> {
                 onUpdateHistory(currentText.text)
                 val newText = try {
-                    evaluator.evaluate(currentText.text, mode.value) ?: "Error"
+                    evaluateResult(currentText.text, mode) ?: "Error"
                 } catch (e: Exception) {
                     Toast.makeText(context, e.message ?: e.javaClass.simpleName, Toast.LENGTH_LONG)
                         .show()
@@ -67,5 +67,9 @@ class EventHandler(
                 currentText
             }
         }
+    }
+
+    fun evaluateResult(currentText: String, mode: MutableState<TrigonometricMode>): String? {
+        return evaluator.evaluate(currentText, mode.value)
     }
 }
