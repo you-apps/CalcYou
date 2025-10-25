@@ -291,7 +291,7 @@ object ExpressionEvaluator {
                 continue
             }
 
-            if (c == ',') { // Commas are used to separate function arguments
+            if (c == ';') { // Semicolons are used to separate function arguments
                 tokens.add(Token.Comma(position = i))
                 i++
                 continue

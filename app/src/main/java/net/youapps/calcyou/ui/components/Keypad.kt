@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
@@ -23,6 +24,7 @@ import net.youapps.calcyou.data.SpecialOperator
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.ui.components.buttons.CalculatorButton
 import net.youapps.calcyou.ui.components.buttons.CalculatorTextButton
+import java.text.DecimalFormatSymbols
 
 
 val leftKeypad = arrayOf(
@@ -245,7 +247,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = ".",
+                text = remember { DecimalFormatSymbols.getInstance().decimalSeparator.toString() },
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
                 }
@@ -454,7 +456,7 @@ fun CenterKeypadHorizontal(
                 textStyle = textStyle
             )
             CalculatorButton(
-                text = ".",
+                text = remember { DecimalFormatSymbols.getInstance().decimalSeparator.toString() },
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
