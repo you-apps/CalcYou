@@ -168,4 +168,17 @@
     <string name="decimal">十進位制</string>
     <string name="hexadecimal">十六進位制</string>
     <string name="currencies">貨幣</string>
+    <string name="kibibyte">KiB</string>
+    <string name="mebibyte">MiB</string>
+    <string name="gigibyte">GiB</string>
+    <string name="tebibyte">TiB</string>
+    <string name="pebibyte">PiB</string>
+    <string name="exbibyte">EiB</string>
+    <string name="kilobit">Kbit</string>
+    <string name="megabit">Mbit</string>
+    <string name="gigabit">Gbit</string>
+    <string name="terabit">Tbit</string>
+    <string name="petabit">Pbit</string>
+    <string name="exabit">Ebit</string>
+    <string name="ascii">ASCII</string>
 </resources>
