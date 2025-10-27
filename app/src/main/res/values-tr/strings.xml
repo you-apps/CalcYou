@@ -173,4 +173,11 @@
     <string name="h2o">H2O (İnç su)</string>
     <string name="hex_rgb_code">Onaltılı RGB renk kodu</string>
     <string name="add_constant">Sabit ekle</string>
+    <string name="binary">İkilik</string>
+    <string name="octal">Sekizlik</string>
+    <string name="decimal">Onluk</string>
+    <string name="hexadecimal">Onaltılık</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Taban</string>
+    <string name="currencies">Para birimleri</string>
 </resources>

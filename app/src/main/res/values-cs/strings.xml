@@ -173,4 +173,11 @@
     <string name="h2o">H2O (palce vody)</string>
     <string name="hex_rgb_code">Barevný kód Hex RGB</string>
     <string name="add_constant">Přidat konstantu</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Soustava</string>
+    <string name="currencies">Měny</string>
+    <string name="binary">Dvojková</string>
+    <string name="octal">Osmičková</string>
+    <string name="decimal">Desítková</string>
+    <string name="hexadecimal">Šestnáctková</string>
 </resources>
