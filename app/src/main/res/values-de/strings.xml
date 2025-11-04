@@ -106,7 +106,7 @@
     <string name="kilogram_per_cubic_meter">Kilogramm pro Kubikmeter</string>
     <string name="teaspoon">Teelöffel</string>
     <string name="ounce">Unze</string>
-    <string name="inch">Inch</string>
+    <string name="inch">Zoll</string>
     <string name="english_lowercase">englische Kleinbuchstaben:</string>
     <string name="backspace">Zurück</string>
     <string name="millimeter">Millimeter</string>
@@ -172,4 +172,12 @@
     <string name="h2o">H2O (Zoll Wasser)</string>
     <string name="graphing">Abbildung</string>
     <string name="color_picker_dialog">Farbwähler</string>
+    <string name="binary">Binär</string>
+    <string name="octal">Oktal</string>
+    <string name="decimal">Dezimal</string>
+    <string name="hexadecimal">Hexadezimal</string>
+    <string name="ascii">ASCII</string>
+    <string name="number_base">Basis</string>
+    <string name="currencies">Währungen</string>
+    <string name="stoke">Stoke</string>
 </resources>
