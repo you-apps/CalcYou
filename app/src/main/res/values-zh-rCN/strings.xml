@@ -174,7 +174,7 @@
     <string name="hex_rgb_code">16 进制 RGB 颜色模式</string>
     <string name="add_constant">添加常数</string>
     <string name="binary">二进制</string>
-    <string name="octal">八进制‌</string>
+    <string name="octal">八进制</string>
     <string name="decimal">十进制</string>
     <string name="hexadecimal">十六进制</string>
     <string name="ascii">ASCII</string>
