@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalTextInputService
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import net.youapps.calcyou.viewmodels.CalculatorViewModel
@@ -35,7 +35,8 @@ fun ColumnScope.CalculatorDisplay(
     calculatorViewModel: CalculatorViewModel,
     primaryTextStyle: TextStyle = MaterialTheme.typography.displayMedium,
     secondaryTextStyle: TextStyle = MaterialTheme.typography.displaySmall,
-    tertiaryTextStyle: TextStyle = MaterialTheme.typography.titleLarge
+    tertiaryTextStyle: TextStyle = MaterialTheme.typography.titleLarge,
+    formatNumberFromString: (String)->String
 ) {
     Column(
         modifier = Modifier
@@ -61,7 +62,7 @@ fun ColumnScope.CalculatorDisplay(
         ) {
             items(items = calculatorViewModel.history) { item ->
                 Text(
-                    text = item,
+                    text = formatNumberFromString(item),
                     modifier = Modifier
                         .animateItemPlacement()
                         .clickable {
@@ -75,7 +76,7 @@ fun ColumnScope.CalculatorDisplay(
         }
         CompositionLocalProvider(LocalTextInputService provides null) {
             BasicTextField(
-                value = calculatorViewModel.displayText,
+                value = TextFieldValue(formatNumberFromString(calculatorViewModel.displayText.text)),
                 onValueChange = {
                     calculatorViewModel.displayText = it
                 },
@@ -101,7 +102,7 @@ fun ColumnScope.CalculatorDisplay(
                         .fillMaxWidth()
                         .background(MaterialTheme.colorScheme.surfaceColorAtElevation(20.dp))
                         .padding(vertical = 4.dp, horizontal = 16.dp),
-                    text = previewText,
+                    text = formatNumberFromString(previewText),
                     textAlign = TextAlign.End,
                     style = tertiaryTextStyle,
                 )

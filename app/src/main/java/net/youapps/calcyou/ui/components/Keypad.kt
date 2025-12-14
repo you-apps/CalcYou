@@ -25,6 +25,7 @@ import net.youapps.calcyou.data.evaluator.TrigonometricMode
 import net.youapps.calcyou.ui.components.buttons.CalculatorButton
 import net.youapps.calcyou.ui.components.buttons.CalculatorTextButton
 import java.text.DecimalFormatSymbols
+import java.util.Locale
 
 
 val leftKeypad = arrayOf(
@@ -73,7 +74,8 @@ val combinedKeypad = arrayOf(
 @Composable
 fun Keypad(
     trigonometricMode: TrigonometricMode,
-    onEvent: (CalculatorEvent) -> Unit
+    onEvent: (CalculatorEvent) -> Unit,
+    userLocale: Locale
 ) {
     Column(
         modifier = Modifier
@@ -81,14 +83,15 @@ fun Keypad(
     ) {
         SwipePanels(
             start = { SideKeypad(onEvent = onEvent, keys = leftKeypad, trigonometricMode = trigonometricMode) },
-            center = { CenterKeypad(onEvent) },
+            center = { CenterKeypad(onEvent, userLocale = userLocale) },
             end = { SideKeypad(onEvent = onEvent, keys = rightKeypad, trigonometricMode = trigonometricMode) })
     }
 }
 
 @Composable
 fun CenterKeypad(
-    onEvent: (CalculatorEvent) -> Unit
+    onEvent: (CalculatorEvent) -> Unit,
+    userLocale: Locale
 ) {
     val buttonSpacing = 8.dp
     Column(
@@ -247,7 +250,7 @@ fun CenterKeypad(
                 }
             )
             CalculatorButton(
-                text = remember { DecimalFormatSymbols.getInstance().decimalSeparator.toString() },
+                text = remember { DecimalFormatSymbols.getInstance(userLocale).decimalSeparator.toString() },
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
                 }
@@ -278,6 +281,7 @@ fun CenterKeypad(
 @Composable
 fun CenterKeypadHorizontal(
     onEvent: (CalculatorEvent) -> Unit,
+    userLocale: Locale,
     textStyle: TextStyle = MaterialTheme.typography.displaySmall,
     iconSize: Dp = 48.dp
 ) {
@@ -456,7 +460,7 @@ fun CenterKeypadHorizontal(
                 textStyle = textStyle
             )
             CalculatorButton(
-                text = remember { DecimalFormatSymbols.getInstance().decimalSeparator.toString() },
+                text = remember { DecimalFormatSymbols.getInstance(userLocale).decimalSeparator.toString() },
                 square = false,
                 onClick = {
                     onEvent(CalculatorEvent.Decimal)
@@ -608,5 +612,5 @@ fun SideKeypadHorizontal(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    Keypad(onEvent = {}, trigonometricMode = TrigonometricMode.DEGREE)
+    Keypad(onEvent = {}, userLocale = Locale.getDefault(), trigonometricMode = TrigonometricMode.DEGREE)
 }

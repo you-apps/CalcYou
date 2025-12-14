@@ -28,8 +28,7 @@ class FormattingEvaluator(private val tokenizer: Tokenizer) {
         return if (result.isNaN()) {
             null
         } else {
-            val shortened = MathUtil.doubleToString(result)
-            tokenizer.getLocalizedExpression(shortened)
+            MathUtil.doubleToString(result)
         }
     }
 }

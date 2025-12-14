@@ -6,9 +6,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
-import java.lang.Exception
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 
 class EventHandler(
     private val context: Context,
@@ -16,7 +13,6 @@ class EventHandler(
 ) {
     private val tokenizer = Tokenizer(context)
     private val evaluator = FormattingEvaluator(tokenizer)
-    private val numberFormat = DecimalFormatSymbols.getInstance()
 
     fun processEvent(
         event: CalculatorEvent,
@@ -41,7 +37,7 @@ class EventHandler(
             }
 
             CalculatorEvent.Decimal -> {
-                currentText.insertText(numberFormat.decimalSeparator.toString())
+                currentText.insertText(".")
             }
 
             CalculatorEvent.Evaluate -> {

@@ -28,7 +28,7 @@ class CalculatorViewModel(context: Context) : ViewModel() {
     val trigonometricMode = mutableStateOf(TrigonometricMode.RADIAN)
 
     fun setExpression(text: String) {
-        displayText = TextFieldValue(text)
+        displayText = displayText.copy(text = text, selection = TextRange(text.length))
     }
 
     fun onEvent(event: CalculatorEvent) {

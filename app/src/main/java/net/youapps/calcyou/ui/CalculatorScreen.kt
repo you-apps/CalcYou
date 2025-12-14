@@ -22,12 +22,15 @@ import net.youapps.calcyou.ui.components.CenterKeypadHorizontal
 import net.youapps.calcyou.ui.components.Keypad
 import net.youapps.calcyou.ui.components.SideKeypadHorizontal
 import net.youapps.calcyou.viewmodels.CalculatorViewModel
+import java.util.Locale
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CalculatorScreen(
     modifier: Modifier = Modifier,
-    calculatorViewModel: CalculatorViewModel = viewModel(factory = CalculatorViewModel.Factory)
+    calculatorViewModel: CalculatorViewModel = viewModel(factory = CalculatorViewModel.Factory),
+    formatNumberFromString: (String)->String,
+    userLocale: Locale
 ) {
     val orientation = LocalConfiguration.current.orientation
     if (orientation == ORIENTATION_LANDSCAPE) {
@@ -50,10 +53,12 @@ fun CalculatorScreen(
                     CalculatorDisplay(
                         calculatorViewModel,
                         primaryTextStyle = MaterialTheme.typography.headlineMedium,
-                        secondaryTextStyle = MaterialTheme.typography.headlineSmall
+                        secondaryTextStyle = MaterialTheme.typography.headlineSmall,
+                        formatNumberFromString = formatNumberFromString
                     )
                     CenterKeypadHorizontal(
                         calculatorViewModel::onEvent,
+                        userLocale = userLocale,
                         textStyle = MaterialTheme.typography.headlineSmall,
                         iconSize = 32.dp
                     )
@@ -69,9 +74,10 @@ fun CalculatorScreen(
                     .then(modifier),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                CalculatorDisplay(calculatorViewModel)
+                CalculatorDisplay(calculatorViewModel, formatNumberFromString = formatNumberFromString)
                 Keypad(
                     onEvent = calculatorViewModel::onEvent,
+                    userLocale = userLocale,
                     trigonometricMode = calculatorViewModel.trigonometricMode.value
                 )
             }
@@ -82,5 +88,5 @@ fun CalculatorScreen(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    CalculatorScreen()
+    CalculatorScreen(formatNumberFromString = {""}, userLocale = Locale.getDefault())
 }
