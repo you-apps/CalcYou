@@ -173,4 +173,11 @@
     <string name="lightness_slider">லேசான தன்மை</string>
     <string name="hex_rgb_code">பதிண்ம சிபநி வண்ணக் குறியீடு</string>
     <string name="add_constant">மாறிலி சேர்</string>
+    <string name="binary">இருமம்</string>
+    <string name="octal">எண்மம்</string>
+    <string name="decimal">தசமம்</string>
+    <string name="hexadecimal">பதிண்மம்</string>
+    <string name="ascii">அநிகுதப</string>
+    <string name="number_base">அடிப்படை</string>
+    <string name="currencies">நாணயங்கள்</string>
 </resources>
