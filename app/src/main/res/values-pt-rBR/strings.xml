@@ -173,4 +173,23 @@
     <string name="megawatt">Megawatt</string>
     <string name="hex_rgb_code">Código de cor Hex RGB</string>
     <string name="add_constant">Adicionar constante</string>
+    <string name="binary">Binário</string>
+    <string name="currencies">Moedas</string>
+    <string name="supports_nested_functions_like_sin_cos_x">Suporta funções entreligadas como sin(cos(x))</string>
+    <string name="operators">Operadores</string>
+    <string name="addition">Adição</string>
+    <string name="subtraction">Subtração</string>
+    <string name="multiplication">Multiplicação</string>
+    <string name="division">Divisão</string>
+    <string name="exponentiation_x_2">Exponenciação (x^2)</string>
+    <string name="basic_functions">Funções básicas</string>
+    <string name="absolute_value">Valor absoluto</string>
+    <string name="square_root">Raiz quadrada</string>
+    <string name="cube_root">Raiz cúbica</string>
+    <string name="exponential_e_x">Exponencial (e^x)</string>
+    <string name="natural_logarithm">Logaritmo natural</string>
+    <string name="base_10_logarithm">Logaritmo Base-10</string>
+    <string name="base_2_logarithm">Logaritmo Base-2</string>
+    <string name="logarithm_with_custom_base">Logaritmo com base personalizado</string>
+    <string name="power_function">Função de potência</string>
 </resources>
