@@ -180,4 +180,11 @@
     <string name="octal">Osmičková</string>
     <string name="decimal">Desítková</string>
     <string name="hexadecimal">Šestnáctková</string>
+    <string name="supports_nested_functions_like_sin_cos_x">Podporuje vnořené funkce, jako je sin(cos(x))</string>
+    <string name="operators">Operátory</string>
+    <string name="addition">Sčítání</string>
+    <string name="subtraction">Odčítání</string>
+    <string name="multiplication">Násobení</string>
+    <string name="division">Dělení</string>
+    <string name="exponentiation_x_2">Umocňování (x^2)</string>
 </resources>
