@@ -180,4 +180,6 @@
     <string name="ascii">ASCII</string>
     <string name="number_base">أساس</string>
     <string name="currencies">عملات</string>
+    <string name="supports_nested_functions_like_sin_cos_x">يدعم الدوال المتداخلة مثل sin(cos(x))</string>
+    <string name="operators">عوامل</string>
 </resources>
