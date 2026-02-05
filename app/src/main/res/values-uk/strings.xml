@@ -207,4 +207,14 @@
     <string name="round_up">Округлення в більшу сторону</string>
     <string name="round_down">Округлення в меншу сторону</string>
     <string name="round_to_nearest">Округлення до найближчого</string>
+    <string name="remove_decimals">Прибрати десяткові знаки</string>
+    <string name="advanced_functions">Розширені функції</string>
+    <string name="factorial_n">Факторіал (n!)</string>
+    <string name="minimum_value">Мінімальне значення</string>
+    <string name="maximum_value">Максимальне значення</string>
+    <string name="sign_1_0_or_1">Знак (-1, 0 або 1)</string>
+    <string name="hypotenuse_sqrt_x_y">Квадратна гіпотенуза(x²+y²)</string>
+    <string name="greatest_common_divisor">Найбільший спільний дільник</string>
+    <string name="least_common_multiple">Найменше спільне кратне</string>
+    <string name="clamp_value">Обмежити значення</string>
 </resources>
