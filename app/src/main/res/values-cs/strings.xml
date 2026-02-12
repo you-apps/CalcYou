@@ -187,4 +187,8 @@
     <string name="multiplication">Násobení</string>
     <string name="division">Dělení</string>
     <string name="exponentiation_x_2">Umocňování (x^2)</string>
+    <string name="basic_functions">Základní funkce</string>
+    <string name="absolute_value">Absolutní hodnota</string>
+    <string name="cotangent_secant_cosecant">Kotangens, sinus, kosinus</string>
+    <string name="rounding_functions">Zaokrouhlovací funkce</string>
 </resources>
