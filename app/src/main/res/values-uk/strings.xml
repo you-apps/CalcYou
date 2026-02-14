@@ -217,4 +217,21 @@
     <string name="greatest_common_divisor">Найбільший спільний дільник</string>
     <string name="least_common_multiple">Найменше спільне кратне</string>
     <string name="clamp_value">Обмежити значення</string>
+    <string name="degrees_to_radians">Градуси в радіани</string>
+    <string name="radians_to_degrees">Радіани в градуси</string>
+    <string name="pi_3_14159">Число π (3.14159...)</string>
+    <string name="euler_s_number_2_71828">Число Ейлера (2,71828...)</string>
+    <string name="functions_inside_functions">Функції всередині функцій</string>
+    <string name="combine_operations">Об’єднання операцій</string>
+    <string name="gaussian_like_curves">Ґаусоподібні криві</string>
+    <string name="avoid_domain_errors">Уникання помилок визначення</string>
+    <string name="note_use_semicolons_to_separate_multiple_arguments">Примітка: використовуйте крапку з комою (;), щоб розділити кілька аргументів</string>
+    <string name="close">Закрити</string>
+    <string name="invalid_token_at_index_0">Недійсний токен у позиції 0</string>
+    <string name="quick_templates">Швидкі шаблони:</string>
+    <string name="constants">Константи</string>
+    <string name="nested_functions">Вкладені функції</string>
+    <string name="syntax_help">Допомога із синтаксисом</string>
+    <string name="function_syntax_reference">Довідник із синтаксису функцій</string>
+    <string name="trigonometric_functions">Тригонометричні функції</string>
 </resources>
