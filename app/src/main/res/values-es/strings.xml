@@ -223,4 +223,15 @@
     <string name="ascii">ASCII</string>
     <string name="number_base">Base</string>
     <string name="subtraction">Substracción</string>
+    <string name="supports_nested_functions_like_sin_cos_x">Admite funciones anidadas como sen(cos(x))</string>
+    <string name="exponentiation_x_2">Exponente (x^2)</string>
+    <string name="modulo_remainder">Módulo (recordatorio)</string>
+    <string name="base_10_logarithm">Logaritmo base-10</string>
+    <string name="base_2_logarithm">Logaritmo base-2</string>
+    <string name="sign_1_0_or_1">Signo (-1, 0, o 1)</string>
+    <string name="hypotenuse_sqrt_x_y">Hipotenusa sqrt(x²+y²)</string>
+    <string name="gaussian_like_curves">Curvas como gausianas</string>
+    <string name="invalid_token_at_index_0">Vale no válido en índice 0</string>
+    <string name="function_syntax_reference">Referencia Sintáctica de Función</string>
+    <string name="clamp_value">Valor de sujeción</string>
 </resources>
