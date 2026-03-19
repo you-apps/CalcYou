@@ -173,4 +173,21 @@
     <string name="h2o">H2O (Дюймы воды)</string>
     <string name="hex_rgb_code">HEX-код цвета (RGB)</string>
     <string name="add_constant">Добавить константу</string>
+    <string name="binary">Бинарный</string>
+    <string name="decimal">Десятичный</string>
+    <string name="hexadecimal">Шестнадцатеричный</string>
+    <string name="ascii">ASCII</string>
+    <string name="currencies">Валюты</string>
+    <string name="multiplication">Умножение</string>
+    <string name="exponentiation_x_2">Возведение в степень (x^2)</string>
+    <string name="modulo_remainder">По модулю (остаток)</string>
+    <string name="basic_functions">Основные функции</string>
+    <string name="absolute_value">Абсолютное значение</string>
+    <string name="square_root">Квадратный корень</string>
+    <string name="cube_root">Квадратный корень</string>
+    <string name="exponential_e_x">Экспоненциальный (e^x)</string>
+    <string name="natural_logarithm">Натуральный логарифм</string>
+    <string name="base_10_logarithm">Логарифм по основанию-10</string>
+    <string name="base_2_logarithm">Логарифм по основанию-2</string>
+    <string name="logarithm_with_custom_base">Логарифм с произвольным основанием</string>
 </resources>
