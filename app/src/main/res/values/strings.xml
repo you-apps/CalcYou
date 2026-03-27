@@ -238,4 +238,6 @@
     <string name="syntax_help">Syntax help</string>
     <string name="function_syntax_reference">Function Syntax Reference</string>
     <string name="trigonometric_functions">Trigonometric Functions</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
 </resources>

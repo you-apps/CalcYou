@@ -43,6 +43,7 @@ fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostControll
                 ConverterScreen<Double>(
                     converter = converter.converter,
                     converterName = converter.resId,
+                    converterKey = converter.route,
                     keyboardType = KeyboardType.Number,
                     stringToConverterArg = { it.toDoubleOrNull() },
                     converterArgToString = { MathUtil.doubleToString(it) }
@@ -55,6 +56,7 @@ fun AppNavHost(modifier: Modifier = Modifier, navHostController: NavHostControll
                 ConverterScreen<String?>(
                     converter = converter.converter,
                     converterName = converter.resId,
+                    converterKey = converter.route,
                     keyboardType = KeyboardType.Text,
                     stringToConverterArg = { it.ifEmpty { null } },
                     converterArgToString = { it.orEmpty() }

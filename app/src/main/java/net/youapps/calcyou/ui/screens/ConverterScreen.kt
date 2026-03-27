@@ -2,23 +2,22 @@ package net.youapps.calcyou.ui.screens
 
 import android.content.Context
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,9 +36,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -48,6 +45,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import net.youapps.calcyou.R
 import net.youapps.calcyou.data.Either
@@ -55,18 +53,25 @@ import net.youapps.calcyou.data.converters.ConverterUnit
 import net.youapps.calcyou.data.converters.MassConverter
 import net.youapps.calcyou.data.converters.UnitConverter
 import net.youapps.calcyou.data.evaluator.MathUtil
+import net.youapps.calcyou.viewmodels.UnitConverterViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 inline fun <reified T> ConverterScreen(
     converter: UnitConverter<T>,
     @StringRes converterName: Int,
+    converterKey: String,
     keyboardType: KeyboardType,
     crossinline stringToConverterArg: (String) -> T?,
     crossinline converterArgToString: (T) -> String
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val converterModel: UnitConverterViewModel = viewModel(factory = UnitConverterViewModel.Factory)
+
+    LaunchedEffect(Unit) {
+        converterModel.currentCategoryKey.value = converterKey
+    }
 
     Column(
         Modifier
@@ -112,65 +117,49 @@ inline fun <reified T> ConverterScreen(
                     unfocusedIndicatorColor = Color.Transparent
                 )
             )
-            ExposedDropdownMenuBox(
-                modifier = Modifier.weight(1f),
-                expanded = expanded,
-                onExpandedChange = { expanded = !expanded },
-            ) {
-                TextField(
-                    modifier = Modifier
-                        .menuAnchor(),
-                    readOnly = true,
-                    value = unitName(context, selectedUnit.name),
-                    onValueChange = {},
-                    label = {
-                        Text(
-                            stringResource(id = R.string.unit)
-                        )
-                    },
-                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ExposedDropdownMenuDefaults.textFieldColors(
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    )
-                )
-                var dropdownWidth by remember {
-                    mutableStateOf(0.dp)
-                }
 
-                ExposedDropdownMenu (
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false },
-                    modifier = Modifier.onGloballyPositioned {
-                        dropdownWidth = it.size.width.dp
-                    }
-                ) {
-                    val itemHeight = 45.dp
-                    val configuration = LocalConfiguration.current
-                    val dropdownHeight = remember(converter.units.size) {
-                        val height = itemHeight * converter.units.size
-                        val maxHeight = configuration.screenHeightDp.dp * 0.7f
-                        minOf(height, maxHeight)
-                    }
-                    LazyColumn(
-                        modifier = Modifier
-                            .width(dropdownWidth)
-                            .height(dropdownHeight)
-                    ) {
-                        items(converter.units) { unit ->
-                            DropdownMenuItem(
-                                text = { Text(unitName(context, unit.name)) },
-                                onClick = {
-                                    selectedUnit = unit
-                                    expanded = false
-                                },
-                                contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
-                                modifier = Modifier.height(itemHeight)
-                            )
+            var showUnitPickerScreen by remember {
+                mutableStateOf(false)
+            }
+            TextField(
+                modifier = Modifier.weight(1f),
+                readOnly = true,
+                interactionSource = remember { MutableInteractionSource() }.also { interactionSource ->
+                    LaunchedEffect(interactionSource) {
+                        interactionSource.interactions.collect {
+                            if (it is PressInteraction.Release) {
+                                showUnitPickerScreen = true
+                            }
                         }
                     }
-                }
+                },
+                value = unitName(context, selectedUnit.name),
+                onValueChange = {},
+                label = {
+                    Text(
+                        stringResource(id = R.string.unit)
+                    )
+                },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                shape = RoundedCornerShape(8.dp),
+                colors = ExposedDropdownMenuDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
+            )
+
+            if (showUnitPickerScreen) {
+                ConverterUnitPickerScreen(
+                    converterModel,
+                    converter.units,
+                    selectedUnit,
+                    { unit ->
+                        selectedUnit = unit
+                    },
+                    onDismissRequest = {
+                        showUnitPickerScreen = false
+                    }
+                )
             }
         }
         if (converted.isNotEmpty()) {
@@ -225,8 +214,9 @@ fun unitName(context: Context, name: Either<Int, String>): String {
 private fun DefaultPreview() {
     ConverterScreen(
         converter = MassConverter(),
-        R.string.app_name,
-        KeyboardType.Number,
+        converterName = R.string.app_name,
+        converterKey = "mass",
+        keyboardType = KeyboardType.Number,
         converterArgToString = { double -> MathUtil.doubleToString(double) },
         stringToConverterArg = { str -> str.toDoubleOrNull() })
 }

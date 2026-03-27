@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "net.you_apps.calcyou";
+option java_multiple_files = true;
+
+message Unit {
+  string key = 1;
+}
+
+message FavoriteUnitCategory {
+  string key = 1;
+  repeated Unit favorites = 2;
+}
+
+message FavoriteUnits {
+  repeated FavoriteUnitCategory categories = 1;
+}
