@@ -17,8 +17,8 @@ android {
         applicationId = "net.youapps.calcyou"
         minSdk = 23
         targetSdk = 35
-        versionCode = 7
-        versionName = "4.0"
+        versionCode = 8
+        versionName = "5.0"
         // TODO: update 'currentApiVersion' below before each release
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -64,7 +64,7 @@ android {
     }
 }
 
-val currencyApiVersion = "2026-02-18"
+val currencyApiVersion = "2026-03-27"
 // update the list of currencies if it doesn't exist yet
 tasks.register("updateCurrencies") {
     val currenciesPath = File("app/src/main/res/raw/currencies.csv")
