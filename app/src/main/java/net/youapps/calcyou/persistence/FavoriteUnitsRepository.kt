@@ -13,12 +13,14 @@ class FavoriteUnitsRepository(val context: Context) {
     suspend fun addFavoriteUnit(categoryKey: String, unitKey: String) {
         dataStore.updateData { data ->
             var builder = data.toBuilder()
+            val unit = Unit.newBuilder().setKey(unitKey).build()
 
             // add category if it doesn't exist yet
             if (data.categoriesList.none { it.key == categoryKey }) {
                 builder = builder.addCategories(
                     FavoriteUnitCategory.newBuilder()
                         .setKey(categoryKey)
+                        .addFavorites(unit)
                         .build()
                 )
             } else {
@@ -26,7 +28,7 @@ class FavoriteUnitsRepository(val context: Context) {
                     category.key == categoryKey
                 }
                 val updatedCategory = data.categoriesList[categoryIndex].toBuilder()
-                updatedCategory.addFavorites(Unit.newBuilder().setKey(unitKey).build())
+                updatedCategory.addFavorites(unit)
 
                 builder.setCategories(categoryIndex, updatedCategory)
             }
