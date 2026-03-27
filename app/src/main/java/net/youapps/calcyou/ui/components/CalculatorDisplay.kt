@@ -63,7 +63,7 @@ fun ColumnScope.CalculatorDisplay(
                 Text(
                     text = item,
                     modifier = Modifier
-                        .animateItemPlacement()
+                        .animateItem()
                         .clickable {
                             calculatorViewModel.setExpression(item)
                         },
