@@ -10,6 +10,7 @@
     <string name="mass">Mass</string>
     <string name="speed">Speed</string>
     <string name="volume">Volume</string>
+    <string name="cooking">Cooking</string>
     <string name="value">Value</string>
     <string name="unit">Unit</string>
     <string name="square_meter">Square meter</string>
@@ -64,6 +65,8 @@
     <string name="fluid_ounce">Fluid ounce</string>
     <string name="tablespoon">Tablespoon</string>
     <string name="teaspoon">Teaspoon</string>
+    <string name="cups">Cups</string>
+    <string name="pinch">Pinch</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
     <string name="kelvin">Kelvin</string>

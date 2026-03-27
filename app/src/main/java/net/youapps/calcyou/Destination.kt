@@ -2,6 +2,7 @@ package net.youapps.calcyou
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Fastfood
 import androidx.compose.material.icons.rounded.Carpenter
 import androidx.compose.material.icons.rounded.Coffee
 import androidx.compose.material.icons.rounded.Compress
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.rounded.WbSunny
 import androidx.compose.ui.graphics.vector.ImageVector
 import net.youapps.calcyou.data.converters.AngleConverter
 import net.youapps.calcyou.data.converters.AreaConverter
+import net.youapps.calcyou.data.converters.CookingConverter
 import net.youapps.calcyou.data.converters.CurrencyConverter
 import net.youapps.calcyou.data.converters.DensityConverter
 import net.youapps.calcyou.data.converters.DigitalStorageConverter
@@ -100,6 +102,12 @@ sealed class Destination(open val route: String) {
             Converter<Double>(
                 "speed", R.string.speed, Icons.Rounded.Speed,
                 SpeedConverter()
+            )
+
+        object Cooking :
+            Converter<Double>(
+                "cooking", R.string.cooking, Icons.Default.Fastfood,
+                CookingConverter()
             )
 
         object Volume :
@@ -196,6 +204,7 @@ sealed class Destination(open val route: String) {
                     Length,
                     Mass,
                     Speed,
+                    Cooking,
                     Volume,
                     Angle,
                     Power,
