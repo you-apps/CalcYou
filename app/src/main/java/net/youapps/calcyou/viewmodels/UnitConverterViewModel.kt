@@ -19,8 +19,11 @@ class UnitConverterViewModel(application: Application): AndroidViewModel(applica
     private val favoriteUnitsRepository = FavoriteUnitsRepository(application)
 
     val currentCategoryKey = MutableStateFlow<String?>(null)
-    val favoriteUnits = combine(favoriteUnitsRepository.unitsFlow, currentCategoryKey) { favoriteUnits, category ->
-        favoriteUnits.firstOrNull { it.key == category }?.favoritesList.orEmpty()
+    val favoriteUnits = combine(favoriteUnitsRepository.unitConverterCategoriesFlow, currentCategoryKey) { categories, category ->
+        categories.firstOrNull { it.key == category }?.favoritesList.orEmpty()
+    }
+    val selectedUnit = combine(favoriteUnitsRepository.unitConverterCategoriesFlow, currentCategoryKey) { categories, category ->
+        categories.firstOrNull { it.key == category }?.selectedUnit
     }
 
     fun <T> unitKey(unit: ConverterUnit<T>): String {
@@ -36,6 +39,10 @@ class UnitConverterViewModel(application: Application): AndroidViewModel(applica
 
     fun <T> removeFavoriteUnit(unit: ConverterUnit<T>) = viewModelScope.launch {
         favoriteUnitsRepository.removeFavoriteUnit(currentCategoryKey.value!!, unitKey(unit))
+    }
+
+    fun <T> saveSelectedUnitForCategory(unit: ConverterUnit<T>) = viewModelScope.launch {
+        favoriteUnitsRepository.setSelectedUnit(currentCategoryKey.value!!, unitKey(unit))
     }
 
     companion object {

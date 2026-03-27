@@ -10,6 +10,7 @@ message Unit {
 message FavoriteUnitCategory {
   string key = 1;
   repeated Unit favorites = 2;
+  optional Unit selected_unit = 3;
 }
 
 message FavoriteUnits {

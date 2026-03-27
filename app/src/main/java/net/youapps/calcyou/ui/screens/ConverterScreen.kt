@@ -28,6 +28,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -80,7 +81,11 @@ inline fun <reified T> ConverterScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         var expanded by remember { mutableStateOf(false) }
-        var selectedUnit by remember { mutableStateOf(converter.units.first()) }
+        val selectedUnitKey by converterModel.selectedUnit.collectAsState(null)
+        val selectedUnit = remember(selectedUnitKey) {
+            converter.units.firstOrNull { converterModel.unitKey(it) == selectedUnitKey?.key }
+                ?: converter.units.first()
+        }
         var converted: List<Pair<ConverterUnit<T>, T>> by remember { mutableStateOf(listOf()) }
         var textFieldValue by remember { mutableStateOf("") }
 
@@ -153,9 +158,6 @@ inline fun <reified T> ConverterScreen(
                     converterModel,
                     converter.units,
                     selectedUnit,
-                    { unit ->
-                        selectedUnit = unit
-                    },
                     onDismissRequest = {
                         showUnitPickerScreen = false
                     }

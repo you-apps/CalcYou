@@ -8,7 +8,7 @@ import net.you_apps.calcyou.Unit
 class FavoriteUnitsRepository(val context: Context) {
     val dataStore get() = context.favoriteUnitsDataStore
 
-    val unitsFlow = dataStore.data.map { it.categoriesList }
+    val unitConverterCategoriesFlow = dataStore.data.map { it.categoriesList }
 
     suspend fun addFavoriteUnit(categoryKey: String, unitKey: String) {
         dataStore.updateData { data ->
@@ -50,6 +50,36 @@ class FavoriteUnitsRepository(val context: Context) {
             data.toBuilder()
                 .setCategories(categoryIndex, category)
                 .build()
+        }
+    }
+
+    suspend fun setSelectedUnit(categoryKey: String, unitKey: String?) {
+        dataStore.updateData { data ->
+            var builder = data.toBuilder()
+
+            // although it's not currently needed, it's possible to clear
+            // the selected unit to reset it to default
+            val unit = unitKey?.let { Unit.newBuilder().setKey(it).build() }
+
+            // add category if it doesn't exist yet
+            if (data.categoriesList.none { it.key == categoryKey }) {
+                builder = builder.addCategories(
+                    FavoriteUnitCategory.newBuilder()
+                        .setKey(categoryKey)
+                        .setSelectedUnit(unit)
+                        .build()
+                )
+            } else {
+                val categoryIndex = data.categoriesList.indexOfFirst { category ->
+                    category.key == categoryKey
+                }
+                val updatedCategory = data.categoriesList[categoryIndex].toBuilder()
+                updatedCategory.setSelectedUnit(unit)
+
+                builder.setCategories(categoryIndex, updatedCategory)
+            }
+
+            builder.build()
         }
     }
 }

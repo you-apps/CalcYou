@@ -47,7 +47,6 @@ fun <T> ConverterUnitPickerScreen(
     converterViewModel: UnitConverterViewModel,
     availableUnits: List<ConverterUnit<T>>,
     selectedUnit: ConverterUnit<T>,
-    onUnitSelected: (ConverterUnit<T>) -> Unit,
     onDismissRequest: () -> Unit
 ) {
     val context = LocalContext.current
@@ -64,6 +63,11 @@ fun <T> ConverterUnitPickerScreen(
 
     val scrollBehavior = SearchBarDefaults.enterAlwaysSearchBarScrollBehavior()
 
+    fun setSelectedUnit(unit: ConverterUnit<T>) {
+        converterViewModel.saveSelectedUnitForCategory(unit)
+        onDismissRequest()
+    }
+
     FullscreenDialog(onDismissRequest = onDismissRequest) {
         Scaffold(
             topBar = {
@@ -76,9 +80,7 @@ fun <T> ConverterUnitPickerScreen(
                         SearchBarDefaults.InputField(
                             query = query,
                             onQueryChange = { query = it },
-                            onSearch = {
-
-                            },
+                            onSearch = { /* do nothing, search is automatically triggered by onQueryChange */ },
                             expanded = true,
                             onExpandedChange = {},
                             placeholder = { Text(stringResource(R.string.search)) },
@@ -120,8 +122,7 @@ fun <T> ConverterUnitPickerScreen(
                                         isSelected = unit == selectedUnit,
                                         isFavorite = true,
                                         onClicked = {
-                                            onUnitSelected(unit)
-                                            onDismissRequest()
+                                            setSelectedUnit(unit)
                                         },
                                         toggleIsFavorited = {
                                             converterViewModel.removeFavoriteUnit(unit)
@@ -139,8 +140,7 @@ fun <T> ConverterUnitPickerScreen(
                         isSelected = unit == selectedUnit,
                         isFavorite = false,
                         onClicked = {
-                            onUnitSelected(unit)
-                            onDismissRequest()
+                            setSelectedUnit(unit)
                         },
                         toggleIsFavorited = {
                             converterViewModel.addFavoriteUnit(unit)
