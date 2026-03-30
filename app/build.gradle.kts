@@ -17,8 +17,8 @@ android {
         applicationId = "net.youapps.calcyou"
         minSdk = 23
         targetSdk = 35
-        versionCode = 8
-        versionName = "5.0"
+        versionCode = 9
+        versionName = "5.1"
         // TODO: update 'currentApiVersion' below before each release
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
