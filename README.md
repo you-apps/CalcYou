@@ -34,15 +34,9 @@
 
 ## Features
 
-### 1. Powerful Calculator:
+- **Calculator**: Essential calculations with a simple and intuitive interface.
 
-- **Basic Calculator**: Essential calculations with a simple and intuitive interface.
-- **Scientific Calculator**: Advanced functions like trigonometry, logarithms, and more.
-
-### 2. Versatile Unit Converter:
-
-- Convert between a wide range of units across various categories like length, weight, volume,
-  currency, and more.
+- **Unit Converter**: Convert between a wide range of units across various categories like length, weight, volume, currency, and more.
 
 > [!NOTE]
 > The currency data is only updated whenever a new release is published, so it can't reflect the 
@@ -53,15 +47,9 @@
 > that data. Use at your own risk!
 >
 
-### 3. Character Input Tool:
+- **Character Input Tool**: Access a vast library of mathematical symbols, including Greek letters, arrows, superscript, subscript, and much more.
 
-- Access a vast library of mathematical symbols, including Greek letters, arrows, superscript,
-  subscript, and much more.
-- Effortlessly write complex expressions and equations with just a few taps.
-
-### 4. Graphing calculator:
-
-- Draw and visualize 2-dimensional function graphs, similar to tools like GeoGebra.
+- **Graphing calculator**: Draw and visualize 2-dimensional function graphs, similar to tools like GeoGebra.
 
 <!-- ---------- Download ---------- -->
 
