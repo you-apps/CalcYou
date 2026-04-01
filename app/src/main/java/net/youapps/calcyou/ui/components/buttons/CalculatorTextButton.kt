@@ -45,7 +45,15 @@ fun RowScope.CalculatorTextButton(
             }
             .let {
                 if (backgroundColor == Color.Transparent) it.clip(CircleShape)
-                else it.padding(12.dp).clip(RoundedCornerShape(24.dp)).background(backgroundColor)
+                else {
+                    // there's only enough free space for adding padding to the keypad when
+                    // the calculator button has a square aspect ratio
+                    val padding = if (square) 12.dp else 0.dp
+                    it.padding(padding)
+                        // clip background to rounded shape
+                        .clip(RoundedCornerShape(24.dp))
+                        .background(backgroundColor)
+                }
             }
             .combinedClickable(
                 onClick = {
