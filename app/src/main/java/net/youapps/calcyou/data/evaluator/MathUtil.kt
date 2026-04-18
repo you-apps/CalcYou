@@ -42,7 +42,7 @@ object MathUtil {
      *
      * @param str    the value to truncate (e.g. "-2.898983455E20")
      * @param maxLen the maximum number of characters in the returned string
-     * @return a truncation no longer then maxLen (e.g. "-2.8E20" for maxLen=7).
+     * @return a truncation no longer than maxLen (e.g. "-2.8E20" for maxLen=7).
      */
     fun sizeTruncate(str: String, maxLen: Int): String {
         if (maxLen == LEN_UNLIMITED) {
