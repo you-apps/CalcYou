@@ -37,6 +37,7 @@ fun CalculatorScreen(
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
+                    .then(modifier)
             ) {
                 Column(modifier = Modifier.weight(1f)) {
                     SideKeypadHorizontal(
