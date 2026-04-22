@@ -234,4 +234,9 @@
     <string name="syntax_help">语法帮助</string>
     <string name="function_syntax_reference">函数语法参考</string>
     <string name="trigonometric_functions">三角函数</string>
+    <string name="cups">量杯</string>
+    <string name="pinch">品脱</string>
+    <string name="favorites">收藏</string>
+    <string name="search">搜索</string>
+    <string name="cooking">烹饪</string>
 </resources>
