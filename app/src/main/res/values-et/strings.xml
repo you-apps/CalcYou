@@ -234,4 +234,9 @@
     <string name="note_use_semicolons_to_separate_multiple_arguments">Märkus: mitme argumendi eraldamiseks kasuta semikooloneid (;)</string>
     <string name="combine_operations">Ühenda tehteid</string>
     <string name="clamp_value">Piira väärtust</string>
+    <string name="cooking">Toiduvalmistamine</string>
+    <string name="cups">Kruusitäis</string>
+    <string name="pinch">Näpuotsatäis</string>
+    <string name="favorites">Lemmikud</string>
+    <string name="search">Otsi</string>
 </resources>
