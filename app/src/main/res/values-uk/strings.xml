@@ -234,4 +234,9 @@
     <string name="syntax_help">Допомога із синтаксисом</string>
     <string name="function_syntax_reference">Довідник із синтаксису функцій</string>
     <string name="trigonometric_functions">Тригонометричні функції</string>
+    <string name="cooking">Кулінарія</string>
+    <string name="cups">Чашки</string>
+    <string name="pinch">Дрібка</string>
+    <string name="favorites">Улюблені</string>
+    <string name="search">Пошук</string>
 </resources>
