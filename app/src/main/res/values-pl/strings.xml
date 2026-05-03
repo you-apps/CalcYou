@@ -234,4 +234,7 @@
     <string name="syntax_help">Pomoc dotycząca składni</string>
     <string name="function_syntax_reference">Składnia funkcji</string>
     <string name="trigonometric_functions">Funkcje trygonometryczne</string>
+    <string name="cooking">Gotowanie</string>
+    <string name="pinch">Szczypta</string>
+    <string name="favorites">Ulubione</string>
 </resources>
