@@ -182,4 +182,22 @@
     <string name="currencies">عملات</string>
     <string name="supports_nested_functions_like_sin_cos_x">يدعم الدوال المتداخلة مثل sin(cos(x))</string>
     <string name="operators">عوامل</string>
+    <string name="cooking">الطبخ</string>
+    <string name="cups">أكواب</string>
+    <string name="pinch">قَرص</string>
+    <string name="addition">الجمع</string>
+    <string name="subtraction">الطرح</string>
+    <string name="multiplication">الجداء</string>
+    <string name="division">القسمة</string>
+    <string name="exponentiation_x_2">الرفع الأسّي (x^2)</string>
+    <string name="modulo_remainder">القسمة (الباقي)</string>
+    <string name="basic_functions">الوظائف الأساسية</string>
+    <string name="absolute_value">القيمة المطلقة</string>
+    <string name="square_root">الجذر التربيعي</string>
+    <string name="cube_root">الجذر التكعيبي</string>
+    <string name="exponential_e_x">الدالة الأُسّية(e^x)</string>
+    <string name="natural_logarithm">لغارتم طبيعي</string>
+    <string name="base_10_logarithm">لغارتم عشري</string>
+    <string name="base_2_logarithm">لغارتم ثنائي</string>
+    <string name="logarithm_with_custom_base">لغارتم ذو أساس مخصص</string>
 </resources>

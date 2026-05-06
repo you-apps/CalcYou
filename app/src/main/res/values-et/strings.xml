@@ -216,4 +216,27 @@
     <string name="remove_decimals">Kümnendkohtade eemaldamine</string>
     <string name="greatest_common_divisor">Suurim ühine jagaja</string>
     <string name="least_common_multiple">Väikseim ühine kordaja</string>
+    <string name="advanced_functions">Täiendavad funktsioonid</string>
+    <string name="quick_templates">Kiirmallid:</string>
+    <string name="constants">Konstandid</string>
+    <string name="nested_functions">Hierarhilised funktsioonid</string>
+    <string name="syntax_help">Abiteave süntaksi kohta</string>
+    <string name="function_syntax_reference">Funktsioonide süntaksi abimaterjal</string>
+    <string name="trigonometric_functions">Trigonomeetrilised funktsioonid</string>
+    <string name="sign_1_0_or_1">Märk (-1, 0 või 1)</string>
+    <string name="hypotenuse_sqrt_x_y">Hüpotenuus sqrt(x²+y²)</string>
+    <string name="degrees_to_radians">Kraadid radiaanideks</string>
+    <string name="radians_to_degrees">Radiaanid kraadideks</string>
+    <string name="gaussian_like_curves">Gaussi-tüüpi kõverad</string>
+    <string name="avoid_domain_errors">Väldi domeeni vigu</string>
+    <string name="close">Sulge</string>
+    <string name="invalid_token_at_index_0">Vigane tooken indeksis 0</string>
+    <string name="note_use_semicolons_to_separate_multiple_arguments">Märkus: mitme argumendi eraldamiseks kasuta semikooloneid (;)</string>
+    <string name="combine_operations">Ühenda tehteid</string>
+    <string name="clamp_value">Piira väärtust</string>
+    <string name="cooking">Toiduvalmistamine</string>
+    <string name="cups">Kruusitäis</string>
+    <string name="pinch">Näpuotsatäis</string>
+    <string name="favorites">Lemmikud</string>
+    <string name="search">Otsi</string>
 </resources>

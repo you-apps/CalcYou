@@ -235,4 +235,9 @@
     <string name="syntax_help">語法說明</string>
     <string name="function_syntax_reference">函式語法參考</string>
     <string name="trigonometric_functions">三角函式</string>
+    <string name="cooking">烹飪</string>
+    <string name="cups">杯</string>
+    <string name="favorites">最愛</string>
+    <string name="search">搜尋</string>
+    <string name="pinch">一撮</string>
 </resources>
