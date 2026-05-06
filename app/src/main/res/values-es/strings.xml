@@ -234,4 +234,9 @@
     <string name="invalid_token_at_index_0">Vale no válido en índice 0</string>
     <string name="function_syntax_reference">Referencia Sintáctica de Función</string>
     <string name="clamp_value">Valor de sujeción</string>
+    <string name="cooking">Cooking</string>
+    <string name="cups">Cups</string>
+    <string name="pinch">Pinch</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
 </resources>
