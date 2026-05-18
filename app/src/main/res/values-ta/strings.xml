@@ -234,4 +234,9 @@
     <string name="syntax_help">தொடரியல் உதவி</string>
     <string name="function_syntax_reference">செயல்பாட்டு தொடரியல் குறிப்பு</string>
     <string name="trigonometric_functions">முக்கோணவியல் செயல்பாடுகள்</string>
+    <string name="cooking">சமையல்</string>
+    <string name="cups">கோப்பைகள்</string>
+    <string name="pinch">கிள்ளு</string>
+    <string name="favorites">பிடித்தவை</string>
+    <string name="search">தேடு</string>
 </resources>
