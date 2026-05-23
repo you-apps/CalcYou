@@ -237,4 +237,6 @@
     <string name="trigonometric_functions">Funzioni trigonometriche</string>
     <string name="favorites">Preferiti</string>
     <string name="search">Cerca</string>
+    <string name="cooking">Cucina</string>
+    <string name="combine_operations">Combina operatori</string>
 </resources>
