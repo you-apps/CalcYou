@@ -4,7 +4,7 @@
     <string name="gram">جرام</string>
     <string name="pint">نصف ليتر</string>
     <string name="square_foot">قدم مربع</string>
-    <string name="temperature">الحرارة</string>
+    <string name="temperature">درجة الحرارة</string>
     <string name="feet_per_second">قدم في الثانية</string>
     <string name="terabyte">تيرابايت</string>
     <string name="megabyte">ميقابايت</string>
@@ -29,7 +29,7 @@
     <string name="kilobyte">كيلوبايت</string>
     <string name="cubic_centimeter">سنتيمتر مكعب</string>
     <string name="acre">فندان</string>
-    <string name="storage">التخزين الرقمي</string>
+    <string name="storage">التخزين</string>
     <string name="fluid_ounce">أوقية السوائل</string>
     <string name="frequency">التردد</string>
     <string name="square_kilometer">كيلومتر مربع</string>
