@@ -234,4 +234,9 @@
     <string name="syntax_help">Syntax-Hilfe</string>
     <string name="function_syntax_reference">Funktionssyntax-Referenz</string>
     <string name="trigonometric_functions">Trigonometrische Funktionen</string>
+    <string name="cooking">Kochen</string>
+    <string name="cups">Tassen</string>
+    <string name="pinch">Prise</string>
+    <string name="favorites">Favoriten</string>
+    <string name="search">Suchen</string>
 </resources>
