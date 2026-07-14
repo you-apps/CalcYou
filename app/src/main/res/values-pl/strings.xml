@@ -73,7 +73,7 @@
     <string name="kilonewton">Kiloniuton</string>
     <string name="force">Siła</string>
     <string name="converter">Konwerter jednostek</string>
-    <string name="poiseuille">Poiseuille</string>
+    <string name="poiseuille">Pauzel</string>
     <string name="ounce_inch">Uncja-cal</string>
     <string name="btu_per_hour">BTU na godzinę</string>
     <string name="superscript">Indeks górny :</string>
@@ -237,4 +237,6 @@
     <string name="cooking">Gotowanie</string>
     <string name="pinch">Szczypta</string>
     <string name="favorites">Ulubione</string>
+    <string name="search">Szukaj</string>
+    <string name="cups">Szklanka</string>
 </resources>
