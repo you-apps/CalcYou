@@ -67,7 +67,7 @@
     <string name="viscosity">Viscosidade</string>
     <string name="fuel">Combustível</string>
     <string name="meter">Metro</string>
-    <string name="kilometer">Quilômetro</string>
+    <string name="kilometer">Quilómetro</string>
     <string name="centimeter">Centímetro</string>
     <string name="millimeter">Milímetro</string>
     <string name="mile">Milha</string>
@@ -112,7 +112,7 @@
     <string name="tablespoon">Colher de sopa</string>
     <string name="teaspoon">Colher de chá</string>
     <string name="square_meter">Metro quadrado</string>
-    <string name="square_kilometer">Quilômetro quadrado</string>
+    <string name="square_kilometer">Quilómetro quadrado</string>
     <string name="square_centimeter">Centímetro quadrado</string>
     <string name="square_millimeter">Milímetro quadrado</string>
     <string name="acre">Acre</string>
@@ -201,4 +201,5 @@
     <string name="constants">Constantes</string>
     <string name="favorites">Favoritos</string>
     <string name="search">Procurar</string>
+    <string name="cooking">Confecção</string>
 </resources>
