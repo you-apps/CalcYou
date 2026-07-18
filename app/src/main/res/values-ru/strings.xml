@@ -166,7 +166,7 @@
     <string name="new_color">Новый цвет</string>
     <string name="hue_slider">Тон</string>
     <string name="saturation_slider">Насыщенность</string>
-    <string name="graphing">Графика</string>
+    <string name="graphing">График</string>
     <string name="add_new_function">Добавить функцию</string>
     <string name="expression_is_empty">Отсутствует выражение</string>
     <string name="color_picker_dialog">Выбор цвета</string>
