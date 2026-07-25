@@ -48,15 +48,27 @@ object Defaults {
     val defaultConstantNameChars: List<Char> = "abcdeyz".toList()
 
     /**
-     * Converts the given double [value] into radian mode.
+     * Converts the given double [value] of format [mode] into radian.
      *
-     * @param value double that's in the trigonometric mode specified by the  [mode] parameter
+     * @param value double that's in the trigonometric mode specified by the [mode] parameter
      * @param mode whether the input is radian or degree
      */
     private fun trigonometricModeToRadian(value: Double, mode: TrigonometricMode): Double {
         if (mode == TrigonometricMode.RADIAN) return value;
 
-        return defaultGenericConstants["DEG"]!! * value;
+        return value * defaultGenericConstants["DEG"]!!;
+    }
+
+    /**
+     * Converts the given double [value] from radian into [mode].
+     *
+     * @param value double that's in the radian mode
+     * @param mode whether the output should be radian or degree
+     */
+    private fun radianToTrigonometricMode(value: Double, mode: TrigonometricMode): Double {
+        if (mode == TrigonometricMode.RADIAN) return value;
+
+        return value / defaultGenericConstants["DEG"]!!;
     }
 
     fun getDefaultGenericFunctions(): Map<String, EvalFunctionBlock> {
@@ -147,37 +159,35 @@ object Defaults {
                 MathUtil.sin(trigonometricModeToRadian(args.first(), mode))
             },
             "ASIN" to { args, mode ->
-                asin(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(asin(args.first()), mode)
             },
             "SINH" to { args, mode ->
                 sinh(trigonometricModeToRadian(args.first(), mode))
             },
             "ASINH" to { args, mode ->
-                asinh(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(asinh(args.first()), mode)
             },
             "COS" to { args, mode ->
                 MathUtil.cos(trigonometricModeToRadian(args.first(), mode))
             },
             "ACOS" to { args, mode ->
-                acos(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(acos(args.first()), mode)
             },
             "COSH" to { args, mode ->
                 cosh(trigonometricModeToRadian(args.first(), mode))
             },
             "ACOSH" to { args, mode ->
-                acosh(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(acosh(args.first()), mode)
             },
             "TAN" to { args, mode ->
                 MathUtil.tan(trigonometricModeToRadian(args.first(), mode))
             },
             "ATAN" to { args, mode ->
-                atan(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(atan(args.first()), mode)
             },
             "ATAN2" to fn@{ args, mode ->
                 if (args.size == 2) {
-                    val arg1 = trigonometricModeToRadian(args[0], mode)
-                    val arg2 = trigonometricModeToRadian(args[1], mode)
-                    return@fn atan2(arg1, arg2)
+                    return@fn radianToTrigonometricMode(atan2(args[0], args[1]), mode)
                 }
 
                 throw InvalidParameterException("atan2 requires two arguments")
@@ -186,7 +196,7 @@ object Defaults {
                 tanh(trigonometricModeToRadian(args.first(), mode))
             },
             "ATANH" to { args, mode ->
-                atanh(trigonometricModeToRadian(args.first(), mode))
+                radianToTrigonometricMode(atanh(args.first()), mode)
             },
 
             // Additional trigonometric functions
