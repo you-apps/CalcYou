@@ -11,6 +11,8 @@ object ExpressionEvaluator {
             tokenizeExpression(expression = expression)
         var end = tokens.size
 
+        println("toknes" + tokens.toString())
+
         // Collapse +-
         var i = 1
         while (i < end) {
@@ -58,6 +60,21 @@ object ExpressionEvaluator {
                     continue
                 }
 
+                tokens.add(i, Token.Op(value = Operator.MUL))
+                end = tokens.size
+                i += 1
+            }
+
+            i += 1
+        }
+
+        // Take care of multiplying by just using brackets without a multiplication sign,
+        // internally, this adds a multiplication sign in between, e.g. ""5(30-3)"" -> ""5*(30-3)""
+        // this doesn't work for variables before the bracket (e.g. "x(3)", only "3(x)" works,
+        // because this could also be a function name like "sin" or "log" and not a multiplication
+        i = 1
+        while (i < end) {
+            if (tokens[i] is Token.LeftParen && tokens[i-1] is Token.Number) {
                 tokens.add(i, Token.Op(value = Operator.MUL))
                 end = tokens.size
                 i += 1

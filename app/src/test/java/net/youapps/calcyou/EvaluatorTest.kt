@@ -29,10 +29,10 @@ internal class EvaluatorTest {
         "tan(x)" to { x: Double -> tan(x) },
         "sqrt(x)" to { x: Double -> sqrt(x) },
         "abs(x)" to { x: Double -> abs(x) },
-        "log(x)" to { x: Double -> ln(x) },
+        "ln(x)" to { x: Double -> ln(x) },
         "exp(x)" to { x: Double -> exp(x) },
         "log10(x)" to { x: Double -> log10(x) },
-        "log(x,2)" to { x: Double -> log(x, 2.0) },
+        "log(x;2)" to { x: Double -> log(x, 2.0) },
         "sin(x) + cos(x)" to { x: Double -> sin(x) + cos(x) },
         "sin(x) * cos(x)" to { x: Double -> sin(x) * cos(x) },
         "sin(x) / cos(x)" to { x: Double -> sin(x) / cos(x) },
@@ -40,7 +40,7 @@ internal class EvaluatorTest {
         "sin(x) ** 2" to { x: Double -> sin(x) * sin(x) },
         "x * x" to { x: Double -> x * x },
         "x ** 2" to { x: Double -> x.pow(2) },
-        "pow(x,3)" to { x: Double -> x.pow(3) },
+        "pow(x;3)" to { x: Double -> x.pow(3) },
         "2" to { _: Double -> 2.0 },
         "sqrt(4)" to { _: Double -> sqrt(4.0) },
         "round(x)" to { x: Double -> round(x) },
@@ -52,7 +52,8 @@ internal class EvaluatorTest {
         "abs(-x ** 4)" to { x: Double -> abs(-x.pow(4)) },
         "20x+7" to { x: Double -> 20 * x + 7 },
         "20 x x / 20 x" to { x: Double -> 20 * x * x / 20 * x },
-        "50.2%*30%x" to { x: Double -> 0.502 * 0.3 * x }
+        "50.2%*30%x" to { x: Double -> 0.502 * 0.3 * x },
+        "5(3 + x) - 4(3)" to { x: Double -> 5 * (3 + x) - 4 * (3) }
     )
     val random = Random(System.currentTimeMillis())
 
@@ -60,6 +61,7 @@ internal class EvaluatorTest {
     fun `execute() should return correct answer for compiled expressions`() {
         testCases.forEach { expression, func ->
             val argument = random.nextDouble()
+            println(expression)
             val compiled: CompiledExpression = ExpressionEvaluator.compile(expression)
 
             val answer = compiled.execute(TrigonometricMode.RADIAN, listOf("x" to argument))
