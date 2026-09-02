@@ -239,4 +239,6 @@
     <string name="favorites">Ulubione</string>
     <string name="search">Szukaj</string>
     <string name="cups">Szklanka</string>
+    <string name="watt_hours">Watogodziny (Wh)</string>
+    <string name="kilowatt_hours">Kilowatogodziny (kWh)</string>
 </resources>

@@ -239,4 +239,6 @@
     <string name="trigonometric_functions">Trigonometrické funkcie</string>
     <string name="favorites">Obľúbené</string>
     <string name="search">Hľadať</string>
+    <string name="watt_hours">Watthodiny (Wh)</string>
+    <string name="kilowatt_hours">Kilowatthodiny (kWh)</string>
 </resources>

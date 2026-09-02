@@ -239,4 +239,6 @@
     <string name="pinch">Näpuotsatäis</string>
     <string name="favorites">Lemmikud</string>
     <string name="search">Otsi</string>
+    <string name="watt_hours">Vatt-tunnid (Wh)</string>
+    <string name="kilowatt_hours">Kilovatt-tunnid (kWh)</string>
 </resources>

@@ -239,4 +239,6 @@
     <string name="favorites">收藏</string>
     <string name="search">搜索</string>
     <string name="cooking">烹饪</string>
+    <string name="watt_hours">瓦时 (Wh)</string>
+    <string name="kilowatt_hours">千瓦时 (kWh)</string>
 </resources>

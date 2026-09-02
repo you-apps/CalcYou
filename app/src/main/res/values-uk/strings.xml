@@ -239,4 +239,6 @@
     <string name="pinch">Дрібка</string>
     <string name="favorites">Улюблені</string>
     <string name="search">Пошук</string>
+    <string name="watt_hours">Ват-години (Вт·год)</string>
+    <string name="kilowatt_hours">Кіловат-години (кВт·год)</string>
 </resources>

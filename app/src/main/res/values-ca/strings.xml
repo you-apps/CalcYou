@@ -173,4 +173,11 @@
     <string name="graphing">Graf</string>
     <string name="add_new_function">Afegeix una funció nova</string>
     <string name="expression_is_empty">L\'expressió és buida</string>
+    <string name="cooking">Cuinar</string>
+    <string name="cups">Copas</string>
+    <string name="pinch">Pessic</string>
+    <string name="binary">Binari</string>
+    <string name="octal">Octal</string>
+    <string name="decimal">Decimal</string>
+    <string name="hexadecimal">Hexadecimal</string>
 </resources>
