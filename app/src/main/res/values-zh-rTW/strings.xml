@@ -240,4 +240,6 @@
     <string name="favorites">最愛</string>
     <string name="search">搜尋</string>
     <string name="pinch">一撮</string>
+    <string name="watt_hours">瓦時 (Wh)</string>
+    <string name="kilowatt_hours">千瓦時 (kWh)</string>
 </resources>
