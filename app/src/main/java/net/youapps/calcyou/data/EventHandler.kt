@@ -6,8 +6,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import net.youapps.calcyou.data.evaluator.TrigonometricMode
-import java.lang.Exception
-import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
 class EventHandler(
@@ -17,15 +15,30 @@ class EventHandler(
     private val tokenizer = Tokenizer(context)
     private val evaluator = FormattingEvaluator(tokenizer)
     private val numberFormat = DecimalFormatSymbols.getInstance()
+    private var mostRecentEvent: CalculatorEvent? = null
 
+    /**
+     * Inserts the text of the pressed button into the text field.
+     * If the previous calculation already finished and the user inserts
+     * a new number or decimal point, a new calculation is started.
+     */
     fun processEvent(
         event: CalculatorEvent,
         currentText: TextFieldValue,
         mode: MutableState<TrigonometricMode>
     ): TextFieldValue {
-        return when (event) {
+        val result = when (event) {
             is CalculatorEvent.Number -> {
-                currentText.insertText(event.number.toString())
+                val newText = event.number.toString()
+
+                if (mostRecentEvent == CalculatorEvent.Evaluate) {
+                    TextFieldValue(
+                        text = newText,
+                        selection = TextRange(newText.length)
+                    )
+                } else {
+                    currentText.insertText(newText)
+                }
             }
 
             is CalculatorEvent.Operator -> {
@@ -41,7 +54,15 @@ class EventHandler(
             }
 
             CalculatorEvent.Decimal -> {
-                currentText.insertText(numberFormat.decimalSeparator.toString())
+                val newText = numberFormat.decimalSeparator.toString()
+                if (mostRecentEvent == CalculatorEvent.Evaluate) {
+                    TextFieldValue(
+                        text = newText,
+                        selection = TextRange(newText.length)
+                    )
+                } else {
+                    currentText.insertText(newText)
+                }
             }
 
             CalculatorEvent.Evaluate -> {
@@ -70,6 +91,8 @@ class EventHandler(
                 currentText
             }
         }
+        mostRecentEvent = event
+        return result
     }
 
     fun evaluateResult(currentText: String, mode: MutableState<TrigonometricMode>): String? {
